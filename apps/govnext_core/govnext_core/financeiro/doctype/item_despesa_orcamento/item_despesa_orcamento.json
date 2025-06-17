@@ -1,0 +1,75 @@
+{
+ "actions": [],
+ "creation": "2023-10-15 15:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo_despesa",
+  "descricao",
+  "categoria_despesa",
+  "column_break_4",
+  "valor_previsto",
+  "valor",
+  "percentual_execucao"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo_despesa",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código da Despesa",
+   "reqd": 1
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Descrição",
+   "reqd": 1
+  },
+  {
+   "fieldname": "categoria_despesa",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Categoria da Despesa",
+   "options": "Categoria Despesa",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_previsto",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Previsto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Realizado"
+  },
+  {
+   "fieldname": "percentual_execucao",
+   "fieldtype": "Percent",
+   "label": "Percentual de Execução",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-15 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "Item Despesa Orcamento",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

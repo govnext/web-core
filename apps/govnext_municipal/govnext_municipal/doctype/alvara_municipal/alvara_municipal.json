@@ -1,0 +1,367 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:numero_alvara",
+ "creation": "2023-10-07 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "numero_alvara",
+  "tipo_alvara",
+  "requerente",
+  "cnpj_cpf",
+  "endereco_section",
+  "logradouro",
+  "numero",
+  "complemento",
+  "bairro",
+  "cep",
+  "column_break_10",
+  "cidade",
+  "estado",
+  "inscricao_municipal",
+  "inscricao_cadastral",
+  "dados_alvara_section",
+  "data_emissao",
+  "data_validade",
+  "status",
+  "renovacao_automatica",
+  "column_break_19",
+  "area_estabelecimento",
+  "funcionarios",
+  "horario_funcionamento",
+  "atividades_section",
+  "atividades_autorizadas",
+  "classificacao_risco",
+  "restricoes",
+  "requisitos_section",
+  "licenca_bombeiros",
+  "licenca_sanitaria",
+  "licenca_ambiental",
+  "vistoria_engenharia",
+  "column_break_31",
+  "documentacao_completa",
+  "parecer_tecnico",
+  "taxa_paga",
+  "documentos_section",
+  "documentos_anexos",
+  "documento_alvara",
+  "observacoes",
+  "historico_section",
+  "historico",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "numero_alvara",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Número do Alvará",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "tipo_alvara",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Alvará",
+   "options": "Funcionamento\nConstrução\nEventos\nSanitário\nAmbiental\nPublicidade",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requerente",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Requerente",
+   "options": "doctype_link",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cnpj_cpf",
+   "fieldtype": "Data",
+   "label": "CNPJ/CPF",
+   "reqd": 1
+  },
+  {
+   "fieldname": "endereco_section",
+   "fieldtype": "Section Break",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "logradouro",
+   "fieldtype": "Data",
+   "label": "Logradouro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "numero",
+   "fieldtype": "Data",
+   "label": "Número"
+  },
+  {
+   "fieldname": "complemento",
+   "fieldtype": "Data",
+   "label": "Complemento"
+  },
+  {
+   "fieldname": "bairro",
+   "fieldtype": "Data",
+   "label": "Bairro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cep",
+   "fieldtype": "Data",
+   "label": "CEP",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cidade",
+   "fieldtype": "Data",
+   "label": "Cidade",
+   "reqd": 1
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Data",
+   "label": "Estado",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inscricao_municipal",
+   "fieldtype": "Data",
+   "label": "Inscrição Municipal"
+  },
+  {
+   "fieldname": "inscricao_cadastral",
+   "fieldtype": "Link",
+   "label": "Inscrição Cadastral",
+   "options": "IPTU Cadastro"
+  },
+  {
+   "fieldname": "dados_alvara_section",
+   "fieldtype": "Section Break",
+   "label": "Dados do Alvará"
+  },
+  {
+   "default": "Today",
+   "fieldname": "data_emissao",
+   "fieldtype": "Date",
+   "label": "Data de Emissão",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_validade",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data de Validade",
+   "reqd": 1
+  },
+  {
+   "default": "Pendente",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pendente\nEmitido\nVencido\nCancelado\nSuspenso",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "renovacao_automatica",
+   "fieldtype": "Check",
+   "label": "Renovação Automática"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "area_estabelecimento",
+   "fieldtype": "Float",
+   "label": "Área do Estabelecimento (m²)"
+  },
+  {
+   "fieldname": "funcionarios",
+   "fieldtype": "Int",
+   "label": "Número de Funcionários"
+  },
+  {
+   "fieldname": "horario_funcionamento",
+   "fieldtype": "Small Text",
+   "label": "Horário de Funcionamento"
+  },
+  {
+   "fieldname": "atividades_section",
+   "fieldtype": "Section Break",
+   "label": "Atividades e Restrições"
+  },
+  {
+   "fieldname": "atividades_autorizadas",
+   "fieldtype": "Table",
+   "label": "Atividades Autorizadas",
+   "options": "Alvara Atividade"
+  },
+  {
+   "fieldname": "classificacao_risco",
+   "fieldtype": "Select",
+   "label": "Classificação de Risco",
+   "options": "Baixo Risco\nMédio Risco\nAlto Risco"
+  },
+  {
+   "fieldname": "restricoes",
+   "fieldtype": "Small Text",
+   "label": "Restrições e Condições"
+  },
+  {
+   "fieldname": "requisitos_section",
+   "fieldtype": "Section Break",
+   "label": "Requisitos"
+  },
+  {
+   "default": "0",
+   "fieldname": "licenca_bombeiros",
+   "fieldtype": "Check",
+   "label": "Licença do Corpo de Bombeiros"
+  },
+  {
+   "default": "0",
+   "fieldname": "licenca_sanitaria",
+   "fieldtype": "Check",
+   "label": "Licença Sanitária"
+  },
+  {
+   "default": "0",
+   "fieldname": "licenca_ambiental",
+   "fieldtype": "Check",
+   "label": "Licença Ambiental"
+  },
+  {
+   "default": "0",
+   "fieldname": "vistoria_engenharia",
+   "fieldtype": "Check",
+   "label": "Vistoria de Engenharia"
+  },
+  {
+   "fieldname": "column_break_31",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "documentacao_completa",
+   "fieldtype": "Check",
+   "label": "Documentação Completa"
+  },
+  {
+   "default": "0",
+   "fieldname": "parecer_tecnico",
+   "fieldtype": "Check",
+   "label": "Parecer Técnico Favorável"
+  },
+  {
+   "default": "0",
+   "fieldname": "taxa_paga",
+   "fieldtype": "Check",
+   "label": "Taxa Paga"
+  },
+  {
+   "fieldname": "documentos_section",
+   "fieldtype": "Section Break",
+   "label": "Documentos"
+  },
+  {
+   "fieldname": "documentos_anexos",
+   "fieldtype": "Attach",
+   "label": "Documentos Anexos"
+  },
+  {
+   "fieldname": "documento_alvara",
+   "fieldtype": "Attach",
+   "label": "Documento do Alvará"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "historico_section",
+   "fieldtype": "Section Break",
+   "label": "Histórico"
+  },
+  {
+   "fieldname": "historico",
+   "fieldtype": "Table",
+   "label": "Histórico",
+   "options": "Alvara Historico"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Alvara Municipal",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-10-07 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "Alvara Municipal",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "numero_alvara",
+ "track_changes": 1
+}

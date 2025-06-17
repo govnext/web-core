@@ -1,0 +1,46 @@
+{
+ "actions": [],
+ "creation": "2023-10-07 12:30:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo_cnae",
+  "descricao_atividade",
+  "principal"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo_cnae",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código CNAE",
+   "reqd": 1
+  },
+  {
+   "fieldname": "descricao_atividade",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Descrição da Atividade",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "principal",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Atividade Principal"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-07 12:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "Alvara Atividade",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

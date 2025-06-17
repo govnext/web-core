@@ -1,0 +1,164 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "EF-.####",
+ "creation": "2025-06-17 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ano",
+  "data_inicio",
+  "data_fim",
+  "column_break_4",
+  "status",
+  "secao_configuracoes",
+  "permite_lancamento_retroativo",
+  "dias_lancamento_retroativo",
+  "column_break_9",
+  "permite_lancamento_futuro",
+  "dias_lancamento_futuro",
+  "secao_observacoes",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "ano",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Ano",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "data_inicio",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data de In\u00edcio",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_fim",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data de Fim",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Em Prepara\u00e7\u00e3o\nAtivo\nEncerrado\nArquivado",
+   "reqd": 1,
+   "default": "Em Prepara\u00e7\u00e3o"
+  },
+  {
+   "fieldname": "secao_configuracoes",
+   "fieldtype": "Section Break",
+   "label": "Configura\u00e7\u00f5es"
+  },
+  {
+   "default": "0",
+   "fieldname": "permite_lancamento_retroativo",
+   "fieldtype": "Check",
+   "label": "Permite Lan\u00e7amento Retroativo"
+  },
+  {
+   "depends_on": "eval:doc.permite_lancamento_retroativo==1",
+   "fieldname": "dias_lancamento_retroativo",
+   "fieldtype": "Int",
+   "label": "Dias para Lan\u00e7amento Retroativo",
+   "default": 0
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "permite_lancamento_futuro",
+   "fieldtype": "Check",
+   "label": "Permite Lan\u00e7amento Futuro"
+  },
+  {
+   "depends_on": "eval:doc.permite_lancamento_futuro==1",
+   "fieldname": "dias_lancamento_futuro",
+   "fieldtype": "Int",
+   "label": "Dias para Lan\u00e7amento Futuro",
+   "default": 0
+  },
+  {
+   "fieldname": "secao_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Observa\u00e7\u00f5es"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text Editor",
+   "label": "Observa\u00e7\u00f5es"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Orcamento",
+   "link_fieldname": "exercicio_financeiro"
+  },
+  {
+   "link_doctype": "DotacaoOrcamentaria",
+   "link_fieldname": "exercicio_financeiro"
+  }
+ ],
+ "modified": "2025-06-17 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "ExercicioFinanceiro",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "select": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

@@ -1,0 +1,449 @@
+# GovNext - Estrutura Unificada do Projeto
+
+```
+govnext/
+├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── SECURITY.md
+├── TODO.md
+├── .gitignore
+├── .env.example
+├── pyproject.toml
+├── requirements.txt
+├── package.json
+├── bench-config.json
+├── commitlint.config.js
+├── codecov.yml
+├── sider.yml
+├──
+├── apps/
+│   ├── govnext_core/                   # Aplicativo principal - funcionalidades comuns
+│   │   ├── govnext_core/
+│   │   │   ├── __init__.py
+│   │   │   ├── hooks.py
+│   │   │   ├── modules.txt
+│   │   │   │
+│   │   │   ├── config/                 # Configurações gerais
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── desktop.py
+│   │   │   │   └── docs.py
+│   │   │   │
+│   │   │   ├── public/                 # Arquivos estáticos
+│   │   │   │   ├── css/
+│   │   │   │   │   └── govnext_core.css
+│   │   │   │   ├── js/
+│   │   │   │   │   └── govnext_core.js
+│   │   │   │   ├── images/
+│   │   │   │   └── build.json
+│   │   │   │
+│   │   │   ├── templates/              # Templates HTML
+│   │   │   │   ├── base.html
+│   │   │   │   ├── login.html
+│   │   │   │   └── portal/
+│   │   │   │
+│   │   │   ├── www/                    # Páginas web públicas
+│   │   │   │   └── govnext.html
+│   │   │   │
+│   │   │   ├── workspace/              # Workspaces do Frappe
+│   │   │   │   ├── orcamento/
+│   │   │   │   │   └── orcamento.json
+│   │   │   │   └── licitacoes/
+│   │   │   │       └── licitacoes.json
+│   │   │   │
+│   │   │   ├── setup/                  # Scripts de instalação
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── install.py
+│   │   │   │
+│   │   │   ├── api/                    # Endpoints da API
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── common.py
+│   │   │   │   └── v1/
+│   │   │   │
+│   │   │   ├── utils/                  # Utilitários gerais
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── validation.py
+│   │   │   │   ├── formatting.py
+│   │   │   │   ├── integration.py
+│   │   │   │   └── security.py
+│   │   │   │
+│   │   │   ├── doctype/                # Tipos de documentos base
+│   │   │   │   ├── government_unit/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── government_unit.json
+│   │   │   │   │   └── government_unit.py
+│   │   │   │   ├── public_budget/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── public_budget.json
+│   │   │   │   │   └── public_budget.py
+│   │   │   │   ├── public_budget_expense_item/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── public_budget_expense_item.json
+│   │   │   │   │   └── public_budget_expense_item.py
+│   │   │   │   ├── public_budget_revenue_item/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── public_budget_revenue_item.json
+│   │   │   │   │   └── public_budget_revenue_item.py
+│   │   │   │   ├── public_tender/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── public_tender.json
+│   │   │   │   │   └── public_tender.py
+│   │   │   │   ├── public_tender_item/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── public_tender_item.json
+│   │   │   │   │   └── public_tender_item.py
+│   │   │   │   └── public_tender_participant/
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── public_tender_participant.json
+│   │   │   │       └── public_tender_participant.py
+│   │   │   │
+│   │   │   ├── governo/                # Módulo: Configurações de Governo
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── orgao_publico/
+│   │   │   │   │   ├── servidor_publico/
+│   │   │   │   │   ├── unidade_orcamentaria/
+│   │   │   │   │   └── exercicio_financeiro/
+│   │   │   │   └── report/
+│   │   │   │
+│   │   │   ├── financeiro/             # Módulo: Gestão Financeira
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── orcamento/
+│   │   │   │   │   ├── dotacao_orcamentaria/
+│   │   │   │   │   ├── empenho/
+│   │   │   │   │   ├── liquidacao/
+│   │   │   │   │   ├── pagamento/
+│   │   │   │   │   └── receita_publica/
+│   │   │   │   ├── report/
+│   │   │   │   └── dashboard/
+│   │   │   │
+│   │   │   ├── licitacao/              # Módulo: Licitações e Contratos
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── processo_licitatorio/
+│   │   │   │   │   ├── contrato_publico/
+│   │   │   │   │   ├── fornecedor/
+│   │   │   │   │   ├── proposta/
+│   │   │   │   │   └── ata_registro_preco/
+│   │   │   │   └── report/
+│   │   │   │
+│   │   │   ├── patrimonio/             # Módulo: Gestão Patrimonial
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── bem_publico/
+│   │   │   │   │   ├── inventario/
+│   │   │   │   │   ├── movimentacao_bem/
+│   │   │   │   │   ├── depreciacao/
+│   │   │   │   │   └── manutencao/
+│   │   │   │   └── report/
+│   │   │   │
+│   │   │   ├── recursos_humanos/       # Módulo: RH Público
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── cargo_publico/
+│   │   │   │   │   ├── funcionario_publico/
+│   │   │   │   │   ├── folha_pagamento/
+│   │   │   │   │   ├── beneficio/
+│   │   │   │   │   └── afastamento/
+│   │   │   │   └── report/
+│   │   │   │
+│   │   │   ├── transparencia/          # Módulo: Transparência
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── portal_transparencia/
+│   │   │   │   │   ├── dados_abertos/
+│   │   │   │   │   └── relatorio_transparencia/
+│   │   │   │   ├── portal/
+│   │   │   │   └── templates/
+│   │   │   │
+│   │   │   └── integracoes/            # Módulo: Integrações
+│   │   │       ├── __init__.py
+│   │   │       ├── siafi/
+│   │   │       ├── siape/
+│   │   │       ├── siasg/
+│   │   │       ├── bancos/
+│   │   │       └── certificacao_digital/
+│   │   │
+│   │   ├── requirements.txt
+│   │   ├── setup.py
+│   │   └── README.md
+│   │
+│   ├── govnext_municipal/              # Aplicativo específico para municípios
+│   │   ├── govnext_municipal/
+│   │   │   ├── __init__.py
+│   │   │   ├── hooks.py
+│   │   │   ├── modules.txt
+│   │   │   │
+│   │   │   ├── setup/                  # Scripts de instalação
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── install.py
+│   │   │   │
+│   │   │   ├── doctype/                # Tipos de documentos municipais
+│   │   │   │   ├── alvara_municipal/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── alvara_municipal.json
+│   │   │   │   │   └── alvara_municipal.py
+│   │   │   │   ├── alvara_atividade/
+│   │   │   │   ├── iptu_cadastro/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── iptu_cadastro.json
+│   │   │   │   │   └── iptu_cadastro.py
+│   │   │   │   ├── iptu_lancamento/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── iptu_lancamento.json
+│   │   │   │   │   └── iptu_lancamento.py
+│   │   │   │   └── iptu_pagamento/
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── iptu_pagamento.json
+│   │   │   │       └── iptu_pagamento.py
+│   │   │   │
+│   │   │   ├── tributacao/             # Módulo: Tributação Municipal
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── iptu/
+│   │   │   │   │   ├── iss/
+│   │   │   │   │   ├── itbi/
+│   │   │   │   │   ├── taxa_municipal/
+│   │   │   │   │   ├── contribuinte/
+│   │   │   │   │   ├── imovel/
+│   │   │   │   │   └── cadastro_imobiliario/
+│   │   │   │   ├── report/
+│   │   │   │   └── dashboard/
+│   │   │   │
+│   │   │   ├── licenciamento/          # Módulo: Licenças e Alvarás
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── alvara_funcionamento/
+│   │   │   │   │   ├── licenca_obra/
+│   │   │   │   │   ├── licenca_ambiental/
+│   │   │   │   │   ├── habite_se/
+│   │   │   │   │   └── processo_licenciamento/
+│   │   │   │   └── workflow/
+│   │   │   │
+│   │   │   ├── obras/                  # Módulo: Obras e Serviços
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── obra_publica/
+│   │   │   │   │   ├── servico_publico/
+│   │   │   │   │   ├── fiscalizacao_obra/
+│   │   │   │   │   └── manutencao_urbana/
+│   │   │   │   └── report/
+│   │   │   │
+│   │   │   ├── atendimento/            # Módulo: Atendimento ao Cidadão
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── protocolo/
+│   │   │   │   │   ├── solicitacao_servico/
+│   │   │   │   │   ├── ouvidoria/
+│   │   │   │   │   └── agendamento/
+│   │   │   │   ├── portal/
+│   │   │   │   └── templates/
+│   │   │   │
+│   │   │   ├── educacao/               # Módulo: Educação Municipal
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── escola/
+│   │   │   │   │   ├── aluno/
+│   │   │   │   │   ├── professor/
+│   │   │   │   │   ├── turma/
+│   │   │   │   │   └── transporte_escolar/
+│   │   │   │   └── report/
+│   │   │   │
+│   │   │   ├── saude/                  # Módulo: Saúde Municipal
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── doctype/
+│   │   │   │   │   ├── unidade_saude/
+│   │   │   │   │   ├── paciente/
+│   │   │   │   │   ├── profissional_saude/
+│   │   │   │   │   ├── consulta/
+│   │   │   │   │   └── campanha_saude/
+│   │   │   │   └── report/
+│   │   │   │
+│   │   │   └── transporte/             # Módulo: Transporte Público
+│   │   │       ├── __init__.py
+│   │   │       ├── doctype/
+│   │   │       │   ├── linha_onibus/
+│   │   │       │   ├── veiculo_publico/
+│   │   │       │   ├── motorista/
+│   │   │       │   └── itinerario/
+│   │   │       └── report/
+│   │   │
+│   │   ├── requirements.txt
+│   │   ├── setup.py
+│   │   └── README.md
+│   │
+│   ├── govnext_estadual/               # [FASE FUTURA] Específico para estados
+│   │   ├── govnext_estadual/
+│   │   │   ├── __init__.py
+│   │   │   └── hooks.py
+│   │   ├── requirements.txt
+│   │   └── setup.py
+│   │
+│   └── govnext_federal/                # [FASE FUTURA] Específico para união
+│       ├── govnext_federal/
+│       │   ├── __init__.py
+│       │   └── hooks.py
+│       ├── requirements.txt
+│       └── setup.py
+│
+├── sites/                              # Sites/Instâncias do Frappe
+│   ├── common_site_config.json
+│   ├── currentsite.txt
+│   └── govnext.local/                  # Site exemplo
+│       ├── site_config.json
+│       ├── private/
+│       ├── public/
+│       └── locks/
+│
+├── docker/                             # Containers Docker
+│   ├── Dockerfile
+│   ├── Dockerfile.prod
+│   ├── docker-compose.yml
+│   ├── docker-compose.prod.yml
+│   ├── docker-compose.dev.yml
+│   ├── entrypoint.sh
+│   └── scripts/
+│       ├── setup.sh
+│       └── backup.sh
+│
+├── config/                             # Configurações de infraestrutura
+│   ├── nginx/
+│   │   ├── nginx.conf
+│   │   └── govnext.conf
+│   ├── supervisor/
+│   │   ├── supervisord.conf
+│   │   └── govnext.conf
+│   ├── redis/
+│   │   └── redis.conf
+│   └── ssl/
+│       ├── cert.pem
+│       └── key.pem
+│
+├── docs/                               # Documentação
+│   ├── index.md
+│   ├── installation.md
+│   ├── user-guide/
+│   │   ├── overview.md
+│   │   ├── municipal/
+│   │   │   ├── tributacao.md
+│   │   │   ├── licenciamento.md
+│   │   │   ├── obras.md
+│   │   │   └── atendimento.md
+│   │   └── common/
+│   │       ├── financeiro.md
+│   │       ├── licitacao.md
+│   │       ├── patrimonio.md
+│   │       └── rh.md
+│   ├── developer-guide/
+│   │   ├── setup.md
+│   │   ├── architecture.md
+│   │   ├── api.md
+│   │   └── contributing.md
+│   ├── deployment/
+│   │   ├── production.md
+│   │   ├── backup.md
+│   │   └── monitoring.md
+│   └── images/
+│       ├── architecture.png
+│       ├── screenshots/
+│       └── diagrams/
+│
+├── tests/                              # Testes automatizados
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── fixtures/
+│   ├── unit/
+│   │   ├── test_core.py
+│   │   ├── test_municipal.py
+│   │   └── test_utils.py
+│   ├── integration/
+│   │   ├── test_api.py
+│   │   ├── test_workflows.py
+│   │   └── test_reports.py
+│   └── e2e/
+│       ├── test_user_journey.py
+│       └── test_portal.py
+│
+├── scripts/                            # Scripts de automação
+│   ├── setup.sh
+│   ├── deploy.sh
+│   ├── backup.sh
+│   ├── restore.sh
+│   ├── migrate.sh
+│   ├── update.sh
+│   └── monitoring/
+│       ├── health_check.py
+│       └── performance_monitor.py
+│
+├── migrations/                         # Migrações de dados
+│   ├── __init__.py
+│   ├── 001_initial_setup.py
+│   ├── 002_municipal_data.py
+│   └── utils.py
+│
+├── fixtures/                           # Dados iniciais
+│   ├── estados.csv
+│   ├── municipios.csv
+│   ├── tipos_tributo.json
+│   ├── cargos_publicos.json
+│   └── modelos_documentos/
+│
+├── .github/                            # GitHub Actions
+│   ├── workflows/
+│   │   ├── ci.yml
+│   │   ├── cd.yml
+│   │   ├── tests.yml
+│   │   └── security.yml
+│   ├── ISSUE_TEMPLATE/
+│   └── PULL_REQUEST_TEMPLATE.md
+│
+├── .gitlab/                            # GitLab CI (alternativo)
+│   └── ci/
+│       └── .gitlab-ci.yml
+│
+└── monitoring/                         # Monitoramento e observabilidade
+    ├── grafana/
+    │   ├── dashboards/
+    │   └── provisioning/
+    ├── prometheus/
+    │   └── prometheus.yml
+    └── logs/
+        └── logrotate.conf
+```
+
+## Principais Melhorias na Estrutura Unificada
+
+### 1. **Organização Híbrida**
+- Mantém a estrutura modular do primeiro tree
+- Incorpora os doctypes já implementados do segundo tree
+- Estrutura clara de aplicativos separados por esfera governamental
+
+### 2. **Frappe Framework Integration**
+- Estrutura compatível com Frappe/ERPNext
+- Workspaces organizados para diferentes módulos
+- Setup scripts para instalação automática
+
+### 3. **Doctypes Implementados**
+- **Core**: Government Unit, Public Budget, Public Tender
+- **Municipal**: IPTU (Cadastro, Lançamento, Pagamento), Alvará Municipal
+
+### 4. **Módulos Organizados**
+- **Core**: Governo, Financeiro, Licitação, Patrimônio, RH, Transparência, Integrações
+- **Municipal**: Tributação, Licenciamento, Obras, Atendimento, Educação, Saúde, Transporte
+
+### 5. **DevOps e Qualidade**
+- Docker completo com ambientes dev/prod
+- CI/CD para GitHub e GitLab
+- Testes automatizados (unit, integration, e2e)
+- Monitoramento com Grafana/Prometheus
+
+### 6. **Documentação Completa**
+- Guias de usuário e desenvolvedor
+- Documentação de API
+- Deployment e monitoramento
+
+Esta estrutura unificada fornece uma base sólida para o desenvolvimento do GovNext, combinando a visão arquitetural abrangente com implementações já existentes, mantendo a flexibilidade para expansão futura.

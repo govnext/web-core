@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2025-06-17 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tipo_documento",
+  "numero_documento",
+  "serie_documento",
+  "data_emissao",
+  "column_break_5",
+  "valor",
+  "valor_imposto",
+  "chave_acesso_nfe",
+  "section_break_9",
+  "descricao",
+  "anexo_documento"
+ ],
+ "fields": [
+  {
+   "fieldname": "tipo_documento",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Documento",
+   "options": "Nota Fiscal Eletrônica\nNota Fiscal\nFatura\nRecibo\nBoleto\nGuia de Recolhimento\nOutro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "numero_documento",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Número do Documento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "serie_documento",
+   "fieldtype": "Data",
+   "label": "Série do Documento"
+  },
+  {
+   "fieldname": "data_emissao",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data de Emissão",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor",
+   "options": "Moeda",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_imposto",
+   "fieldtype": "Currency",
+   "label": "Valor de Impostos",
+   "options": "Moeda"
+  },
+  {
+   "fieldname": "chave_acesso_nfe",
+   "fieldtype": "Data",
+   "label": "Chave de Acesso NFe",
+   "description": "Para notas fiscais eletrônicas, informe a chave de acesso"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break",
+   "label": "Informações Adicionais"
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Small Text",
+   "label": "Descrição"
+  },
+  {
+   "fieldname": "anexo_documento",
+   "fieldtype": "Attach",
+   "label": "Anexo do Documento"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-06-17 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "DocumentoFiscalLiquidacao",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

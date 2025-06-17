@@ -1,0 +1,326 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:matricula",
+ "creation": "2023-10-15 11:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "matricula",
+  "nome_completo",
+  "cpf",
+  "orgao",
+  "cargo",
+  "column_break_5",
+  "status",
+  "afastado",
+  "data_admissao",
+  "data_exoneracao",
+  "section_break_10",
+  "data_nascimento",
+  "genero",
+  "estado_civil",
+  "nacionalidade",
+  "column_break_15",
+  "rg",
+  "orgao_emissor",
+  "pis_pasep",
+  "section_break_19",
+  "endereco",
+  "numero",
+  "complemento",
+  "bairro",
+  "column_break_24",
+  "cidade",
+  "estado",
+  "cep",
+  "section_break_28",
+  "telefone",
+  "celular",
+  "email_institucional",
+  "email_pessoal",
+  "column_break_33",
+  "banco",
+  "agencia",
+  "conta",
+  "section_break_37",
+  "formacao",
+  "especializacao",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "matricula",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Matrícula",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "nome_completo",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nome Completo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cpf",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "CPF",
+   "reqd": 1
+  },
+  {
+   "fieldname": "orgao",
+   "fieldtype": "Link",
+   "label": "Órgão",
+   "options": "Orgao Publico",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cargo",
+   "fieldtype": "Link",
+   "label": "Cargo",
+   "options": "Cargo Publico",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Ativo",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Ativo\nAfastado\nExonerado\nAguardando Admissão",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "afastado",
+   "fieldtype": "Check",
+   "label": "Afastado"
+  },
+  {
+   "fieldname": "data_admissao",
+   "fieldtype": "Date",
+   "label": "Data de Admissão",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_exoneracao",
+   "fieldtype": "Date",
+   "label": "Data de Exoneração"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break",
+   "label": "Dados Pessoais"
+  },
+  {
+   "fieldname": "data_nascimento",
+   "fieldtype": "Date",
+   "label": "Data de Nascimento"
+  },
+  {
+   "fieldname": "genero",
+   "fieldtype": "Select",
+   "label": "Gênero",
+   "options": "Masculino\nFeminino\nOutro\nPrefiro não informar"
+  },
+  {
+   "fieldname": "estado_civil",
+   "fieldtype": "Select",
+   "label": "Estado Civil",
+   "options": "Solteiro(a)\nCasado(a)\nDivorciado(a)\nViúvo(a)\nSeparado(a)\nUnião Estável"
+  },
+  {
+   "default": "Brasileira",
+   "fieldname": "nacionalidade",
+   "fieldtype": "Data",
+   "label": "Nacionalidade"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rg",
+   "fieldtype": "Data",
+   "label": "RG"
+  },
+  {
+   "fieldname": "orgao_emissor",
+   "fieldtype": "Data",
+   "label": "Órgão Emissor"
+  },
+  {
+   "fieldname": "pis_pasep",
+   "fieldtype": "Data",
+   "label": "PIS/PASEP"
+  },
+  {
+   "fieldname": "section_break_19",
+   "fieldtype": "Section Break",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "endereco",
+   "fieldtype": "Data",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "numero",
+   "fieldtype": "Data",
+   "label": "Número"
+  },
+  {
+   "fieldname": "complemento",
+   "fieldtype": "Data",
+   "label": "Complemento"
+  },
+  {
+   "fieldname": "bairro",
+   "fieldtype": "Data",
+   "label": "Bairro"
+  },
+  {
+   "fieldname": "column_break_24",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cidade",
+   "fieldtype": "Data",
+   "label": "Cidade"
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Data",
+   "label": "Estado"
+  },
+  {
+   "fieldname": "cep",
+   "fieldtype": "Data",
+   "label": "CEP"
+  },
+  {
+   "fieldname": "section_break_28",
+   "fieldtype": "Section Break",
+   "label": "Contato e Dados Bancários"
+  },
+  {
+   "fieldname": "telefone",
+   "fieldtype": "Data",
+   "label": "Telefone"
+  },
+  {
+   "fieldname": "celular",
+   "fieldtype": "Data",
+   "label": "Celular"
+  },
+  {
+   "fieldname": "email_institucional",
+   "fieldtype": "Data",
+   "label": "Email Institucional",
+   "options": "Email"
+  },
+  {
+   "fieldname": "email_pessoal",
+   "fieldtype": "Data",
+   "label": "Email Pessoal",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_33",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "banco",
+   "fieldtype": "Data",
+   "label": "Banco"
+  },
+  {
+   "fieldname": "agencia",
+   "fieldtype": "Data",
+   "label": "Agência"
+  },
+  {
+   "fieldname": "conta",
+   "fieldtype": "Data",
+   "label": "Conta"
+  },
+  {
+   "fieldname": "section_break_37",
+   "fieldtype": "Section Break",
+   "label": "Formação e Observações"
+  },
+  {
+   "fieldname": "formacao",
+   "fieldtype": "Select",
+   "label": "Formação",
+   "options": "Ensino Fundamental\nEnsino Médio\nEnsino Técnico\nGraduação\nPós-graduação\nMestrado\nDoutorado\nPós-doutorado"
+  },
+  {
+   "fieldname": "especializacao",
+   "fieldtype": "Data",
+   "label": "Especialização"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-15 11:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Governo",
+ "name": "Servidor Publico",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor RH",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Governamental",
+   "share": 1
+  }
+ ],
+ "search_fields": "nome_completo,cpf,matricula",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "nome_completo",
+ "track_changes": 1
+}

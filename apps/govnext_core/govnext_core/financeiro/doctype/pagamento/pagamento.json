@@ -1,0 +1,290 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:numero_pagamento",
+ "creation": "2025-06-17 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "secao_principal",
+  "numero_pagamento",
+  "liquidacao",
+  "numero_liquidacao",
+  "empenho",
+  "numero_empenho",
+  "data_pagamento",
+  "column_break_8",
+  "credor",
+  "nome_credor",
+  "documento_credor",
+  "dotacao_orcamentaria",
+  "secao_pagamento",
+  "valor_pagamento",
+  "forma_pagamento",
+  "conta_bancaria",
+  "column_break_16",
+  "codigo_barras",
+  "identificador_pagamento",
+  "data_compensacao",
+  "secao_anexos",
+  "comprovantes",
+  "secao_observacoes",
+  "observacoes",
+  "column_break_23",
+  "data_criacao",
+  "criado_por",
+  "data_alteracao",
+  "alterado_por",
+  "status_pagamento"
+ ],
+ "fields": [
+  {
+   "fieldname": "secao_principal",
+   "fieldtype": "Section Break",
+   "label": "Informa\u00e7\u00f5es Principais"
+  },
+  {
+   "fieldname": "numero_pagamento",
+   "fieldtype": "Data",
+   "label": "N\u00famero do Pagamento",
+   "unique": 1,
+   "read_only": 1,
+   "description": "Gerado automaticamente no formato NNNNNN/AAAA"
+  },
+  {
+   "fieldname": "liquidacao",
+   "fieldtype": "Link",
+   "label": "Liquida\u00e7\u00e3o",
+   "options": "Liquidacao",
+   "reqd": 1
+  },
+  {
+   "fieldname": "numero_liquidacao",
+   "fieldtype": "Data",
+   "label": "N\u00famero da Liquida\u00e7\u00e3o",
+   "fetch_from": "liquidacao.numero_liquidacao",
+   "read_only": 1
+  },
+  {
+   "fieldname": "empenho",
+   "fieldtype": "Link",
+   "label": "Empenho",
+   "options": "Empenho",
+   "fetch_from": "liquidacao.empenho",
+   "read_only": 1
+  },
+  {
+   "fieldname": "numero_empenho",
+   "fieldtype": "Data",
+   "label": "N\u00famero do Empenho",
+   "fetch_from": "liquidacao.numero_empenho",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_pagamento",
+   "fieldtype": "Date",
+   "label": "Data do Pagamento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "credor",
+   "fieldtype": "Link",
+   "label": "Credor",
+   "options": "Fornecedor",
+   "fetch_from": "liquidacao.credor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nome_credor",
+   "fieldtype": "Data",
+   "label": "Nome do Credor",
+   "fetch_from": "liquidacao.nome_credor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "documento_credor",
+   "fieldtype": "Data",
+   "label": "CNPJ/CPF do Credor",
+   "fetch_from": "liquidacao.documento_credor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dotacao_orcamentaria",
+   "fieldtype": "Link",
+   "label": "Dota\u00e7\u00e3o Or\u00e7ament\u00e1ria",
+   "options": "DotacaoOrcamentaria",
+   "fetch_from": "liquidacao.dotacao_orcamentaria",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secao_pagamento",
+   "fieldtype": "Section Break",
+   "label": "Dados do Pagamento"
+  },
+  {
+   "fieldname": "valor_pagamento",
+   "fieldtype": "Currency",
+   "label": "Valor do Pagamento",
+   "options": "Moeda",
+   "reqd": 1
+  },
+  {
+   "fieldname": "forma_pagamento",
+   "fieldtype": "Select",
+   "label": "Forma de Pagamento",
+   "options": "Transferência Bancária\nPIX\nBoleto\nCheque\nOrdem Bancária\nOutro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "conta_bancaria",
+   "fieldtype": "Link",
+   "label": "Conta Banc\u00e1ria",
+   "options": "ContaBancaria",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "codigo_barras",
+   "fieldtype": "Data",
+   "label": "C\u00f3digo de Barras",
+   "description": "Para pagamentos via boleto"
+  },
+  {
+   "fieldname": "identificador_pagamento",
+   "fieldtype": "Data",
+   "label": "Identificador do Pagamento",
+   "description": "Número do documento, transação ou identificador único"
+  },
+  {
+   "fieldname": "data_compensacao",
+   "fieldtype": "Date",
+   "label": "Data de Compensa\u00e7\u00e3o"
+  },
+  {
+   "fieldname": "secao_anexos",
+   "fieldtype": "Section Break",
+   "label": "Comprovantes"
+  },
+  {
+   "fieldname": "comprovantes",
+   "fieldtype": "Table",
+   "label": "Comprovantes",
+   "options": "ComprovantePagamento"
+  },
+  {
+   "fieldname": "secao_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Observa\u00e7\u00f5es e Controle"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observa\u00e7\u00f5es"
+  },
+  {
+   "fieldname": "column_break_23",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_criacao",
+   "fieldtype": "Datetime",
+   "label": "Data de Cria\u00e7\u00e3o",
+   "read_only": 1
+  },
+  {
+   "fieldname": "criado_por",
+   "fieldtype": "Link",
+   "label": "Criado Por",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_alteracao",
+   "fieldtype": "Datetime",
+   "label": "\u00daltima Altera\u00e7\u00e3o",
+   "read_only": 1
+  },
+  {
+   "fieldname": "alterado_por",
+   "fieldtype": "Link",
+   "label": "Alterado Por",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status_pagamento",
+   "fieldtype": "Select",
+   "label": "Status do Pagamento",
+   "options": "Rascunho\nEfetuado\nCompensado\nCancelado",
+   "default": "Rascunho",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-06-17 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "Pagamento",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "select": 1,
+   "share": 1,
+   "submit": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

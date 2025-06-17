@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "creation": "2023-10-07 11:30:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "parcela",
+  "valor",
+  "data_vencimento",
+  "column_break_4",
+  "status",
+  "data_pagamento",
+  "codigo_barras"
+ ],
+ "fields": [
+  {
+   "fieldname": "parcela",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Parcela",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vencimento",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data de Vencimento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pendente",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pendente\nPago\nAtrasado\nDívida Ativa\nCancelado",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.status=='Pago'",
+   "fieldname": "data_pagamento",
+   "fieldtype": "Date",
+   "label": "Data de Pagamento"
+  },
+  {
+   "fieldname": "codigo_barras",
+   "fieldtype": "Data",
+   "label": "Código de Barras/Linha Digitável"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-07 11:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Pagamento",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

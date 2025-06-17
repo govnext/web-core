@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2025-06-17 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tipo_comprovante",
+  "data_comprovante",
+  "column_break_3",
+  "arquivo_comprovante",
+  "section_break_5",
+  "descricao"
+ ],
+ "fields": [
+  {
+   "fieldname": "tipo_comprovante",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Comprovante",
+   "options": "Comprovante de Transferência\nComprovante PIX\nComprovante de Pagamento\nRecibo\nOutro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_comprovante",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data do Comprovante",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "arquivo_comprovante",
+   "fieldtype": "Attach",
+   "label": "Arquivo do Comprovante",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Small Text",
+   "label": "Descri\u00e7\u00e3o"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-06-17 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "ComprovantePagamento",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

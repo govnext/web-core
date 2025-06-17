@@ -1,0 +1,233 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:codigo_orgao",
+ "creation": "2023-10-15 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo_orgao",
+  "nome_orgao",
+  "sigla",
+  "government_unit",
+  "tipo_orgao",
+  "column_break_6",
+  "parent_orgao",
+  "is_active",
+  "section_break_9",
+  "descricao",
+  "section_break_11",
+  "endereco",
+  "numero",
+  "complemento",
+  "bairro",
+  "column_break_16",
+  "cidade",
+  "estado",
+  "cep",
+  "section_break_20",
+  "telefone",
+  "email",
+  "website",
+  "column_break_24",
+  "responsavel",
+  "cargo_responsavel",
+  "data_criacao_orgao"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo_orgao",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código do Órgão",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "nome_orgao",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nome do Órgão",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sigla",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sigla",
+   "reqd": 1
+  },
+  {
+   "fieldname": "government_unit",
+   "fieldtype": "Link",
+   "label": "Unidade Governamental",
+   "options": "Government Unit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tipo_orgao",
+   "fieldtype": "Select",
+   "label": "Tipo de Órgão",
+   "options": "Administração Direta\nAdministração Indireta\nAutarquia\nFundação\nEmpresa Pública\nSociedade de Economia Mista",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "parent_orgao",
+   "fieldtype": "Link",
+   "label": "Órgão Superior",
+   "options": "Orgao Publico"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Ativo"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break",
+   "label": "Descrição"
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Text Editor",
+   "label": "Descrição"
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "endereco",
+   "fieldtype": "Data",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "numero",
+   "fieldtype": "Data",
+   "label": "Número"
+  },
+  {
+   "fieldname": "complemento",
+   "fieldtype": "Data",
+   "label": "Complemento"
+  },
+  {
+   "fieldname": "bairro",
+   "fieldtype": "Data",
+   "label": "Bairro"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cidade",
+   "fieldtype": "Data",
+   "label": "Cidade"
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Data",
+   "label": "Estado"
+  },
+  {
+   "fieldname": "cep",
+   "fieldtype": "Data",
+   "label": "CEP"
+  },
+  {
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break",
+   "label": "Contato"
+  },
+  {
+   "fieldname": "telefone",
+   "fieldtype": "Data",
+   "label": "Telefone"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
+  },
+  {
+   "fieldname": "column_break_24",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "responsavel",
+   "fieldtype": "Data",
+   "label": "Responsável"
+  },
+  {
+   "fieldname": "cargo_responsavel",
+   "fieldtype": "Data",
+   "label": "Cargo do Responsável"
+  },
+  {
+   "fieldname": "data_criacao_orgao",
+   "fieldtype": "Date",
+   "label": "Data de Criação do Órgão"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-15 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Governo",
+ "name": "Orgao Publico",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Governamental",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

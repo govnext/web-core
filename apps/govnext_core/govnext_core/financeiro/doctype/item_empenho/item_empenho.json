@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2025-06-17 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "descricao",
+  "quantidade",
+  "unidade_medida",
+  "column_break_4",
+  "valor_unitario",
+  "valor_total",
+  "section_break_7",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Descri\u00e7\u00e3o",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantidade",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantidade",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unidade_medida",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Unidade de Medida",
+   "options": "Unidade\nPacote\nCaixa\nMetro\nMetro Quadrado\nMetro Cúbico\nLitro\nQuilograma\nTonelada\nServiço\nDiária\nHora\nOutro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_unitario",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Unit\u00e1rio",
+   "options": "Moeda",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Total",
+   "options": "Moeda",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observa\u00e7\u00f5es"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-06-17 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "ItemEmpenho",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

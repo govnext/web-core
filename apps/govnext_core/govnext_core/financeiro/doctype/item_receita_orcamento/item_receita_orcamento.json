@@ -1,0 +1,75 @@
+{
+ "actions": [],
+ "creation": "2023-10-15 14:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo_receita",
+  "descricao",
+  "categoria_receita",
+  "column_break_4",
+  "valor_previsto",
+  "valor",
+  "percentual_execucao"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo_receita",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código da Receita",
+   "reqd": 1
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Descrição",
+   "reqd": 1
+  },
+  {
+   "fieldname": "categoria_receita",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Categoria da Receita",
+   "options": "Categoria Receita",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_previsto",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Previsto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Realizado"
+  },
+  {
+   "fieldname": "percentual_execucao",
+   "fieldtype": "Percent",
+   "label": "Percentual de Execução",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-15 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "Item Receita Orcamento",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,203 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:codigo",
+ "creation": "2025-06-17 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo",
+  "nome",
+  "sigla",
+  "column_break_4",
+  "orgao_publico",
+  "nome_orgao",
+  "secao_responsaveis",
+  "responsavel",
+  "cargo_responsavel",
+  "column_break_9",
+  "ordenador_despesa",
+  "cargo_ordenador",
+  "secao_configuracoes",
+  "ativa",
+  "data_ativacao",
+  "data_desativacao",
+  "column_break_16",
+  "permite_empenho",
+  "permite_pagamento",
+  "secao_observacoes",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "C\u00f3digo",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "nome",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nome",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sigla",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sigla"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "orgao_publico",
+   "fieldtype": "Link",
+   "label": "\u00d3rg\u00e3o P\u00fablico",
+   "options": "OrgaoPublico",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "orgao_publico.nome",
+   "fieldname": "nome_orgao",
+   "fieldtype": "Data",
+   "label": "Nome do \u00d3rg\u00e3o",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secao_responsaveis",
+   "fieldtype": "Section Break",
+   "label": "Respons\u00e1veis"
+  },
+  {
+   "fieldname": "responsavel",
+   "fieldtype": "Link",
+   "label": "Respons\u00e1vel",
+   "options": "ServidorPublico"
+  },
+  {
+   "fieldname": "cargo_responsavel",
+   "fieldtype": "Data",
+   "label": "Cargo do Respons\u00e1vel"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ordenador_despesa",
+   "fieldtype": "Link",
+   "label": "Ordenador de Despesa",
+   "options": "ServidorPublico"
+  },
+  {
+   "fieldname": "cargo_ordenador",
+   "fieldtype": "Data",
+   "label": "Cargo do Ordenador"
+  },
+  {
+   "fieldname": "secao_configuracoes",
+   "fieldtype": "Section Break",
+   "label": "Configura\u00e7\u00f5es"
+  },
+  {
+   "default": "1",
+   "fieldname": "ativa",
+   "fieldtype": "Check",
+   "label": "Ativa"
+  },
+  {
+   "depends_on": "eval:doc.ativa==1",
+   "fieldname": "data_ativacao",
+   "fieldtype": "Date",
+   "label": "Data de Ativa\u00e7\u00e3o"
+  },
+  {
+   "depends_on": "eval:doc.ativa==0",
+   "fieldname": "data_desativacao",
+   "fieldtype": "Date",
+   "label": "Data de Desativa\u00e7\u00e3o"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "permite_empenho",
+   "fieldtype": "Check",
+   "label": "Permite Empenho"
+  },
+  {
+   "default": "1",
+   "fieldname": "permite_pagamento",
+   "fieldtype": "Check",
+   "label": "Permite Pagamento"
+  },
+  {
+   "fieldname": "secao_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Observa\u00e7\u00f5es"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text Editor",
+   "label": "Observa\u00e7\u00f5es"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "DotacaoOrcamentaria",
+   "link_fieldname": "unidade_orcamentaria"
+  }
+ ],
+ "modified": "2025-06-17 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Governo",
+ "name": "UnidadeOrcamentaria",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "select": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

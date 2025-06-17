@@ -1,0 +1,103 @@
+{% extends "templates/web.html" %}
+
+{% block title %}GovNext - Sistema de Gestão Governamental{% endblock %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="text-center">
+            <h1 style="font-size: 36px;">GovNext</h1>
+            <p class="lead" style="margin-bottom: 40px;">Sistema de Gestão Governamental baseado no ERPNext</p>
+        </div>
+
+        <div class="well" style="margin-bottom: 40px;">
+            <h3>Módulos</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default" style="cursor: pointer;" onclick="window.location='/app/orcamento'">
+                        <div class="panel-heading">
+                            <h4>Orçamento</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Gerenciamento do orçamento público com LOA, LDO e PPA, e controle da execução orçamentária.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default" style="cursor: pointer;" onclick="window.location='/app/licitacoes'">
+                        <div class="panel-heading">
+                            <h4>Licitações</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Gerenciamento completo de processos licitatórios e contratos públicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Patrimônio Público</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Controle de todos os bens móveis e imóveis pertencentes à administração pública.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Servidores</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Gestão de recursos humanos específica para a administração pública.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="well">
+            <h3>Instâncias Governamentais</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <h4>Municipal</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Para prefeituras e câmaras municipais.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <h4>Estadual</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Para governos estaduais e assembleias legislativas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <h4>Federal</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Para ministérios e órgãos do governo federal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 40px;">
+            <a href="/login" class="btn btn-primary btn-lg">Acessar Sistema</a>
+            <p class="text-muted" style="margin-top: 20px;">Desenvolvido com base no ERPNext. Open Source para Administração Pública.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "HIST.#####",
+ "creation": "2025-06-17 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tipo_documento",
+  "documento_referencia",
+  "data_movimento",
+  "column_break_4",
+  "descricao",
+  "valor",
+  "usuario"
+ ],
+ "fields": [
+  {
+   "fieldname": "tipo_documento",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Documento",
+   "options": "Empenho\nLiquidacao\nPagamento\nEstorno\nOutro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "documento_referencia",
+   "fieldtype": "Dynamic Link",
+   "label": "Documento de Refer\u00eancia",
+   "options": "tipo_documento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_movimento",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Data do Movimento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Descri\u00e7\u00e3o",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor",
+   "options": "Moeda",
+   "reqd": 1
+  },
+  {
+   "fieldname": "usuario",
+   "fieldtype": "Link",
+   "label": "Usu\u00e1rio",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-17 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "HistoricoMovimentacaoFinanceira",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "select": 1,
+   "share": 1,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

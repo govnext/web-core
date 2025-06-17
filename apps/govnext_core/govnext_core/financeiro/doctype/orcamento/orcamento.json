@@ -1,0 +1,248 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:codigo_orcamento",
+ "creation": "2023-10-15 13:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo_orcamento",
+  "ano_fiscal",
+  "government_unit",
+  "orgao",
+  "tipo_orcamento",
+  "column_break_5",
+  "status",
+  "data_inicio",
+  "data_fim",
+  "is_active",
+  "section_break_10",
+  "descricao",
+  "section_break_12",
+  "receitas",
+  "total_receita_prevista",
+  "total_receita",
+  "percentual_execucao_receita",
+  "section_break_17",
+  "despesas",
+  "total_despesa_prevista",
+  "total_despesa",
+  "percentual_execucao_despesa",
+  "section_break_22",
+  "saldo",
+  "lei_orcamentaria",
+  "data_aprovacao"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo_orcamento",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código do Orçamento",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "ano_fiscal",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Ano Fiscal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "government_unit",
+   "fieldtype": "Link",
+   "label": "Unidade Governamental",
+   "options": "Government Unit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "orgao",
+   "fieldtype": "Link",
+   "label": "Órgão",
+   "options": "Orgao Publico"
+  },
+  {
+   "fieldname": "tipo_orcamento",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Orçamento",
+   "options": "Anual\nPluriAnual\nSuplementar\nRevisão",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Rascunho",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Rascunho\nAprovado\nExecutando\nEncerrado\nCancelado",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_inicio",
+   "fieldtype": "Date",
+   "label": "Data de Início",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_fim",
+   "fieldtype": "Date",
+   "label": "Data de Fim",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Ativo"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break",
+   "label": "Descrição"
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Text Editor",
+   "label": "Descrição"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break",
+   "label": "Receitas"
+  },
+  {
+   "fieldname": "receitas",
+   "fieldtype": "Table",
+   "label": "Receitas",
+   "options": "Item Receita Orcamento"
+  },
+  {
+   "fieldname": "total_receita_prevista",
+   "fieldtype": "Currency",
+   "label": "Total de Receita Prevista"
+  },
+  {
+   "fieldname": "total_receita",
+   "fieldtype": "Currency",
+   "label": "Total de Receita Realizada",
+   "read_only": 1
+  },
+  {
+   "fieldname": "percentual_execucao_receita",
+   "fieldtype": "Percent",
+   "label": "Percentual de Execução (Receita)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_17",
+   "fieldtype": "Section Break",
+   "label": "Despesas"
+  },
+  {
+   "fieldname": "despesas",
+   "fieldtype": "Table",
+   "label": "Despesas",
+   "options": "Item Despesa Orcamento"
+  },
+  {
+   "fieldname": "total_despesa_prevista",
+   "fieldtype": "Currency",
+   "label": "Total de Despesa Prevista"
+  },
+  {
+   "fieldname": "total_despesa",
+   "fieldtype": "Currency",
+   "label": "Total de Despesa Realizada",
+   "read_only": 1
+  },
+  {
+   "fieldname": "percentual_execucao_despesa",
+   "fieldtype": "Percent",
+   "label": "Percentual de Execução (Despesa)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_22",
+   "fieldtype": "Section Break",
+   "label": "Informações Adicionais"
+  },
+  {
+   "fieldname": "saldo",
+   "fieldtype": "Currency",
+   "label": "Saldo (Receita - Despesa)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lei_orcamentaria",
+   "fieldtype": "Data",
+   "label": "Lei Orçamentária"
+  },
+  {
+   "fieldname": "data_aprovacao",
+   "fieldtype": "Date",
+   "label": "Data de Aprovação"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-10-15 13:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "Orcamento",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Governamental",
+   "share": 1
+  }
+ ],
+ "search_fields": "codigo_orcamento,ano_fiscal,government_unit",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "codigo_orcamento",
+ "track_changes": 1
+}

@@ -1,0 +1,373 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:inscricao_cadastral",
+ "creation": "2023-10-07 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inscricao_cadastral",
+  "proprietario",
+  "tipo_imovel",
+  "endereco_section",
+  "logradouro",
+  "numero",
+  "complemento",
+  "bairro",
+  "cep",
+  "column_break_10",
+  "cidade",
+  "estado",
+  "pais",
+  "dados_imovel_section",
+  "area_terreno",
+  "area_construida",
+  "valor_venal_terreno",
+  "valor_venal_construcao",
+  "valor_venal_total",
+  "column_break_19",
+  "padrao_construcao",
+  "idade_construcao",
+  "uso_imovel",
+  "testada_principal",
+  "caracteristicas_section",
+  "possui_muro",
+  "possui_calcada",
+  "possui_agua",
+  "possui_esgoto",
+  "possui_energia",
+  "column_break_29",
+  "possui_pavimentacao",
+  "isento",
+  "motivo_isencao",
+  "status_fiscal",
+  "zonamento_section",
+  "zona_urbana",
+  "codigo_zona",
+  "valor_m2_terreno",
+  "valor_m2_construcao",
+  "column_break_38",
+  "regiao_fiscal",
+  "indice_correcao",
+  "anexos_section",
+  "matricula",
+  "imagens_imovel",
+  "documentos_anexos"
+ ],
+ "fields": [
+  {
+   "fieldname": "inscricao_cadastral",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Inscrição Cadastral",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "proprietario",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Proprietário",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tipo_imovel",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Imóvel",
+   "options": "Residencial\nComercial\nIndustrial\nTerritorial\nRural\nMisto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "endereco_section",
+   "fieldtype": "Section Break",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "logradouro",
+   "fieldtype": "Data",
+   "label": "Logradouro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "numero",
+   "fieldtype": "Data",
+   "label": "Número"
+  },
+  {
+   "fieldname": "complemento",
+   "fieldtype": "Data",
+   "label": "Complemento"
+  },
+  {
+   "fieldname": "bairro",
+   "fieldtype": "Data",
+   "label": "Bairro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cep",
+   "fieldtype": "Data",
+   "label": "CEP",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cidade",
+   "fieldtype": "Data",
+   "label": "Cidade",
+   "reqd": 1
+  },
+  {
+   "default": "Brasil",
+   "fieldname": "pais",
+   "fieldtype": "Data",
+   "label": "País"
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Data",
+   "label": "Estado",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dados_imovel_section",
+   "fieldtype": "Section Break",
+   "label": "Dados do Imóvel"
+  },
+  {
+   "fieldname": "area_terreno",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Área do Terreno (m²)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "area_construida",
+   "fieldtype": "Float",
+   "label": "Área Construída (m²)"
+  },
+  {
+   "fieldname": "valor_venal_terreno",
+   "fieldtype": "Currency",
+   "label": "Valor Venal do Terreno",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_venal_construcao",
+   "fieldtype": "Currency",
+   "label": "Valor Venal da Construção"
+  },
+  {
+   "fieldname": "valor_venal_total",
+   "fieldtype": "Currency",
+   "label": "Valor Venal Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "padrao_construcao",
+   "fieldtype": "Select",
+   "label": "Padrão de Construção",
+   "options": "Luxo\nAlto\nNormal\nBaixo\nPopular\nPrecário"
+  },
+  {
+   "fieldname": "idade_construcao",
+   "fieldtype": "Int",
+   "label": "Idade da Construção (anos)"
+  },
+  {
+   "fieldname": "uso_imovel",
+   "fieldtype": "Select",
+   "label": "Uso do Imóvel",
+   "options": "Residencial\nComercial\nIndustrial\nServiços\nMisto\nDesocupado"
+  },
+  {
+   "fieldname": "testada_principal",
+   "fieldtype": "Float",
+   "label": "Testada Principal (m)"
+  },
+  {
+   "fieldname": "caracteristicas_section",
+   "fieldtype": "Section Break",
+   "label": "Características e Infraestrutura"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_muro",
+   "fieldtype": "Check",
+   "label": "Possui Muro"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_calcada",
+   "fieldtype": "Check",
+   "label": "Possui Calçada"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_agua",
+   "fieldtype": "Check",
+   "label": "Possui Água"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_esgoto",
+   "fieldtype": "Check",
+   "label": "Possui Esgoto"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_energia",
+   "fieldtype": "Check",
+   "label": "Possui Energia Elétrica"
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_pavimentacao",
+   "fieldtype": "Check",
+   "label": "Possui Pavimentação"
+  },
+  {
+   "default": "0",
+   "fieldname": "isento",
+   "fieldtype": "Check",
+   "label": "Isento de IPTU"
+  },
+  {
+   "depends_on": "eval:doc.isento==1",
+   "fieldname": "motivo_isencao",
+   "fieldtype": "Select",
+   "label": "Motivo da Isenção",
+   "options": "Imóvel Público\nTemplos Religiosos\nEntidade Filantrópica\nAposentado/Pensionista\nBaixa Renda\nOutros"
+  },
+  {
+   "fieldname": "status_fiscal",
+   "fieldtype": "Select",
+   "label": "Status Fiscal",
+   "options": "Regular\nInadimplente\nDívida Ativa\nProcesso Judicial\nSuspensão por Liminar"
+  },
+  {
+   "fieldname": "zonamento_section",
+   "fieldtype": "Section Break",
+   "label": "Zonamento e Tributação"
+  },
+  {
+   "default": "1",
+   "fieldname": "zona_urbana",
+   "fieldtype": "Check",
+   "label": "Zona Urbana"
+  },
+  {
+   "fieldname": "codigo_zona",
+   "fieldtype": "Data",
+   "label": "Código da Zona"
+  },
+  {
+   "fieldname": "valor_m2_terreno",
+   "fieldtype": "Currency",
+   "label": "Valor do m² do Terreno"
+  },
+  {
+   "fieldname": "valor_m2_construcao",
+   "fieldtype": "Currency",
+   "label": "Valor do m² da Construção"
+  },
+  {
+   "fieldname": "column_break_38",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "regiao_fiscal",
+   "fieldtype": "Data",
+   "label": "Região Fiscal"
+  },
+  {
+   "fieldname": "indice_correcao",
+   "fieldtype": "Float",
+   "label": "Índice de Correção"
+  },
+  {
+   "fieldname": "anexos_section",
+   "fieldtype": "Section Break",
+   "label": "Anexos"
+  },
+  {
+   "fieldname": "matricula",
+   "fieldtype": "Attach",
+   "label": "Matrícula do Imóvel"
+  },
+  {
+   "fieldname": "imagens_imovel",
+   "fieldtype": "Attach",
+   "label": "Imagens do Imóvel"
+  },
+  {
+   "fieldname": "documentos_anexos",
+   "fieldtype": "Attach",
+   "label": "Documentos Anexos"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "IPTU Lancamento",
+   "link_fieldname": "inscricao_cadastral"
+  }
+ ],
+ "modified": "2023-10-07 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Cadastro",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

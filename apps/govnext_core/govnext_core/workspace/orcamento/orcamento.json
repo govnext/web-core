@@ -1,0 +1,148 @@
+{
+ "cards": [
+  {
+   "hidden": 0,
+   "label": "Orçamentos Públicos",
+   "links": [
+    {
+     "dependencies": "",
+     "label": "Orçamento Público",
+     "link_to": "Public Budget",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "label": "Dotação Orçamentária",
+     "link_to": "Budget",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    }
+   ]
+  },
+  {
+   "hidden": 0,
+   "label": "Execução Orçamentária",
+   "links": [
+    {
+     "dependencies": "",
+     "label": "Empenho",
+     "link_to": "#List/Purchase Order/List",
+     "link_type": "Page",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "label": "Liquidação",
+     "link_to": "#List/Purchase Invoice/List",
+     "link_type": "Page",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "label": "Pagamento",
+     "link_to": "#List/Payment Entry/List",
+     "link_type": "Page",
+     "onboard": 0,
+     "type": "Link"
+    }
+   ]
+  },
+  {
+   "hidden": 0,
+   "label": "Configuração",
+   "links": [
+    {
+     "dependencies": "",
+     "label": "Unidades Governamentais",
+     "link_to": "Government Unit",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "label": "Centros de Custo",
+     "link_to": "Cost Center",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "label": "Ano Fiscal",
+     "link_to": "Fiscal Year",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    }
+   ]
+  },
+  {
+   "hidden": 0,
+   "label": "Relatórios",
+   "links": [
+    {
+     "dependencies": "",
+     "label": "Execução Orçamentária",
+     "link_to": "#query-report/Budget Variance Report",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "label": "Balanço Orçamentário",
+     "link_to": "#query-report/Balance Sheet",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    }
+   ]
+  }
+ ],
+ "category": "Modules",
+ "charts": [
+  {
+   "chart_name": "Budget Variance",
+   "label": "Variação Orçamentária"
+  }
+ ],
+ "creation": "2023-10-06 15:25:00.000000",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "icon": "octicon octicon-graph",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Orçamento",
+ "links": [],
+ "modified": "2023-10-06 15:25:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Core",
+ "name": "Orçamento",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 0,
+ "shortcuts": [
+  {
+   "label": "Novo Orçamento",
+   "link_to": "Public Budget",
+   "type": "DocType"
+  },
+  {
+   "label": "Análise Orçamentária",
+   "link_to": "#query-report/Budget Variance Report",
+   "type": "Report"
+  }
+ ],
+ "shortcuts_label": "Atalhos"
+}

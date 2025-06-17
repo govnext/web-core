@@ -1,0 +1,215 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:codigo_cargo",
+ "creation": "2023-10-15 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo_cargo",
+  "nome_cargo",
+  "tipo_cargo",
+  "regime_juridico",
+  "column_break_4",
+  "carga_horaria",
+  "is_active",
+  "section_break_7",
+  "descricao",
+  "requisitos",
+  "section_break_10",
+  "salario_base",
+  "salario_minimo",
+  "salario_maximo",
+  "column_break_14",
+  "nivel",
+  "classe",
+  "referencia",
+  "section_break_18",
+  "orgao",
+  "carreira",
+  "column_break_21",
+  "data_criacao_cargo",
+  "lei_criacao"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo_cargo",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código do Cargo",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "nome_cargo",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nome do Cargo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tipo_cargo",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Cargo",
+   "options": "Efetivo\nComissionado\nTemporário\nEletivo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "regime_juridico",
+   "fieldtype": "Select",
+   "label": "Regime Jurídico",
+   "options": "Estatutário\nCeletista\nComissionado\nTemporário\nContrato Especial"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "40",
+   "fieldname": "carga_horaria",
+   "fieldtype": "Int",
+   "label": "Carga Horária Semanal"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Ativo"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break",
+   "label": "Descrição e Requisitos"
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Text Editor",
+   "label": "Descrição do Cargo"
+  },
+  {
+   "fieldname": "requisitos",
+   "fieldtype": "Text Editor",
+   "label": "Requisitos"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break",
+   "label": "Remuneração"
+  },
+  {
+   "fieldname": "salario_base",
+   "fieldtype": "Currency",
+   "label": "Salário Base",
+   "reqd": 1
+  },
+  {
+   "fieldname": "salario_minimo",
+   "fieldtype": "Currency",
+   "label": "Salário Mínimo"
+  },
+  {
+   "fieldname": "salario_maximo",
+   "fieldtype": "Currency",
+   "label": "Salário Máximo"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nivel",
+   "fieldtype": "Data",
+   "label": "Nível"
+  },
+  {
+   "fieldname": "classe",
+   "fieldtype": "Data",
+   "label": "Classe"
+  },
+  {
+   "fieldname": "referencia",
+   "fieldtype": "Data",
+   "label": "Referência"
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break",
+   "label": "Vinculação"
+  },
+  {
+   "fieldname": "orgao",
+   "fieldtype": "Link",
+   "label": "Órgão",
+   "options": "Orgao Publico"
+  },
+  {
+   "fieldname": "carreira",
+   "fieldtype": "Data",
+   "label": "Carreira"
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_criacao_cargo",
+   "fieldtype": "Date",
+   "label": "Data de Criação do Cargo"
+  },
+  {
+   "fieldname": "lei_criacao",
+   "fieldtype": "Data",
+   "label": "Lei de Criação"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Governo",
+ "name": "Cargo Publico",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor RH",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Governamental",
+   "share": 1
+  }
+ ],
+ "search_fields": "nome_cargo,codigo_cargo",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "nome_cargo",
+ "track_changes": 1
+}

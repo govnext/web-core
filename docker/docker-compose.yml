@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    networks:
+      - govnext-network
+
+  redis:
+    image: redis:6.2-alpine
+    volumes:
+      - redis-data:/data
+    networks:
+      - govnext-network
+
+  govnext:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - SITE_NAME=${SITE_NAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - INSTANCE_TYPE=${INSTANCE_TYPE}
+    volumes:
+      - sites-data:/home/frappe/frappe-bench/sites
+      - assets-data:/home/frappe/frappe-bench/sites/assets
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    depends_on:
+      - mariadb
+      - redis
+    networks:
+      - govnext-network
+
+  nginx:
+    image: nginx:1.21-alpine
+    volumes:
+      - sites-data:/var/www/html/sites
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - govnext
+    networks:
+      - govnext-network
+
+volumes:
+  mariadb-data:
+  redis-data:
+  sites-data:
+  assets-data:
+
+networks:
+  govnext-network:
+    driver: bridge 

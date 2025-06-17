@@ -1,0 +1,107 @@
+/* GovNext Core - Estilos Personalizados */
+
+/* Cores principais */
+:root {
+    --govnext-primary: #1a73e8;
+    --govnext-secondary: #34a853;
+    --govnext-tertiary: #fbbc05;
+    --govnext-quartenary: #ea4335;
+    --govnext-dark: #202124;
+    --govnext-light: #f8f9fa;
+}
+
+/* Navbar customizada */
+.navbar {
+    background-color: var(--govnext-primary);
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+/* Estilo da página inicial */
+.hero-section {
+    background-color: var(--govnext-light);
+    padding: 40px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.hero-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--govnext-dark);
+}
+
+/* Cards personalizados */
+.govnext-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.govnext-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Botões personalizados */
+.btn-govnext {
+    background-color: var(--govnext-primary);
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.btn-govnext:hover {
+    background-color: #0d62d0;
+    color: white;
+}
+
+/* Indicadores personalizados para os status de licitações */
+.indicator.approved {
+    background-color: var(--govnext-secondary);
+}
+
+.indicator.pending {
+    background-color: var(--govnext-tertiary);
+}
+
+.indicator.rejected {
+    background-color: var(--govnext-quartenary);
+}
+
+/* Personalizações de workspace */
+.desk-sidebar .sidebar-item.selected {
+    background-color: rgba(26, 115, 232, 0.1);
+    border-left: 3px solid var(--govnext-primary);
+}
+
+/* Badges personalizados */
+.govnext-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.govnext-badge.municipal {
+    background-color: #34a853;
+    color: white;
+}
+
+.govnext-badge.estadual {
+    background-color: #fbbc05;
+    color: black;
+}
+
+.govnext-badge.federal {
+    background-color: #ea4335;
+    color: white;
+}
+
+/* Footer personalizado */
+.web-footer {
+    background-color: var(--govnext-dark);
+    color: white;
+}

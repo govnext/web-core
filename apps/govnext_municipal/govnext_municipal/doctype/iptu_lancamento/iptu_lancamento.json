@@ -1,0 +1,197 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:IPTU-{ano}-{inscricao_cadastral}",
+ "creation": "2023-10-07 11:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inscricao_cadastral",
+  "proprietario",
+  "ano",
+  "status",
+  "column_break_5",
+  "data_lancamento",
+  "data_vencimento",
+  "parcelas",
+  "valores_section",
+  "valor_venal_total",
+  "valor_iptu",
+  "desconto",
+  "valor_total",
+  "pagamentos_section",
+  "pagamentos",
+  "section_break_16",
+  "observacoes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "inscricao_cadastral",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Inscrição Cadastral",
+   "options": "IPTU Cadastro",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "inscricao_cadastral.proprietario",
+   "fieldname": "proprietario",
+   "fieldtype": "Link",
+   "label": "Proprietário",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ano",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ano",
+   "reqd": 1
+  },
+  {
+   "default": "Pendente",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pendente\nParcialmente Pago\nPago\nAtrasado\nDívida Ativa\nCancelado",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "data_lancamento",
+   "fieldtype": "Date",
+   "label": "Data de Lançamento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vencimento",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data de Vencimento",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "parcelas",
+   "fieldtype": "Int",
+   "label": "Número de Parcelas",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valores_section",
+   "fieldtype": "Section Break",
+   "label": "Valores"
+  },
+  {
+   "fieldname": "valor_venal_total",
+   "fieldtype": "Currency",
+   "label": "Valor Venal Total",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_iptu",
+   "fieldtype": "Currency",
+   "label": "Valor do IPTU",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "desconto",
+   "fieldtype": "Currency",
+   "label": "Desconto"
+  },
+  {
+   "fieldname": "valor_total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pagamentos_section",
+   "fieldtype": "Section Break",
+   "label": "Parcelas"
+  },
+  {
+   "fieldname": "pagamentos",
+   "fieldtype": "Table",
+   "label": "Pagamentos",
+   "options": "IPTU Pagamento"
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "IPTU Lancamento",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-10-07 11:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Lancamento",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

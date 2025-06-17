@@ -1,0 +1,304 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "DT.####",
+ "creation": "2025-06-16 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "secao_identificacao",
+  "codigo_dotacao",
+  "exercicio_financeiro",
+  "unidade_gestora",
+  "unidade_orcamentaria",
+  "column_break_5",
+  "aprovada",
+  "data_aprovacao",
+  "usuario_aprovacao",
+  "secao_classificacao",
+  "programa",
+  "acao",
+  "natureza_despesa",
+  "fonte_recurso",
+  "descricao_dotacao",
+  "secao_valores",
+  "valor_inicial",
+  "valor_suplementado",
+  "valor_anulado",
+  "column_break_18",
+  "valor_total",
+  "valor_empenhado",
+  "valor_bloqueado",
+  "saldo_disponivel",
+  "secao_observacoes",
+  "observacoes",
+  "column_break_24",
+  "data_criacao",
+  "criado_por",
+  "data_alteracao",
+  "alterado_por"
+ ],
+ "fields": [
+  {
+   "fieldname": "secao_identificacao",
+   "fieldtype": "Section Break",
+   "label": "Identifica\u00e7\u00e3o"
+  },
+  {
+   "fieldname": "codigo_dotacao",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "C\u00f3digo da Dota\u00e7\u00e3o",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "exercicio_financeiro",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Exerc\u00edcio Financeiro",
+   "options": "ExercicioFinanceiro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unidade_gestora",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Unidade Gestora",
+   "options": "UnidadeGestora",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unidade_orcamentaria",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Unidade Or\u00e7ament\u00e1ria",
+   "options": "UnidadeOrcamentaria",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "aprovada",
+   "fieldtype": "Check",
+   "label": "Aprovada",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.aprovada==1",
+   "fieldname": "data_aprovacao",
+   "fieldtype": "Date",
+   "label": "Data de Aprova\u00e7\u00e3o",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.aprovada==1",
+   "fieldname": "usuario_aprovacao",
+   "fieldtype": "Link",
+   "label": "Aprovado Por",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secao_classificacao",
+   "fieldtype": "Section Break",
+   "label": "Classifica\u00e7\u00e3o Or\u00e7ament\u00e1ria"
+  },
+  {
+   "fieldname": "programa",
+   "fieldtype": "Link",
+   "label": "Programa",
+   "options": "ProgramaOrcamentario",
+   "reqd": 1
+  },
+  {
+   "fieldname": "acao",
+   "fieldtype": "Link",
+   "label": "A\u00e7\u00e3o",
+   "options": "AcaoOrcamentaria",
+   "reqd": 1
+  },
+  {
+   "fieldname": "natureza_despesa",
+   "fieldtype": "Link",
+   "label": "Natureza da Despesa",
+   "options": "NaturezaDespesa",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fonte_recurso",
+   "fieldtype": "Link",
+   "label": "Fonte de Recurso",
+   "options": "FonteRecurso",
+   "reqd": 1
+  },
+  {
+   "fieldname": "descricao_dotacao",
+   "fieldtype": "Text",
+   "label": "Descri\u00e7\u00e3o da Dota\u00e7\u00e3o",
+   "reqd": 1
+  },
+  {
+   "fieldname": "secao_valores",
+   "fieldtype": "Section Break",
+   "label": "Valores"
+  },
+  {
+   "fieldname": "valor_inicial",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Inicial",
+   "options": "Moeda",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_suplementado",
+   "fieldtype": "Currency",
+   "label": "Valor Suplementado",
+   "options": "Moeda",
+   "default": 0
+  },
+  {
+   "fieldname": "valor_anulado",
+   "fieldtype": "Currency",
+   "label": "Valor Anulado",
+   "options": "Moeda",
+   "default": 0
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_total",
+   "fieldtype": "Currency",
+   "label": "Valor Total",
+   "options": "Moeda",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "valor_empenhado",
+   "fieldtype": "Currency",
+   "label": "Valor Empenhado",
+   "options": "Moeda",
+   "read_only": 1,
+   "default": 0
+  },
+  {
+   "fieldname": "valor_bloqueado",
+   "fieldtype": "Currency",
+   "label": "Valor Bloqueado",
+   "options": "Moeda",
+   "read_only": 1,
+   "default": 0
+  },
+  {
+   "fieldname": "saldo_disponivel",
+   "fieldtype": "Currency",
+   "label": "Saldo Dispon\u00edvel",
+   "options": "Moeda",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "secao_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Observa\u00e7\u00f5es e Controle"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observa\u00e7\u00f5es"
+  },
+  {
+   "fieldname": "column_break_24",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_criacao",
+   "fieldtype": "Datetime",
+   "label": "Data de Cria\u00e7\u00e3o",
+   "read_only": 1
+  },
+  {
+   "fieldname": "criado_por",
+   "fieldtype": "Link",
+   "label": "Criado Por",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_alteracao",
+   "fieldtype": "Datetime",
+   "label": "\u00daltima Altera\u00e7\u00e3o",
+   "read_only": 1
+  },
+  {
+   "fieldname": "alterado_por",
+   "fieldtype": "Link",
+   "label": "Alterado Por",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Empenho",
+   "link_fieldname": "dotacao_orcamentaria"
+  }
+ ],
+ "modified": "2025-06-16 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "DotacaoOrcamentaria",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "select": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}
