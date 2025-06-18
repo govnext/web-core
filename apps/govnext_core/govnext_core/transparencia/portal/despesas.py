@@ -5,238 +5,302 @@
 import frappe
 from frappe import _
 from frappe.utils import flt, fmt_money, getdate, add_months, get_first_day, get_last_day
+import json
 
 def get_context(context):
 	"""
 	Prepara o contexto para a página de despesas do Portal da Transparência.
-
-	Esta função carrega os dados de despesas para exibição, incluindo filtros,
-	gráficos e tabelas detalhadas.
 	"""
-	context.title = _("Despesas Públicas")
+	context.title = _("Despesas")
 	context.subtitle = _("Demonstra os gastos da prefeitura, incluindo pagamentos realizados, destinatários, valores e descrição da despesa.")
 
-	# Obtém parâmetros de filtro da URL
-	filters = get_filters_from_request()
-	context.filters = filters
+	# Filtros de pesquisa
+	context.filtros = get_filtros()
 
-	# Carrega os dados de despesas com base nos filtros
-	context.despesas = get_despesas(filters)
+	# Dados de despesas
+	context.despesas = get_despesas_data()
 
-	# Calcula totais e estatísticas
-	context.totais = calcular_totais(context.despesas)
+	# Estatísticas de despesas
+	context.estatisticas_despesas = get_estatisticas_despesas()
 
-	# Prepara dados para gráficos
-	context.graficos = preparar_graficos(context.despesas)
+	# Gráficos de despesas
+	context.graficos = get_graficos_despesas()
 
-	# Carrega dados para filtros dinâmicos
-	context.opcoes_filtro = get_opcoes_filtro()
+	# Categorias de despesas
+	context.categorias = get_categorias_despesas()
 
 	return context
 
-def get_filters_from_request():
-	"""Extrai e processa os filtros da requisição."""
+def get_filtros():
+	"""Retorna os filtros disponíveis para pesquisa de despesas."""
 	return {
-		"ano": frappe.form_dict.get("ano") or str(getdate().year),
-		"mes": frappe.form_dict.get("mes") or str(getdate().month),
-		"orgao": frappe.form_dict.get("orgao"),
-		"categoria": frappe.form_dict.get("categoria"),
-		"fornecedor": frappe.form_dict.get("fornecedor"),
-		"valor_min": flt(frappe.form_dict.get("valor_min") or 0),
-		"valor_max": flt(frappe.form_dict.get("valor_max") or 0),
-		"page": int(frappe.form_dict.get("page") or 1)
+		"periodo": [
+			{"label": _("Último mês"), "value": "ultimo_mes"},
+			{"label": _("Últimos 3 meses"), "value": "ultimo_trimestre"},
+			{"label": _("Último semestre"), "value": "ultimo_semestre"},
+			{"label": _("Último ano"), "value": "ultimo_ano"},
+			{"label": _("Período personalizado"), "value": "personalizado"}
+		],
+		"categoria": [
+			{"label": _("Todas as categorias"), "value": "todas"},
+			{"label": _("Pessoal e Encargos"), "value": "pessoal"},
+			{"label": _("Material de Consumo"), "value": "material"},
+			{"label": _("Serviços de Terceiros"), "value": "servicos"},
+			{"label": _("Obras e Instalações"), "value": "obras"},
+			{"label": _("Equipamentos"), "value": "equipamentos"},
+			{"label": _("Transferências"), "value": "transferencias"}
+		],
+		"orgao": get_orgaos_list(),
+		"ordenacao": [
+			{"label": _("Data (mais recente)"), "value": "data_desc"},
+			{"label": _("Data (mais antiga)"), "value": "data_asc"},
+			{"label": _("Valor (maior)"), "value": "valor_desc"},
+			{"label": _("Valor (menor)"), "value": "valor_asc"},
+			{"label": _("Fornecedor A-Z"), "value": "fornecedor_asc"},
+			{"label": _("Órgão A-Z"), "value": "orgao_asc"}
+		]
 	}
 
-def get_despesas(filters):
-	"""
-	Obtém as despesas com base nos filtros aplicados.
+def get_despesas_data():
+	"""Retorna os dados de despesas para exibição."""
+	# Em um ambiente real, estes dados viriam do banco de dados
+	# com filtros aplicados conforme a solicitação do usuário
 
-	Em um ambiente real, isso faria consultas ao banco de dados.
-	Aqui estamos simulando dados para demonstração.
-	"""
-	# Em um ambiente real, isso seria uma consulta ao banco de dados
-	# Aqui estamos retornando dados simulados para demonstração
-
-	# Simula uma lista de despesas
-	despesas = []
-
-	# Filtra por ano e mês, se especificados
-	ano = int(filters.get("ano") or getdate().year)
-	mes = int(filters.get("mes") or getdate().month)
-
-	# Define o período de início e fim para filtrar
-	data_inicio = get_first_day(f"{ano}-{mes:02d}-01")
-	data_fim = get_last_day(data_inicio)
-
-	# Simula a consulta ao banco de dados
-	empenhos = frappe.get_all(
-		"Empenho",
-		filters={
-			"data_empenho": ["between", [data_inicio, data_fim]],
-			"orgao_publico": filters.get("orgao") or ["!=", ""],
-			"categoria_despesa": filters.get("categoria") or ["!=", ""],
-			"fornecedor": filters.get("fornecedor") or ["!=", ""]
+	despesas_exemplo = [
+		{
+			"id": "2025/001234",
+			"data": "2025-06-15",
+			"fornecedor": "Empresa de Limpeza Municipal Ltda",
+			"cnpj": "12.345.678/0001-90",
+			"descricao": "Serviços de limpeza urbana - Contrato 2025/089",
+			"categoria": "Serviços de Terceiros",
+			"orgao": "Secretaria de Serviços Urbanos",
+			"valor": 45000.00,
+			"tipo_despesa": "Custeio",
+			"processo": "2025.001.001234-5",
+			"empenho": "2025EM001234",
+			"liquidacao": "2025LQ001234",
+			"pagamento": "2025PG001234",
+			"modalidade": "Pregão Eletrônico"
 		},
-		fields=["name", "numero_empenho", "data_empenho", "valor_total",
-				"orgao_publico", "categoria_despesa", "fornecedor", "descricao"],
-		order_by="data_empenho desc",
-		start=(filters.get("page") - 1) * 20,
-		page_length=20
-	)
-
-	# Se não houver empenhos reais no banco, gera dados simulados
-	if not empenhos:
-		# Simulação de dados para demonstração
-		import random
-		from datetime import datetime, timedelta
-
-		categorias = ["Pessoal", "Material de Consumo", "Serviços", "Obras", "Equipamentos"]
-		orgaos = ["Secretaria de Administração", "Secretaria de Educação", "Secretaria de Saúde"]
-		fornecedores = ["Empresa A Ltda", "Empresa B S.A.", "Empresa C Ltda", "Autônomo D"]
-
-		for i in range(20):
-			data = data_inicio + timedelta(days=random.randint(0, (data_fim - data_inicio).days))
-			categoria = random.choice(categorias)
-			orgao = random.choice(orgaos)
-			fornecedor = random.choice(fornecedores)
-			valor = random.uniform(1000, 100000)
-
-			# Aplica filtros adicionais
-			if filters.get("orgao") and orgao != filters.get("orgao"):
-				continue
-			if filters.get("categoria") and categoria != filters.get("categoria"):
-				continue
-			if filters.get("fornecedor") and fornecedor != filters.get("fornecedor"):
-				continue
-			if filters.get("valor_min") > 0 and valor < filters.get("valor_min"):
-				continue
-			if filters.get("valor_max") > 0 and valor > filters.get("valor_max"):
-				continue
-
-			despesas.append({
-				"name": f"EMP-{ano}{mes:02d}{i+1:04d}",
-				"numero_empenho": f"{i+1:04d}/{ano}",
-				"data_empenho": data.strftime("%Y-%m-%d"),
-				"valor_total": valor,
-				"orgao_publico": orgao,
-				"categoria_despesa": categoria,
-				"fornecedor": fornecedor,
-				"descricao": f"Despesa com {categoria.lower()} para {orgao}"
-			})
-	else:
-		despesas = empenhos
-
-	return despesas
-
-def calcular_totais(despesas):
-	"""Calcula os totais e estatísticas das despesas."""
-	total = sum(d.get("valor_total", 0) for d in despesas)
-
-	# Agrupa por categoria
-	por_categoria = {}
-	for d in despesas:
-		categoria = d.get("categoria_despesa")
-		if categoria not in por_categoria:
-			por_categoria[categoria] = 0
-		por_categoria[categoria] += d.get("valor_total", 0)
-
-	# Agrupa por órgão
-	por_orgao = {}
-	for d in despesas:
-		orgao = d.get("orgao_publico")
-		if orgao not in por_orgao:
-			por_orgao[orgao] = 0
-		por_orgao[orgao] += d.get("valor_total", 0)
-
-	return {
-		"total": fmt_money(total, currency="BRL"),
-		"quantidade": len(despesas),
-		"por_categoria": por_categoria,
-		"por_orgao": por_orgao
-	}
-
-def preparar_graficos(despesas):
-	"""Prepara os dados para os gráficos de despesas."""
-	# Dados para gráfico de pizza por categoria
-	categorias = {}
-	for d in despesas:
-		categoria = d.get("categoria_despesa")
-		if categoria not in categorias:
-			categorias[categoria] = 0
-		categorias[categoria] += d.get("valor_total", 0)
-
-	grafico_categorias = {
-		"labels": list(categorias.keys()),
-		"datasets": [{
-			"values": list(categorias.values())
-		}]
-	}
-
-	# Dados para gráfico de barras por órgão
-	orgaos = {}
-	for d in despesas:
-		orgao = d.get("orgao_publico")
-		if orgao not in orgaos:
-			orgaos[orgao] = 0
-		orgaos[orgao] += d.get("valor_total", 0)
-
-	grafico_orgaos = {
-		"labels": list(orgaos.keys()),
-		"datasets": [{
-			"values": list(orgaos.values())
-		}]
-	}
-
-	return {
-		"categorias": grafico_categorias,
-		"orgaos": grafico_orgaos
-	}
-
-def get_opcoes_filtro():
-	"""Obtém as opções disponíveis para os filtros."""
-	# Em um ambiente real, isso seria uma consulta ao banco de dados
-	# Aqui estamos retornando dados simulados para demonstração
-
-	anos = [str(getdate().year - i) for i in range(5)]
-
-	meses = [
-		{"value": "1", "label": _("Janeiro")},
-		{"value": "2", "label": _("Fevereiro")},
-		{"value": "3", "label": _("Março")},
-		{"value": "4", "label": _("Abril")},
-		{"value": "5", "label": _("Maio")},
-		{"value": "6", "label": _("Junho")},
-		{"value": "7", "label": _("Julho")},
-		{"value": "8", "label": _("Agosto")},
-		{"value": "9", "label": _("Setembro")},
-		{"value": "10", "label": _("Outubro")},
-		{"value": "11", "label": _("Novembro")},
-		{"value": "12", "label": _("Dezembro")}
+		{
+			"id": "2025/001235",
+			"data": "2025-06-14",
+			"fornecedor": "Construtora ABC S.A.",
+			"cnpj": "98.765.432/0001-10",
+			"descricao": "Obra de pavimentação da Rua das Flores",
+			"categoria": "Obras e Instalações",
+			"orgao": "Secretaria de Obras",
+			"valor": 125000.00,
+			"tipo_despesa": "Investimento",
+			"processo": "2025.002.005678-9",
+			"empenho": "2025EM001235",
+			"liquidacao": "2025LQ001235",
+			"pagamento": "2025PG001235",
+			"modalidade": "Tomada de Preços"
+		},
+		{
+			"id": "2025/001236",
+			"data": "2025-06-13",
+			"fornecedor": "Farmácia Saúde & Vida",
+			"cnpj": "11.222.333/0001-44",
+			"descricao": "Aquisição de medicamentos básicos",
+			"categoria": "Material de Consumo",
+			"orgao": "Secretaria de Saúde",
+			"valor": 8500.00,
+			"tipo_despesa": "Custeio",
+			"processo": "2025.003.009876-1",
+			"empenho": "2025EM001236",
+			"liquidacao": "2025LQ001236",
+			"pagamento": "2025PG001236",
+			"modalidade": "Dispensa de Licitação"
+		}
 	]
 
-	orgaos = frappe.get_all("OrgaoPublico", fields=["name", "nome_orgao"])
-	if not orgaos:
-		# Simulação de dados para demonstração
-		orgaos = [
-			{"name": "SEC-ADM", "nome_orgao": "Secretaria de Administração"},
-			{"name": "SEC-EDU", "nome_orgao": "Secretaria de Educação"},
-			{"name": "SEC-SAU", "nome_orgao": "Secretaria de Saúde"}
+	# Formatar valores para exibição
+	for despesa in despesas_exemplo:
+		despesa["valor_formatado"] = fmt_money(despesa["valor"], currency="BRL")
+		despesa["data_formatada"] = frappe.utils.formatdate(despesa["data"], "dd/MM/yyyy")
+
+	return despesas_exemplo
+
+def get_estatisticas_despesas():
+	"""Retorna estatísticas resumidas das despesas."""
+	return {
+		"total_mes_atual": fmt_money(1250000, currency="BRL"),
+		"total_ano_atual": fmt_money(15600000, currency="BRL"),
+		"quantidade_pagamentos": 1247,
+		"maior_pagamento": fmt_money(125000, currency="BRL"),
+		"media_pagamento": fmt_money(12500, currency="BRL"),
+		"total_empenhos": fmt_money(18750000, currency="BRL"),
+		"total_liquidacoes": fmt_money(16200000, currency="BRL"),
+		"percentual_execucao": 83.5
+	}
+
+def get_graficos_despesas():
+	"""Retorna dados para gráficos de despesas."""
+	return {
+		"evolucao_mensal": {
+			"labels": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+			"valores": [1200000, 1350000, 1180000, 1420000, 1380000, 1250000],
+			"meta": [1300000, 1300000, 1300000, 1400000, 1400000, 1400000]
+		},
+		"por_categoria": {
+			"labels": ["Pessoal", "Material", "Serviços", "Obras", "Equipamentos", "Transferências"],
+			"valores": [8500000, 1200000, 2800000, 1800000, 750000, 550000],
+			"cores": ["#007bff", "#28a745", "#ffc107", "#dc3545", "#6f42c1", "#fd7e14"]
+		},
+		"por_orgao": {
+			"labels": ["Educação", "Saúde", "Obras", "Administração", "Assistência Social"],
+			"valores": [4200000, 3800000, 2500000, 2100000, 1200000],
+			"percentuais": [28.0, 25.3, 16.7, 14.0, 8.0]
+		}
+	}
+
+def get_categorias_despesas():
+	"""Retorna as categorias de despesas com totalizações."""
+	return [
+		{
+			"nome": "Pessoal e Encargos Sociais",
+			"codigo": "3.1",
+			"valor": 8500000,
+			"percentual": 54.5,
+			"subcategorias": [
+				{"nome": "Vencimentos e Vantagens Fixas", "valor": 6200000},
+				{"nome": "Obrigações Patronais", "valor": 1800000},
+				{"nome": "Outras Despesas de Pessoal", "valor": 500000}
+			]
+		},
+		{
+			"nome": "Juros e Encargos da Dívida",
+			"codigo": "3.2",
+			"valor": 150000,
+			"percentual": 1.0,
+			"subcategorias": []
+		},
+		{
+			"nome": "Outras Despesas Correntes",
+			"codigo": "3.3",
+			"valor": 4800000,
+			"percentual": 30.8,
+			"subcategorias": [
+				{"nome": "Material de Consumo", "valor": 1200000},
+				{"nome": "Serviços de Terceiros - PJ", "valor": 2800000},
+				{"nome": "Transferências a Instituições", "valor": 550000},
+				{"nome": "Outras", "valor": 250000}
+			]
+		},
+		{
+			"nome": "Investimentos",
+			"codigo": "4.4",
+			"valor": 1800000,
+			"percentual": 11.5,
+			"subcategorias": [
+				{"nome": "Obras e Instalações", "valor": 1200000},
+				{"nome": "Equipamentos e Material Permanente", "valor": 600000}
+			]
+		},
+		{
+			"nome": "Inversões Financeiras",
+			"codigo": "4.5",
+			"valor": 200000,
+			"percentual": 1.3,
+			"subcategorias": []
+		},
+		{
+			"nome": "Amortização da Dívida",
+			"codigo": "4.6",
+			"valor": 150000,
+			"percentual": 1.0,
+			"subcategorias": []
+		}
+	]
+
+def get_orgaos_list():
+	"""Retorna lista de órgãos para filtro."""
+	# Em um ambiente real, viria do banco de dados
+	try:
+		orgaos = frappe.get_all("Orgao Publico",
+			fields=["name", "nome_orgao"],
+			filters={"disabled": 0}
+		)
+		return [{"label": orgao.nome_orgao, "value": orgao.name} for orgao in orgaos]
+	except:
+		# Fallback com dados de exemplo
+		return [
+			{"label": _("Todos os órgãos"), "value": "todos"},
+			{"label": _("Gabinete do Prefeito"), "value": "gabinete"},
+			{"label": _("Secretaria de Administração"), "value": "administracao"},
+			{"label": _("Secretaria de Educação"), "value": "educacao"},
+			{"label": _("Secretaria de Saúde"), "value": "saude"},
+			{"label": _("Secretaria de Obras"), "value": "obras"},
+			{"label": _("Secretaria de Assistência Social"), "value": "assistencia"},
+			{"label": _("Secretaria de Serviços Urbanos"), "value": "servicos_urbanos"}
 		]
 
-	categorias = frappe.get_all("CategoriaDespesa", fields=["name", "descricao"])
-	if not categorias:
-		# Simulação de dados para demonstração
-		categorias = [
-			{"name": "CAT-PES", "descricao": "Pessoal"},
-			{"name": "CAT-MAT", "descricao": "Material de Consumo"},
-			{"name": "CAT-SER", "descricao": "Serviços"},
-			{"name": "CAT-OBR", "descricao": "Obras"},
-			{"name": "CAT-EQP", "descricao": "Equipamentos"}
-		]
+@frappe.whitelist(allow_guest=True)
+def get_despesas_ajax(filtros=None):
+	"""Endpoint AJAX para buscar despesas com filtros."""
+	if filtros:
+		filtros = json.loads(filtros)
+
+	# Aplicar filtros e retornar dados
+	despesas = get_despesas_data()
 
 	return {
-		"anos": anos,
-		"meses": meses,
-		"orgaos": orgaos,
-		"categorias": categorias
+		"success": True,
+		"data": despesas,
+		"total": len(despesas),
+		"total_valor": sum([d["valor"] for d in despesas])
+	}
+
+@frappe.whitelist(allow_guest=True)
+def exportar_despesas(formato="csv", filtros=None):
+	"""Exporta dados de despesas em diferentes formatos."""
+	if filtros:
+		filtros = json.loads(filtros)
+
+	despesas = get_despesas_data()
+
+	if formato == "csv":
+		return gerar_csv_despesas(despesas)
+	elif formato == "xlsx":
+		return gerar_xlsx_despesas(despesas)
+	elif formato == "pdf":
+		return gerar_pdf_despesas(despesas)
+
+	return {"error": "Formato não suportado"}
+
+def gerar_csv_despesas(despesas):
+	"""Gera arquivo CSV com dados de despesas."""
+	import csv
+	import io
+
+	output = io.StringIO()
+	writer = csv.writer(output)
+
+	# Cabeçalho
+	writer.writerow([
+		"ID", "Data", "Fornecedor", "CNPJ", "Descrição",
+		"Categoria", "Órgão", "Valor", "Tipo"
+	])
+
+	# Dados
+	for despesa in despesas:
+		writer.writerow([
+			despesa["id"],
+			despesa["data_formatada"],
+			despesa["fornecedor"],
+			despesa["cnpj"],
+			despesa["descricao"],
+			despesa["categoria"],
+			despesa["orgao"],
+			despesa["valor_formatado"],
+			despesa["tipo_despesa"]
+		])
+
+	return {
+		"content": output.getvalue(),
+		"filename": f"despesas_{frappe.utils.today()}.csv",
+		"type": "text/csv"
 	}

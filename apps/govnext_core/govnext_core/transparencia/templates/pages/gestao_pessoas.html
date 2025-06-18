@@ -1,0 +1,683 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title }} - Portal da Transparência{% endblock %}
+
+{% block head_include %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="transparência, gestão pessoas, remuneração, servidores, estrutura organizacional">
+<meta name="author" content="Portal da Transparência">
+
+<!-- eMAG 2.0 Compliance -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<style>
+/* eMAG Accessibility Styles */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .card {
+        border: 2px solid #000 !important;
+    }
+    
+    .btn {
+        border: 2px solid #000 !important;
+    }
+}
+
+/* Focus indicators - eMAG compliance */
+button:focus, 
+input:focus, 
+select:focus, 
+textarea:focus,
+a:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
+
+/* Minimum 4.5:1 contrast ratio */
+.text-muted {
+    color: #666 !important;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+    border-color: #004494;
+}
+
+/* Responsive tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Loading indicators */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: "Carregando...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Data visualization accessibility */
+.chart-container {
+    position: relative;
+}
+
+.chart-description {
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #0056b3;
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="transparencia-gestao-pessoas">
+    <!-- Skip Links para acessibilidade eMAG -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    <a href="#search-filters" class="skip-link">Pular para os filtros de busca</a>
+    <a href="#data-table" class="skip-link">Pular para a tabela de dados</a>
+
+    <!-- Breadcrumb com ARIA -->
+    <nav aria-label="Navegação estrutural" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/transparencia" aria-label="Voltar para página inicial da transparência">Transparência</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+        </ol>
+    </nav>
+
+    <!-- Cabeçalho da página -->
+    <header id="main-content" tabindex="-1">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="h2 text-primary mb-3">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    {{ title }}
+                </h1>
+                <p class="lead">{{ description }}</p>
+                
+                <!-- Informações sobre LGPD -->
+                <div class="alert alert-info" role="region" aria-labelledby="lgpd-notice">
+                    <h2 id="lgpd-notice" class="h6 mb-2">
+                        <i class="fa fa-shield" aria-hidden="true"></i>
+                        Proteção de Dados Pessoais
+                    </h2>
+                    <p class="mb-0">
+                        Os dados apresentados foram anonimizados conforme a Lei Geral de Proteção de Dados (LGPD). 
+                        Informações pessoais identificáveis foram removidas ou mascaradas para proteção da privacidade.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard de estatísticas -->
+    <section aria-labelledby="dashboard-title" class="mb-5">
+        <h2 id="dashboard-title" class="h3 mb-4">Visão Geral</h2>
+        
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fa fa-users fa-2x text-primary mb-2" aria-hidden="true"></i>
+                        <h3 class="h4">{{ dashboard.total_servidores }}</h3>
+                        <p class="text-muted mb-0">Total de Servidores</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fa fa-money fa-2x text-success mb-2" aria-hidden="true"></i>
+                        <h3 class="h4">R$ {{ "{:,.2f}".format(dashboard.massa_salarial) }}</h3>
+                        <p class="text-muted mb-0">Massa Salarial Mensal</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fa fa-building fa-2x text-info mb-2" aria-hidden="true"></i>
+                        <h3 class="h4">{{ estrutura_organizacional|length }}</h3>
+                        <p class="text-muted mb-0">Órgãos Ativos</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fa fa-briefcase fa-2x text-warning mb-2" aria-hidden="true"></i>
+                        <h3 class="h4">{{ dashboard.servidores_por_tipo|length }}</h3>
+                        <p class="text-muted mb-0">Tipos de Vínculo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros de busca -->
+    <section id="search-filters" aria-labelledby="filters-title" class="mb-5">
+        <h2 id="filters-title" class="h3 mb-4">Filtros de Consulta</h2>
+        
+        <form id="filtros-form" class="card" role="search" aria-label="Filtros para busca de dados">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="filtro-orgao" class="form-label">Órgão</label>
+                        <select id="filtro-orgao" name="orgao" class="form-select" aria-describedby="orgao-help">
+                            <option value="">Todos os órgãos</option>
+                            {% for orgao in filtros.orgaos %}
+                            <option value="{{ orgao.orgao_codigo }}">{{ orgao.orgao_nome }}</option>
+                            {% endfor %}
+                        </select>
+                        <small id="orgao-help" class="form-text text-muted">Selecione um órgão para filtrar</small>
+                    </div>
+                    
+                    <div class="col-md-3 mb-3">
+                        <label for="filtro-cargo" class="form-label">Cargo</label>
+                        <select id="filtro-cargo" name="cargo" class="form-select" aria-describedby="cargo-help">
+                            <option value="">Todos os cargos</option>
+                            {% for cargo in filtros.cargos %}
+                            <option value="{{ cargo.cargo }}">{{ cargo.cargo }} ({{ cargo.quantidade }})</option>
+                            {% endfor %}
+                        </select>
+                        <small id="cargo-help" class="form-text text-muted">Selecione um cargo para filtrar</small>
+                    </div>
+                    
+                    <div class="col-md-2 mb-3">
+                        <label for="filtro-ano" class="form-label">Ano</label>
+                        <select id="filtro-ano" name="ano" class="form-select" aria-describedby="ano-help">
+                            <option value="">Todos os anos</option>
+                            {% for ano in filtros.anos %}
+                            <option value="{{ ano.ano }}">{{ ano.ano }}</option>
+                            {% endfor %}
+                        </select>
+                        <small id="ano-help" class="form-text text-muted">Ano de referência</small>
+                    </div>
+                    
+                    <div class="col-md-2 mb-3">
+                        <label for="filtro-mes" class="form-label">Mês</label>
+                        <select id="filtro-mes" name="mes" class="form-select" aria-describedby="mes-help">
+                            <option value="">Todos os meses</option>
+                            {% for mes in filtros.meses %}
+                            <option value="{{ mes.numero }}">{{ mes.nome }}</option>
+                            {% endfor %}
+                        </select>
+                        <small id="mes-help" class="form-text text-muted">Mês de referência</small>
+                    </div>
+                    
+                    <div class="col-md-2 mb-3 d-flex align-items-end">
+                        <div class="btn-group w-100" role="group" aria-label="Ações dos filtros">
+                            <button type="submit" class="btn btn-primary" aria-describedby="buscar-help">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <span class="sr-only">Buscar com os filtros selecionados</span>
+                                Buscar
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary" aria-describedby="limpar-help">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                <span class="sr-only">Limpar todos os filtros</span>
+                                Limpar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Remuneração por faixas -->
+    <section aria-labelledby="faixas-title" class="mb-5">
+        <h2 id="faixas-title" class="h3 mb-4">Distribuição por Faixas Salariais</h2>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="chart-faixas" aria-describedby="chart-faixas-desc" role="img" 
+                            aria-label="Gráfico de distribuição de servidores por faixa salarial"></canvas>
+                    
+                    <div id="chart-faixas-desc" class="chart-description">
+                        <strong>Descrição do gráfico:</strong> Este gráfico mostra a distribuição de servidores 
+                        por faixas salariais. As faixas são organizadas de menor para maior valor de remuneração.
+                        {% if remuneracao_faixas %}
+                        <ul class="mt-2 mb-0">
+                            {% for faixa in remuneracao_faixas %}
+                            <li>{{ faixa.faixa }}: {{ faixa.quantidade }} servidores</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped table-hover" role="table" 
+                           aria-label="Tabela de remuneração por faixas salariais">
+                        <caption class="sr-only">
+                            Distribuição de {{ dashboard.total_servidores }} servidores por faixas salariais
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Faixa Salarial</th>
+                                <th scope="col" class="text-end">Quantidade</th>
+                                <th scope="col" class="text-end">Média Bruta</th>
+                                <th scope="col" class="text-end">Média Líquida</th>
+                                <th scope="col" class="text-end">Total Bruto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for faixa in remuneracao_faixas %}
+                            <tr>
+                                <th scope="row">{{ faixa.faixa }}</th>
+                                <td class="text-end">{{ faixa.quantidade }}</td>
+                                <td class="text-end">R$ {{ "{:,.2f}".format(faixa.media_bruta) }}</td>
+                                <td class="text-end">R$ {{ "{:,.2f}".format(faixa.media_liquida) }}</td>
+                                <td class="text-end">R$ {{ "{:,.2f}".format(faixa.total_bruto) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estrutura organizacional -->
+    <section aria-labelledby="estrutura-title" class="mb-5">
+        <h2 id="estrutura-title" class="h3 mb-4">Estrutura Organizacional</h2>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tabela-estrutura" class="table table-striped table-hover" role="table" 
+                           aria-label="Tabela da estrutura organizacional">
+                        <caption class="sr-only">
+                            Estrutura organizacional com {{ estrutura_organizacional|length }} órgãos
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Órgão</th>
+                                <th scope="col">Órgão Superior</th>
+                                <th scope="col" class="text-center">Nível</th>
+                                <th scope="col" class="text-end">Servidores</th>
+                                <th scope="col">Responsável</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for orgao in estrutura_organizacional %}
+                            <tr>
+                                <th scope="row">
+                                    <strong>{{ orgao.orgao_nome }}</strong>
+                                    <br><small class="text-muted">{{ orgao.orgao_codigo }}</small>
+                                </th>
+                                <td>{{ orgao.orgao_superior or '-' }}</td>
+                                <td class="text-center">{{ orgao.nivel_hierarquico }}</td>
+                                <td class="text-end">{{ orgao.total_servidores }}</td>
+                                <td>
+                                    {% if orgao.responsavel_nome %}
+                                    <strong>{{ orgao.responsavel_nome }}</strong>
+                                    <br><small class="text-muted">{{ orgao.responsavel_cargo }}</small>
+                                    {% else %}
+                                    <span class="text-muted">Não informado</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quadro de pessoal -->
+    <section aria-labelledby="quadro-title" class="mb-5">
+        <h2 id="quadro-title" class="h3 mb-4">Quadro de Pessoal por Categoria</h2>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="data-table" class="table table-striped table-hover" role="table" 
+                           aria-label="Tabela do quadro de pessoal por categoria e cargo">
+                        <caption class="sr-only">
+                            Quadro de pessoal com {{ quadro_pessoal|length }} categorias de cargos
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Cargo</th>
+                                <th scope="col" class="text-end">Total</th>
+                                <th scope="col" class="text-end">Feminino</th>
+                                <th scope="col" class="text-end">Masculino</th>
+                                <th scope="col" class="text-end">Idade Média</th>
+                                <th scope="col" class="text-center">Mais Antigo</th>
+                                <th scope="col" class="text-center">Mais Recente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in quadro_pessoal %}
+                            <tr>
+                                <th scope="row">{{ item.categoria }}</th>
+                                <td>{{ item.cargo }}</td>
+                                <td class="text-end">{{ item.quantidade_atual }}</td>
+                                <td class="text-end">{{ item.feminino }}</td>
+                                <td class="text-end">{{ item.masculino }}</td>
+                                <td class="text-end">{{ "{:.0f}".format(item.idade_media) }} anos</td>
+                                <td class="text-center">{{ item.mais_antigo.strftime('%d/%m/%Y') if item.mais_antigo else '-' }}</td>
+                                <td class="text-center">{{ item.mais_recente.strftime('%d/%m/%Y') if item.mais_recente else '-' }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botões de exportação -->
+    <section aria-labelledby="export-title" class="mb-5">
+        <h2 id="export-title" class="h3 mb-4">Exportar Dados</h2>
+        
+        <div class="card">
+            <div class="card-body">
+                <p>Baixe os dados em formato aberto para análise externa:</p>
+                
+                <div class="btn-group" role="group" aria-label="Opções de exportação de dados">
+                    <button type="button" class="btn btn-outline-primary" onclick="exportarDados('csv')" 
+                            aria-describedby="csv-help">
+                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                        CSV
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" onclick="exportarDados('json')" 
+                            aria-describedby="json-help">
+                        <i class="fa fa-code" aria-hidden="true"></i>
+                        JSON
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" onclick="exportarDados('xml')" 
+                            aria-describedby="xml-help">
+                        <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                        XML
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" onclick="exportarDados('excel')" 
+                            aria-describedby="excel-help">
+                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                        Excel
+                    </button>
+                </div>
+                
+                <div class="mt-3">
+                    <small id="csv-help" class="text-muted d-block">CSV: Formato universal para planilhas</small>
+                    <small id="json-help" class="text-muted d-block">JSON: Formato para desenvolvimento e APIs</small>
+                    <small id="xml-help" class="text-muted d-block">XML: Formato estruturado padrão</small>
+                    <small id="excel-help" class="text-muted d-block">Excel: Planilha do Microsoft Excel</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informações legais e de acessibilidade -->
+    <footer class="border-top pt-4 mt-5" role="contentinfo">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="h6">Base Legal</h3>
+                <ul class="list-unstyled small">
+                    <li>• Lei de Acesso à Informação (LAI) - Lei 12.527/2011</li>
+                    <li>• Lei de Responsabilidade Fiscal (LRF) - Lei 101/2000</li>
+                    <li>• Lei Geral de Proteção de Dados (LGPD) - Lei 13.709/2018</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3 class="h6">Acessibilidade</h3>
+                <ul class="list-unstyled small">
+                    <li>• Conformidade com eMAG 2.0</li>
+                    <li>• Navegação por teclado disponível</li>
+                    <li>• Compatível com leitores de tela</li>
+                    <li>• Contraste mínimo 4.5:1</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="spinner-border text-primary" role="status" aria-hidden="true"></div>
+                <p class="mt-2 mb-0">Carregando dados...</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Gestão de Pessoas JavaScript com acessibilidade
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Configurar gráfico de faixas salariais
+    const ctx = document.getElementById('chart-faixas');
+    if (ctx) {
+        const faixasData = {{ remuneracao_faixas|tojson }};
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: faixasData.map(f => f.faixa),
+                datasets: [{
+                    label: 'Quantidade de Servidores',
+                    data: faixasData.map(f => f.quantidade),
+                    backgroundColor: 'rgba(0, 86, 179, 0.8)',
+                    borderColor: 'rgba(0, 86, 179, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Servidores: ' + context.parsed.y;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Quantidade de Servidores'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Faixas Salariais'
+                        }
+                    }
+                },
+                // Acessibilidade
+                accessibility: {
+                    enabled: true
+                }
+            }
+        });
+    }
+    
+    // Configurar formulário de filtros
+    const formFiltros = document.getElementById('filtros-form');
+    if (formFiltros) {
+        formFiltros.addEventListener('submit', function(e) {
+            e.preventDefault();
+            buscarDados();
+        });
+        
+        formFiltros.addEventListener('reset', function() {
+            setTimeout(() => {
+                buscarDados();
+            }, 100);
+        });
+    }
+    
+    // Navegação por teclado para tabelas
+    document.querySelectorAll('table').forEach(table => {
+        table.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                navegarTabela(e.target, e.key === 'ArrowDown' ? 1 : -1);
+            }
+        });
+    });
+    
+    // Anunciar mudanças para leitores de tela
+    const anunciarMudanca = (mensagem) => {
+        const anuncio = document.createElement('div');
+        anuncio.setAttribute('aria-live', 'polite');
+        anuncio.setAttribute('aria-atomic', 'true');
+        anuncio.className = 'sr-only';
+        anuncio.textContent = mensagem;
+        document.body.appendChild(anuncio);
+        
+        setTimeout(() => {
+            document.body.removeChild(anuncio);
+        }, 1000);
+    };
+    
+});
+
+// Função para buscar dados com filtros
+function buscarDados() {
+    const formData = new FormData(document.getElementById('filtros-form'));
+    const filtros = Object.fromEntries(formData.entries());
+    
+    // Mostrar loading
+    const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+    loadingModal.show();
+    
+    // Fazer requisição AJAX
+    frappe.call({
+        method: 'govnext_core.transparencia.portal.gestao_pessoas.get_remuneracao_detalhada',
+        args: { filters: filtros },
+        callback: function(response) {
+            loadingModal.hide();
+            
+            if (response.message) {
+                atualizarTabela(response.message);
+                document.querySelector('[aria-live]')?.setAttribute('aria-live', 'polite');
+                anunciarMudanca(`Resultados atualizados: ${response.message.length} registros encontrados`);
+            }
+        },
+        error: function() {
+            loadingModal.hide();
+            anunciarMudanca('Erro ao carregar dados. Tente novamente.');
+        }
+    });
+}
+
+// Função para atualizar tabela de resultados
+function atualizarTabela(dados) {
+    // Implementar atualização da tabela
+    console.log('Dados recebidos:', dados);
+}
+
+// Função para exportar dados
+function exportarDados(formato) {
+    const formData = new FormData(document.getElementById('filtros-form'));
+    const filtros = Object.fromEntries(formData.entries());
+    
+    anunciarMudanca(`Iniciando download em formato ${formato.toUpperCase()}`);
+    
+    // Fazer download
+    const url = `/api/method/govnext_core.transparencia.portal.gestao_pessoas.export_dados_pessoas?format_type=${formato}&filters=${JSON.stringify(filtros)}`;
+    window.open(url, '_blank');
+}
+
+// Função para navegação por teclado em tabelas
+function navegarTabela(elemento, direcao) {
+    const celulas = Array.from(elemento.closest('table').querySelectorAll('td, th'));
+    const indiceAtual = celulas.indexOf(elemento);
+    const proximoIndice = indiceAtual + direcao;
+    
+    if (proximoIndice >= 0 && proximoIndice < celulas.length) {
+        celulas[proximoIndice].focus();
+    }
+}
+
+// Função para anunciar mudanças para leitores de tela
+function anunciarMudanca(mensagem) {
+    const anuncio = document.createElement('div');
+    anuncio.setAttribute('aria-live', 'polite');
+    anuncio.setAttribute('aria-atomic', 'true');
+    anuncio.className = 'sr-only';
+    anuncio.textContent = mensagem;
+    document.body.appendChild(anuncio);
+    
+    setTimeout(() => {
+        document.body.removeChild(anuncio);
+    }, 1000);
+}
+
+// Configurações de alto contraste
+if (window.matchMedia && window.matchMedia('(prefers-contrast: high)').matches) {
+    document.body.classList.add('high-contrast');
+}
+
+// Configurações de movimento reduzido
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.classList.add('reduced-motion');
+}
+</script>
+{% endblock %}

@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-01 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "atividade",
+  "descricao",
+  "column_break_3",
+  "aliquota",
+  "atividade_principal"
+ ],
+ "fields": [
+  {
+   "fieldname": "atividade",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Atividade",
+   "options": "ISS Atividade",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "atividade.descricao_servico",
+   "fieldname": "descricao",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Descrição",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "atividade.aliquota_padrao",
+   "fieldname": "aliquota",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Alíquota (%)",
+   "precision": "2"
+  },
+  {
+   "default": "0",
+   "fieldname": "atividade_principal",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Atividade Principal"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-01-01 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "ISS Atividade Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

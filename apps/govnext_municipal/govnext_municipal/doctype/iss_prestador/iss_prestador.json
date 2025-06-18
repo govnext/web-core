@@ -1,0 +1,390 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:inscricao_municipal",
+ "creation": "2024-01-01 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_identificacao",
+  "inscricao_municipal",
+  "razao_social",
+  "nome_fantasia",
+  "cnpj_cpf",
+  "column_break_5",
+  "tipo_pessoa",
+  "situacao_cadastral",
+  "data_abertura",
+  "porte_empresa",
+  "section_endereco",
+  "logradouro",
+  "numero",
+  "complemento",
+  "bairro",
+  "cep",
+  "column_break_endereco",
+  "cidade",
+  "estado",
+  "pais",
+  "telefone",
+  "email",
+  "section_atividades",
+  "atividades_prestadas",
+  "atividade_principal",
+  "column_break_atividades",
+  "regime_tributacao",
+  "aliquota_iss",
+  "microempresa",
+  "section_responsavel",
+  "responsavel_nome",
+  "responsavel_cpf",
+  "responsavel_cargo",
+  "column_break_responsavel",
+  "responsavel_telefone",
+  "responsavel_email",
+  "contador_responsavel",
+  "section_tributaria",
+  "regime_especial",
+  "optante_simples",
+  "mei",
+  "column_break_tributaria",
+  "beneficio_fiscal",
+  "descricao_beneficio",
+  "data_inicio_beneficio",
+  "data_fim_beneficio",
+  "section_documentos",
+  "documentos_anexos",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_identificacao",
+   "fieldtype": "Section Break",
+   "label": "Identificação"
+  },
+  {
+   "fieldname": "inscricao_municipal",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Inscrição Municipal",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "razao_social",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Razão Social",
+   "reqd": 1
+  },
+  {
+   "fieldname": "nome_fantasia",
+   "fieldtype": "Data",
+   "label": "Nome Fantasia"
+  },
+  {
+   "fieldname": "cnpj_cpf",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "CNPJ/CPF",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tipo_pessoa",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Pessoa",
+   "options": "Pessoa Física\nPessoa Jurídica",
+   "reqd": 1
+  },
+  {
+   "default": "Ativo",
+   "fieldname": "situacao_cadastral",
+   "fieldtype": "Select",
+   "label": "Situação Cadastral",
+   "options": "Ativo\nSuspenso\nCancelado\nInativo"
+  },
+  {
+   "fieldname": "data_abertura",
+   "fieldtype": "Date",
+   "label": "Data de Abertura"
+  },
+  {
+   "fieldname": "porte_empresa",
+   "fieldtype": "Select",
+   "label": "Porte da Empresa",
+   "options": "MEI\nMicroempresa\nEmpresa de Pequeno Porte\nMédia Empresa\nGrande Empresa"
+  },
+  {
+   "fieldname": "section_endereco",
+   "fieldtype": "Section Break",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "logradouro",
+   "fieldtype": "Data",
+   "label": "Logradouro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "numero",
+   "fieldtype": "Data",
+   "label": "Número"
+  },
+  {
+   "fieldname": "complemento",
+   "fieldtype": "Data",
+   "label": "Complemento"
+  },
+  {
+   "fieldname": "bairro",
+   "fieldtype": "Data",
+   "label": "Bairro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cep",
+   "fieldtype": "Data",
+   "label": "CEP",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_endereco",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cidade",
+   "fieldtype": "Data",
+   "label": "Cidade",
+   "reqd": 1
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Data",
+   "label": "Estado",
+   "reqd": 1
+  },
+  {
+   "default": "Brasil",
+   "fieldname": "pais",
+   "fieldtype": "Data",
+   "label": "País"
+  },
+  {
+   "fieldname": "telefone",
+   "fieldtype": "Data",
+   "label": "Telefone"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-mail"
+  },
+  {
+   "fieldname": "section_atividades",
+   "fieldtype": "Section Break",
+   "label": "Atividades e Tributação"
+  },
+  {
+   "fieldname": "atividades_prestadas",
+   "fieldtype": "Table",
+   "label": "Atividades Prestadas",
+   "options": "ISS Atividade Item"
+  },
+  {
+   "fieldname": "atividade_principal",
+   "fieldtype": "Link",
+   "label": "Atividade Principal",
+   "options": "ISS Atividade"
+  },
+  {
+   "fieldname": "column_break_atividades",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "regime_tributacao",
+   "fieldtype": "Select",
+   "label": "Regime de Tributação",
+   "options": "Simples Nacional\nLucro Presumido\nLucro Real\nLucro Arbitrado"
+  },
+  {
+   "fieldname": "aliquota_iss",
+   "fieldtype": "Percent",
+   "label": "Alíquota ISS (%)",
+   "precision": "2"
+  },
+  {
+   "default": "0",
+   "fieldname": "microempresa",
+   "fieldtype": "Check",
+   "label": "Microempresa/EPP"
+  },
+  {
+   "fieldname": "section_responsavel",
+   "fieldtype": "Section Break",
+   "label": "Responsável Legal"
+  },
+  {
+   "fieldname": "responsavel_nome",
+   "fieldtype": "Data",
+   "label": "Nome do Responsável"
+  },
+  {
+   "fieldname": "responsavel_cpf",
+   "fieldtype": "Data",
+   "label": "CPF do Responsável"
+  },
+  {
+   "fieldname": "responsavel_cargo",
+   "fieldtype": "Data",
+   "label": "Cargo"
+  },
+  {
+   "fieldname": "column_break_responsavel",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "responsavel_telefone",
+   "fieldtype": "Data",
+   "label": "Telefone do Responsável"
+  },
+  {
+   "fieldname": "responsavel_email",
+   "fieldtype": "Data",
+   "label": "E-mail do Responsável"
+  },
+  {
+   "fieldname": "contador_responsavel",
+   "fieldtype": "Data",
+   "label": "Contador Responsável"
+  },
+  {
+   "fieldname": "section_tributaria",
+   "fieldtype": "Section Break",
+   "label": "Informações Tributárias"
+  },
+  {
+   "default": "0",
+   "fieldname": "regime_especial",
+   "fieldtype": "Check",
+   "label": "Regime Especial"
+  },
+  {
+   "default": "0",
+   "fieldname": "optante_simples",
+   "fieldtype": "Check",
+   "label": "Optante pelo Simples Nacional"
+  },
+  {
+   "default": "0",
+   "fieldname": "mei",
+   "fieldtype": "Check",
+   "label": "MEI"
+  },
+  {
+   "fieldname": "column_break_tributaria",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "beneficio_fiscal",
+   "fieldtype": "Check",
+   "label": "Possui Benefício Fiscal"
+  },
+  {
+   "depends_on": "eval:doc.beneficio_fiscal==1",
+   "fieldname": "descricao_beneficio",
+   "fieldtype": "Text",
+   "label": "Descrição do Benefício"
+  },
+  {
+   "depends_on": "eval:doc.beneficio_fiscal==1",
+   "fieldname": "data_inicio_beneficio",
+   "fieldtype": "Date",
+   "label": "Data Início Benefício"
+  },
+  {
+   "depends_on": "eval:doc.beneficio_fiscal==1",
+   "fieldname": "data_fim_beneficio",
+   "fieldtype": "Date",
+   "label": "Data Fim Benefício"
+  },
+  {
+   "fieldname": "section_documentos",
+   "fieldtype": "Section Break",
+   "label": "Documentos e Observações"
+  },
+  {
+   "fieldname": "documentos_anexos",
+   "fieldtype": "Attach",
+   "label": "Documentos Anexos"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "ISS Lancamento",
+   "link_fieldname": "prestador"
+  },
+  {
+   "link_doctype": "ISS Declaracao",
+   "link_fieldname": "prestador"
+  }
+ ],
+ "modified": "2024-01-01 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "ISS Prestador",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Contribuinte ISS",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

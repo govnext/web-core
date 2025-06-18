@@ -1,0 +1,325 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:codigo_conta",
+ "creation": "2025-06-18 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "secao_identificacao",
+  "codigo_conta",
+  "descricao_conta",
+  "tipo_conta",
+  "natureza_conta",
+  "column_break_6",
+  "conta_pai",
+  "nivel_conta",
+  "conta_analitica",
+  "indicador_superavit",
+  "secao_classificacao",
+  "classe_conta",
+  "grupo_conta",
+  "subgrupo_conta",
+  "column_break_14",
+  "elemento_conta",
+  "subelemento_conta",
+  "item_conta",
+  "subitem_conta",
+  "secao_controle",
+  "exercicio_financeiro",
+  "status_conta",
+  "data_inicio_vigencia",
+  "column_break_22",
+  "data_fim_vigencia",
+  "observacoes",
+  "secao_pcasp",
+  "escrituracao_pcasp",
+  "funcao_conta",
+  "column_break_27",
+  "consolidacao_contas_publicas",
+  "relacionamento_patrimonial"
+ ],
+ "fields": [
+  {
+   "fieldname": "secao_identificacao",
+   "fieldtype": "Section Break",
+   "label": "Identificação da Conta"
+  },
+  {
+   "fieldname": "codigo_conta",
+   "fieldtype": "Data",
+   "label": "Código da Conta",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Código da conta no formato PCASP de 8 níveis (ex: 1.1.1.1.1.01.01.01)"
+  },
+  {
+   "fieldname": "descricao_conta",
+   "fieldtype": "Data",
+   "label": "Descrição da Conta",
+   "reqd": 1,
+   "description": "Denominação oficial da conta conforme PCASP"
+  },
+  {
+   "fieldname": "tipo_conta",
+   "fieldtype": "Select",
+   "label": "Tipo de Conta",
+   "options": "Ativo\nPassivo\nPatrimônio Líquido\nReceita\nDespesa\nControles Devedores\nControles Credores",
+   "reqd": 1
+  },
+  {
+   "fieldname": "natureza_conta",
+   "fieldtype": "Select",
+   "label": "Natureza da Conta",
+   "options": "Devedora\nCredora",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "conta_pai",
+   "fieldtype": "Link",
+   "label": "Conta Superior",
+   "options": "PlanoContas",
+   "description": "Conta hierarquicamente superior"
+  },
+  {
+   "fieldname": "nivel_conta",
+   "fieldtype": "Int",
+   "label": "Nível da Conta",
+   "reqd": 1,
+   "default": 1,
+   "description": "Nível hierárquico da conta (1 a 8)"
+  },
+  {
+   "fieldname": "conta_analitica",
+   "fieldtype": "Check",
+   "label": "Conta Analítica",
+   "default": 0,
+   "description": "Indica se a conta aceita lançamentos diretos"
+  },
+  {
+   "fieldname": "indicador_superavit",
+   "fieldtype": "Select",
+   "label": "Indicador de Superávit/Déficit",
+   "options": "\nF - Superávit Financeiro\nP - Déficit Financeiro\nN - Não se aplica",
+   "description": "Classificação para controle de superávit/déficit"
+  },
+  {
+   "fieldname": "secao_classificacao",
+   "fieldtype": "Section Break",
+   "label": "Classificação PCASP"
+  },
+  {
+   "fieldname": "classe_conta",
+   "fieldtype": "Select",
+   "label": "Classe (1º Nível)",
+   "options": "1 - Ativo\n2 - Passivo\n3 - Patrimônio Líquido\n4 - Variações Patrimoniais Diminutivas\n5 - Variações Patrimoniais Aumentativas\n6 - Controles Devedores\n7 - Controles Credores\n8 - Controles Específicos",
+   "reqd": 1
+  },
+  {
+   "fieldname": "grupo_conta",
+   "fieldtype": "Data",
+   "label": "Grupo (2º Nível)",
+   "description": "Segundo nível da classificação PCASP"
+  },
+  {
+   "fieldname": "subgrupo_conta",
+   "fieldtype": "Data",
+   "label": "Subgrupo (3º Nível)",
+   "description": "Terceiro nível da classificação PCASP"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "elemento_conta",
+   "fieldtype": "Data",
+   "label": "Elemento (4º Nível)",
+   "description": "Quarto nível da classificação PCASP"
+  },
+  {
+   "fieldname": "subelemento_conta",
+   "fieldtype": "Data",
+   "label": "Subelemento (5º Nível)",
+   "description": "Quinto nível da classificação PCASP"
+  },
+  {
+   "fieldname": "item_conta",
+   "fieldtype": "Data",
+   "label": "Item (6º Nível)",
+   "description": "Sexto nível da classificação PCASP"
+  },
+  {
+   "fieldname": "subitem_conta",
+   "fieldtype": "Data",
+   "label": "Subitem (7º e 8º Níveis)",
+   "description": "Sétimo e oitavo níveis da classificação PCASP"
+  },
+  {
+   "fieldname": "secao_controle",
+   "fieldtype": "Section Break",
+   "label": "Controle e Vigência"
+  },
+  {
+   "fieldname": "exercicio_financeiro",
+   "fieldtype": "Link",
+   "label": "Exercício Financeiro",
+   "options": "ExercicioFinanceiro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status_conta",
+   "fieldtype": "Select",
+   "label": "Status da Conta",
+   "options": "Ativa\nInativa\nSuspensa",
+   "default": "Ativa",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_inicio_vigencia",
+   "fieldtype": "Date",
+   "label": "Data de Início de Vigência",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_fim_vigencia",
+   "fieldtype": "Date",
+   "label": "Data de Fim de Vigência",
+   "description": "Data limite para utilização da conta"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações",
+   "description": "Informações complementares sobre a conta"
+  },
+  {
+   "fieldname": "secao_pcasp",
+   "fieldtype": "Section Break",
+   "label": "Configurações PCASP"
+  },
+  {
+   "fieldname": "escrituracao_pcasp",
+   "fieldtype": "Select",
+   "label": "Escrituração PCASP",
+   "options": "S - Sim\nN - Não",
+   "default": "S",
+   "reqd": 1,
+   "description": "Indica se a conta deve ser escriturada conforme PCASP"
+  },
+  {
+   "fieldname": "funcao_conta",
+   "fieldtype": "Select",
+   "label": "Função da Conta",
+   "options": "Patrimonial\nOrçamentária\nControle\nCompensação",
+   "reqd": 1,
+   "description": "Função da conta no sistema contábil"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "consolidacao_contas_publicas",
+   "fieldtype": "Check",
+   "label": "Consolidação de Contas Públicas",
+   "default": 0,
+   "description": "Indica se a conta participa da consolidação de contas públicas"
+  },
+  {
+   "fieldname": "relacionamento_patrimonial",
+   "fieldtype": "Select",
+   "label": "Relacionamento Patrimonial",
+   "options": "\nP - Permanente\nF - Financeiro\nM - Misto",
+   "description": "Classificação do relacionamento patrimonial"
+  }
+ ],
+ "has_web_view": 0,
+ "hide_toolbar": 0,
+ "idx": 0,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "istable": 0,
+ "links": [
+  {
+   "link_doctype": "LancamentoContabil",
+   "link_fieldname": "conta_debito"
+  },
+  {
+   "link_doctype": "LancamentoContabil",
+   "link_fieldname": "conta_credito"
+  }
+ ],
+ "modified": "2025-06-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "PlanoContas",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Contador",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "share": 1,
+   "write": 0
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

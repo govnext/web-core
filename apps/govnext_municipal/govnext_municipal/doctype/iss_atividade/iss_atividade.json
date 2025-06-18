@@ -1,0 +1,217 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:codigo_servico",
+ "creation": "2024-01-01 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_identificacao",
+  "codigo_servico",
+  "descricao_servico",
+  "codigo_cnae",
+  "column_break_4",
+  "grupo_servico",
+  "subgrupo_servico",
+  "situacao",
+  "section_tributacao",
+  "aliquota_padrao",
+  "aliquota_minima",
+  "aliquota_maxima",
+  "column_break_tributacao",
+  "regime_especial_permitido",
+  "isencao_permitida",
+  "retencao_fonte",
+  "section_detalhes",
+  "observacoes_gerais",
+  "base_legal",
+  "column_break_detalhes",
+  "data_vigencia_inicio",
+  "data_vigencia_fim",
+  "criado_por_municipio"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_identificacao",
+   "fieldtype": "Section Break",
+   "label": "Identificação do Serviço"
+  },
+  {
+   "fieldname": "codigo_servico",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código do Serviço",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "descricao_servico",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Descrição do Serviço",
+   "reqd": 1
+  },
+  {
+   "fieldname": "codigo_cnae",
+   "fieldtype": "Data",
+   "label": "Código CNAE"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grupo_servico",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Grupo do Serviço",
+   "options": "01 - Serviços de informática e congêneres\n02 - Serviços de pesquisas e desenvolvimento\n03 - Serviços prestados mediante locação\n04 - Serviços de saúde, assistência médica\n05 - Serviços de medicina e biomedicina veterinária\n06 - Serviços de cuidados pessoais, estética\n07 - Serviços relativos a engenharia, arquitetura\n08 - Serviços de educação, ensino, orientação\n09 - Serviços relativos a hospedagem, turismo\n10 - Serviços de intermediação e congêneres\n11 - Serviços de guarda, estacionamento\n12 - Serviços de diversões, lazer, entretenimento\n13 - Serviços relativos a fonografia, fotografia\n14 - Serviços relativos a bens de terceiros\n15 - Serviços relacionados ao setor bancário\n16 - Serviços de transporte de natureza municipal\n17 - Serviços de apoio técnico, administrativo\n18 - Serviços de regulação de sinistros\n19 - Serviços de distribuição e venda de bilhetes\n20 - Serviços portuários, aeroportuários\n21 - Serviços de registros públicos\n22 - Serviços de exploração de salão de festas\n23 - Serviços de administração em geral\n24 - Serviços de chaveiros, confecção de carimbos\n25 - Serviços funerários\n26 - Serviços de coleta, remessa ou entrega\n27 - Serviços de assistência social\n28 - Serviços de avaliação de bens e serviços\n29 - Serviços de biblioteconomia\n30 - Serviços técnicos em edificações\n31 - Serviços de lactário\n32 - Serviços de saúde animal\n33 - Serviços de plantio, cultivo, corte\n34 - Serviços de florestamento e reflorestamento\n35 - Exploração de salões de festas\n36 - Serviços de investigação particular\n37 - Serviços de reportagem\n38 - Serviços de meteorologia\n39 - Serviços de análise, inclusive de sistemas\n40 - Obras de arte sob encomenda",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subgrupo_servico",
+   "fieldtype": "Data",
+   "label": "Subgrupo"
+  },
+  {
+   "default": "Ativo",
+   "fieldname": "situacao",
+   "fieldtype": "Select",
+   "label": "Situação",
+   "options": "Ativo\nInativo\nRevogado"
+  },
+  {
+   "fieldname": "section_tributacao",
+   "fieldtype": "Section Break",
+   "label": "Tributação"
+  },
+  {
+   "fieldname": "aliquota_padrao",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Alíquota Padrão (%)",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "aliquota_minima",
+   "fieldtype": "Percent",
+   "label": "Alíquota Mínima (%)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "aliquota_maxima",
+   "fieldtype": "Percent",
+   "label": "Alíquota Máxima (%)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_tributacao",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "regime_especial_permitido",
+   "fieldtype": "Check",
+   "label": "Permite Regime Especial"
+  },
+  {
+   "default": "0",
+   "fieldname": "isencao_permitida",
+   "fieldtype": "Check",
+   "label": "Permite Isenção"
+  },
+  {
+   "default": "0",
+   "fieldname": "retencao_fonte",
+   "fieldtype": "Check",
+   "label": "Sujeito à Retenção na Fonte"
+  },
+  {
+   "fieldname": "section_detalhes",
+   "fieldtype": "Section Break",
+   "label": "Detalhes e Vigência"
+  },
+  {
+   "fieldname": "observacoes_gerais",
+   "fieldtype": "Text",
+   "label": "Observações Gerais"
+  },
+  {
+   "fieldname": "base_legal",
+   "fieldtype": "Data",
+   "label": "Base Legal"
+  },
+  {
+   "fieldname": "column_break_detalhes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_vigencia_inicio",
+   "fieldtype": "Date",
+   "label": "Data Início Vigência"
+  },
+  {
+   "fieldname": "data_vigencia_fim",
+   "fieldtype": "Date",
+   "label": "Data Fim Vigência"
+  },
+  {
+   "default": "1",
+   "fieldname": "criado_por_municipio",
+   "fieldtype": "Check",
+   "label": "Criado pelo Município"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "ISS Prestador",
+   "link_fieldname": "atividade_principal"
+  }
+ ],
+ "modified": "2024-01-01 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "ISS Atividade",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

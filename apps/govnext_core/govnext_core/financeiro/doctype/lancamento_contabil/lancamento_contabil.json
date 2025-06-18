@@ -1,0 +1,372 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:LC-{YYYY}-{MM}-{#####}",
+ "creation": "2025-06-18 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "secao_identificacao",
+  "numero_lancamento",
+  "data_lancamento",
+  "tipo_lancamento",
+  "origem_lancamento",
+  "column_break_6",
+  "exercicio_financeiro",
+  "documento_origem",
+  "numero_documento",
+  "status_lancamento",
+  "secao_contas",
+  "conta_debito",
+  "conta_credito",
+  "valor_debito",
+  "column_break_13",
+  "valor_credito",
+  "historico_padrao",
+  "historico_lancamento",
+  "secao_complementar",
+  "unidade_gestora",
+  "centro_custo",
+  "projeto",
+  "column_break_20",
+  "categoria_economica",
+  "fonte_recurso",
+  "modalidade_aplicacao",
+  "secao_controle",
+  "usuario_lancamento",
+  "data_criacao",
+  "column_break_26",
+  "usuario_aprovacao",
+  "data_aprovacao",
+  "secao_observacoes",
+  "observacoes",
+  "column_break_30",
+  "justificativa",
+  "secao_anexos",
+  "anexos"
+ ],
+ "fields": [
+  {
+   "fieldname": "secao_identificacao",
+   "fieldtype": "Section Break",
+   "label": "Identificação do Lançamento"
+  },
+  {
+   "fieldname": "numero_lancamento",
+   "fieldtype": "Data",
+   "label": "Número do Lançamento",
+   "read_only": 1,
+   "unique": 1,
+   "description": "Número sequencial automático do lançamento"
+  },
+  {
+   "fieldname": "data_lancamento",
+   "fieldtype": "Date",
+   "label": "Data do Lançamento",
+   "reqd": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "tipo_lancamento",
+   "fieldtype": "Select",
+   "label": "Tipo de Lançamento",
+   "options": "Manual\nAutomático - Empenho\nAutomático - Liquidação\nAutomático - Pagamento\nAutomático - Receita\nAutomático - Estorno\nAjuste",
+   "reqd": 1,
+   "default": "Manual"
+  },
+  {
+   "fieldname": "origem_lancamento",
+   "fieldtype": "Select",
+   "label": "Origem do Lançamento",
+   "options": "Orçamentário\nPatrimonial\nControle\nCompensação",
+   "reqd": 1,
+   "description": "Classifica a origem do lançamento conforme PCASP"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "exercicio_financeiro",
+   "fieldtype": "Link",
+   "label": "Exercício Financeiro",
+   "options": "ExercicioFinanceiro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "documento_origem",
+   "fieldtype": "Link",
+   "label": "Documento de Origem",
+   "options": "DocType",
+   "description": "Tipo do documento que originou o lançamento"
+  },
+  {
+   "fieldname": "numero_documento",
+   "fieldtype": "Dynamic Link",
+   "label": "Número do Documento",
+   "options": "documento_origem",
+   "description": "Documento específico que originou o lançamento"
+  },
+  {
+   "fieldname": "status_lancamento",
+   "fieldtype": "Select",
+   "label": "Status do Lançamento",
+   "options": "Rascunho\nPendente Aprovação\nAprovado\nContabilizado\nEstornado\nCancelado",
+   "default": "Rascunho",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secao_contas",
+   "fieldtype": "Section Break",
+   "label": "Contas e Valores"
+  },
+  {
+   "fieldname": "conta_debito",
+   "fieldtype": "Link",
+   "label": "Conta Débito",
+   "options": "PlanoContas",
+   "reqd": 1,
+   "description": "Conta que será debitada"
+  },
+  {
+   "fieldname": "conta_credito",
+   "fieldtype": "Link",
+   "label": "Conta Crédito",
+   "options": "PlanoContas",
+   "reqd": 1,
+   "description": "Conta que será creditada"
+  },
+  {
+   "fieldname": "valor_debito",
+   "fieldtype": "Currency",
+   "label": "Valor Débito",
+   "options": "Company:company:default_currency",
+   "reqd": 1,
+   "description": "Valor a ser debitado"
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_credito",
+   "fieldtype": "Currency",
+   "label": "Valor Crédito",
+   "options": "Company:company:default_currency",
+   "reqd": 1,
+   "description": "Valor a ser creditado"
+  },
+  {
+   "fieldname": "historico_padrao",
+   "fieldtype": "Link",
+   "label": "Histórico Padrão",
+   "options": "HistoricoContabil",
+   "description": "Histórico contábil padrão"
+  },
+  {
+   "fieldname": "historico_lancamento",
+   "fieldtype": "Small Text",
+   "label": "Histórico do Lançamento",
+   "reqd": 1,
+   "description": "Descrição detalhada do lançamento"
+  },
+  {
+   "fieldname": "secao_complementar",
+   "fieldtype": "Section Break",
+   "label": "Informações Complementares"
+  },
+  {
+   "fieldname": "unidade_gestora",
+   "fieldtype": "Link",
+   "label": "Unidade Gestora",
+   "options": "UnidadeGestora",
+   "description": "Unidade responsável pelo lançamento"
+  },
+  {
+   "fieldname": "centro_custo",
+   "fieldtype": "Link",
+   "label": "Centro de Custo",
+   "options": "CentroCusto",
+   "description": "Centro de custo para apropriação"
+  },
+  {
+   "fieldname": "projeto",
+   "fieldtype": "Link",
+   "label": "Projeto",
+   "options": "Project",
+   "description": "Projeto associado ao lançamento"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "categoria_economica",
+   "fieldtype": "Link",
+   "label": "Categoria Econômica",
+   "options": "CategoriaEconomica",
+   "description": "Classificação econômica da despesa/receita"
+  },
+  {
+   "fieldname": "fonte_recurso",
+   "fieldtype": "Link",
+   "label": "Fonte de Recurso",
+   "options": "FonteRecurso",
+   "description": "Fonte de recurso utilizada"
+  },
+  {
+   "fieldname": "modalidade_aplicacao",
+   "fieldtype": "Link",
+   "label": "Modalidade de Aplicação",
+   "options": "ModalidadeAplicacao",
+   "description": "Modalidade de aplicação dos recursos"
+  },
+  {
+   "fieldname": "secao_controle",
+   "fieldtype": "Section Break",
+   "label": "Controle e Aprovação"
+  },
+  {
+   "fieldname": "usuario_lancamento",
+   "fieldtype": "Link",
+   "label": "Usuário do Lançamento",
+   "options": "User",
+   "read_only": 1,
+   "default": "user"
+  },
+  {
+   "fieldname": "data_criacao",
+   "fieldtype": "Datetime",
+   "label": "Data de Criação",
+   "read_only": 1,
+   "default": "now"
+  },
+  {
+   "fieldname": "column_break_26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "usuario_aprovacao",
+   "fieldtype": "Link",
+   "label": "Usuário de Aprovação",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_aprovacao",
+   "fieldtype": "Datetime",
+   "label": "Data de Aprovação",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secao_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações",
+   "description": "Informações adicionais sobre o lançamento"
+  },
+  {
+   "fieldname": "column_break_30",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "justificativa",
+   "fieldtype": "Small Text",
+   "label": "Justificativa",
+   "description": "Justificativa técnica do lançamento"
+  },
+  {
+   "fieldname": "secao_anexos",
+   "fieldtype": "Section Break",
+   "label": "Documentos Anexos"
+  },
+  {
+   "fieldname": "anexos",
+   "fieldtype": "Table",
+   "label": "Anexos",
+   "options": "AnexoDocumento",
+   "description": "Documentos comprobatórios do lançamento"
+  }
+ ],
+ "has_web_view": 0,
+ "hide_toolbar": 0,
+ "idx": 0,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2025-06-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "LancamentoContabil",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Contador",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "share": 1,
+   "write": 0
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

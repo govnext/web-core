@@ -1,0 +1,465 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block header %}
+<div class="page-header bg-primary text-white py-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent p-0 mb-2">
+            <li class="breadcrumb-item">
+              <a href="/transparencia" class="text-white">Portal da Transparência</a>
+            </li>
+            <li class="breadcrumb-item active text-white-50" aria-current="page">{{ title }}</li>
+          </ol>
+        </nav>
+        <h1 class="display-5 fw-bold mb-2">{{ title }}</h1>
+        <p class="lead mb-0">{{ subtitle }}</p>
+      </div>
+      <div class="col-lg-4 text-end">
+        <div class="header-stats bg-white bg-opacity-10 p-3 rounded">
+          <div class="d-flex justify-content-between">
+            <small class="text-white-50">Total pago em 2025:</small>
+            <strong>{{ estatisticas_despesas.total_ano_atual }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+
+  <!-- Estatísticas em Cards -->
+  <section class="mb-5">
+    <div class="row g-3">
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card card border-0 shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-primary mb-2">
+              <i class="fa fa-calendar-alt fa-2x"></i>
+            </div>
+            <h4 class="fw-bold text-primary">{{ estatisticas_despesas.total_mes_atual }}</h4>
+            <small class="text-muted">Total no Mês</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card card border-0 shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-success mb-2">
+              <i class="fa fa-chart-line fa-2x"></i>
+            </div>
+            <h4 class="fw-bold text-success">{{ estatisticas_despesas.total_ano_atual }}</h4>
+            <small class="text-muted">Total no Ano</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card card border-0 shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-info mb-2">
+              <i class="fa fa-file-invoice fa-2x"></i>
+            </div>
+            <h4 class="fw-bold text-info">{{ estatisticas_despesas.quantidade_pagamentos }}</h4>
+            <small class="text-muted">Pagamentos</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card card border-0 shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-warning mb-2">
+              <i class="fa fa-percentage fa-2x"></i>
+            </div>
+            <h4 class="fw-bold text-warning">{{ estatisticas_despesas.percentual_execucao }}%</h4>
+            <small class="text-muted">Execução Orçamentária</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtros de Pesquisa -->
+  <section class="mb-4">
+    <div class="filter-panel card border-0 shadow-sm">
+      <div class="card-header bg-light">
+        <h5 class="mb-0">
+          <i class="fa fa-filter me-2"></i>Filtros de Pesquisa
+        </h5>
+      </div>
+      <div class="card-body">
+        <form id="filtros-form" class="row g-3">
+          <div class="col-md-3">
+            <label class="form-label">Período</label>
+            <select class="form-select" name="periodo">
+              {% for periodo in filtros.periodo %}
+              <option value="{{ periodo.value }}">{{ periodo.label }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Categoria</label>
+            <select class="form-select" name="categoria">
+              {% for categoria in filtros.categoria %}
+              <option value="{{ categoria.value }}">{{ categoria.label }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Órgão</label>
+            <select class="form-select" name="orgao">
+              {% for orgao in filtros.orgao %}
+              <option value="{{ orgao.value }}">{{ orgao.label }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Ordenação</label>
+            <select class="form-select" name="ordenacao">
+              {% for ordem in filtros.ordenacao %}
+              <option value="{{ ordem.value }}">{{ ordem.label }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Buscar por fornecedor, descrição ou processo</label>
+            <input type="text" class="form-control" name="busca" placeholder="Digite sua busca...">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Valor mínimo</label>
+            <input type="number" class="form-control" name="valor_min" placeholder="R$ 0,00">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Valor máximo</label>
+            <input type="number" class="form-control" name="valor_max" placeholder="R$ 999.999,99">
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary me-2">
+              <i class="fa fa-search me-2"></i>Filtrar
+            </button>
+            <button type="button" class="btn btn-outline-secondary me-2" onclick="limparFiltros()">
+              <i class="fa fa-eraser me-2"></i>Limpar
+            </button>
+            <div class="btn-group">
+              <button type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa fa-download me-2"></i>Exportar
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" onclick="exportar('csv')">CSV</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportar('xlsx')">Excel</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportar('pdf')">PDF</a></li>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gráficos -->
+  <section class="mb-5">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="chart-card card border-0 shadow-sm h-100">
+          <div class="card-header bg-light">
+            <h6 class="mb-0">Evolução Mensal das Despesas</h6>
+          </div>
+          <div class="card-body">
+            <canvas id="grafico-evolucao" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="chart-card card border-0 shadow-sm h-100">
+          <div class="card-header bg-light">
+            <h6 class="mb-0">Despesas por Categoria</h6>
+          </div>
+          <div class="card-body">
+            <canvas id="grafico-categorias" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabela de Despesas -->
+  <section class="mb-5">
+    <div class="table-panel card border-0 shadow-sm">
+      <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+          <i class="fa fa-table me-2"></i>Despesas Detalhadas
+        </h5>
+        <span class="badge bg-secondary" id="total-resultados">{{ despesas|length }} resultados</span>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0" id="tabela-despesas">
+            <thead class="table-light">
+              <tr>
+                <th>Data</th>
+                <th>Fornecedor</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Órgão</th>
+                <th class="text-end">Valor</th>
+                <th class="text-center">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for despesa in despesas %}
+              <tr>
+                <td>
+                  <span class="badge bg-light text-dark">{{ despesa.data_formatada }}</span>
+                </td>
+                <td>
+                  <div>
+                    <strong>{{ despesa.fornecedor }}</strong>
+                    <br><small class="text-muted">{{ despesa.cnpj }}</small>
+                  </div>
+                </td>
+                <td>
+                  <div class="description-cell">
+                    {{ despesa.descricao }}
+                    <br><small class="text-muted">{{ despesa.processo }}</small>
+                  </div>
+                </td>
+                <td>
+                  <span class="badge bg-info">{{ despesa.categoria }}</span>
+                  <br><small class="text-muted">{{ despesa.tipo_despesa }}</small>
+                </td>
+                <td>{{ despesa.orgao }}</td>
+                <td class="text-end">
+                  <strong class="text-success">{{ despesa.valor_formatado }}</strong>
+                </td>
+                <td class="text-center">
+                  <div class="btn-group btn-group-sm">
+                    <button class="btn btn-outline-primary" onclick="verDetalhes('{{ despesa.id }}')"
+                            title="Ver detalhes">
+                      <i class="fa fa-eye"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="baixarComprovante('{{ despesa.id }}')"
+                            title="Baixar comprovante">
+                      <i class="fa fa-download"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorias Detalhadas -->
+  <section class="mb-5">
+    <div class="categories-panel card border-0 shadow-sm">
+      <div class="card-header bg-light">
+        <h5 class="mb-0">
+          <i class="fa fa-chart-pie me-2"></i>Despesas por Categoria Econômica
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          {% for categoria in categorias %}
+          <div class="col-lg-6 mb-4">
+            <div class="category-item p-3 border rounded">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="fw-bold mb-0">{{ categoria.nome }}</h6>
+                <span class="badge bg-primary">{{ categoria.codigo }}</span>
+              </div>
+              <div class="progress mb-2" style="height: 10px;">
+                <div class="progress-bar" role="progressbar"
+                     style="width: {{ categoria.percentual }}%"
+                     aria-valuenow="{{ categoria.percentual }}"
+                     aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="fw-bold text-success">{{ frappe.utils.fmt_money(categoria.valor, currency="BRL") }}</span>
+                <span class="text-muted">{{ categoria.percentual }}%</span>
+              </div>
+              {% if categoria.subcategorias %}
+              <div class="subcategories mt-3">
+                {% for sub in categoria.subcategorias %}
+                <div class="d-flex justify-content-between small">
+                  <span>{{ sub.nome }}</span>
+                  <span class="text-muted">{{ frappe.utils.fmt_money(sub.valor, currency="BRL") }}</span>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Modal para detalhes da despesa -->
+<div class="modal fade" id="modalDetalhes" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalhes da Despesa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="modal-body-content">
+        <!-- Conteúdo carregado via AJAX -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Dados dos gráficos
+const dadosGraficos = {{ graficos | tojson }};
+
+// Gráfico de evolução mensal
+const ctxEvolucao = document.getElementById('grafico-evolucao').getContext('2d');
+new Chart(ctxEvolucao, {
+    type: 'line',
+    data: {
+        labels: dadosGraficos.evolucao_mensal.labels,
+        datasets: [{
+            label: 'Despesas Realizadas',
+            data: dadosGraficos.evolucao_mensal.valores,
+            borderColor: '#007bff',
+            backgroundColor: 'rgba(0, 123, 255, 0.1)',
+            tension: 0.4
+        }, {
+            label: 'Meta Orçamentária',
+            data: dadosGraficos.evolucao_mensal.meta,
+            borderColor: '#dc3545',
+            backgroundColor: 'rgba(220, 53, 69, 0.1)',
+            tension: 0.4,
+            borderDash: [5, 5]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value) {
+                        return 'R$ ' + (value / 1000000).toFixed(1) + 'M';
+                    }
+                }
+            }
+        }
+    }
+});
+
+// Gráfico de categorias
+const ctxCategorias = document.getElementById('grafico-categorias').getContext('2d');
+new Chart(ctxCategorias, {
+    type: 'doughnut',
+    data: {
+        labels: dadosGraficos.por_categoria.labels,
+        datasets: [{
+            data: dadosGraficos.por_categoria.valores,
+            backgroundColor: dadosGraficos.por_categoria.cores
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        const label = context.label || '';
+                        const value = 'R$ ' + (context.parsed / 1000000).toFixed(1) + 'M';
+                        return label + ': ' + value;
+                    }
+                }
+            }
+        }
+    }
+});
+
+// Funções de interação
+function verDetalhes(id) {
+    // Implementar carregamento dos detalhes via AJAX
+    console.log('Ver detalhes da despesa:', id);
+    $('#modalDetalhes').modal('show');
+}
+
+function baixarComprovante(id) {
+    // Implementar download do comprovante
+    console.log('Baixar comprovante da despesa:', id);
+}
+
+function exportar(formato) {
+    // Implementar exportação
+    console.log('Exportar em formato:', formato);
+}
+
+function limparFiltros() {
+    document.getElementById('filtros-form').reset();
+}
+
+// Submissão do formulário de filtros
+document.getElementById('filtros-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Implementar filtragem via AJAX
+    console.log('Aplicar filtros');
+});
+</script>
+
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.stat-card {
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.filter-panel,
+.table-panel,
+.categories-panel,
+.chart-card {
+    border-left: 4px solid #007bff !important;
+}
+
+.description-cell {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.category-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.subcategories {
+    padding-top: 10px;
+    border-top: 1px solid #dee2e6;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.5);
+}
+</style>
+{% endblock %}
