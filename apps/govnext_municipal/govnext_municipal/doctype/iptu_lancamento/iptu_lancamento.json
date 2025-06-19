@@ -14,15 +14,48 @@
   "data_lancamento",
   "data_vencimento",
   "parcelas",
-  "valores_section",
+  "configuracao_iptu",
+  "calculo_section",
   "valor_venal_total",
-  "valor_iptu",
-  "desconto",
-  "valor_total",
+  "aliquota_aplicada",
+  "faixa_valor_aplicada",
+  "valor_iptu_base",
+  "column_break_calculo",
+  "desconto_vista",
+  "desconto_janeiro",
+  "desconto_idoso",
+  "desconto_deficiente",
+  "desconto_total",
+  "valor_iptu_final",
+  "multas_juros_section",
+  "possui_atraso",
+  "dias_atraso",
+  "valor_multa",
+  "valor_juros",
+  "valor_total_atualizado",
+  "caracteristicas_section",
+  "tipo_imovel",
+  "area_terreno",
+  "testada_principal",
+  "imovel_esquina",
+  "possui_pavimentacao",
+  "zona_urbana",
+  "column_break_caracteristicas",
+  "tem_desconto_idoso",
+  "tem_desconto_deficiente",
+  "isento_iptu",
+  "motivo_isencao",
+  "pagamento_vista",
+  "pagamento_janeiro",
+  "parcelamento_section",
+  "permite_parcelamento",
+  "numero_parcelamento",
+  "status_parcelamento",
   "pagamentos_section",
   "pagamentos",
-  "section_break_16",
+  "section_break_observacoes",
   "observacoes",
+  "observacoes_internas",
   "amended_from"
  ],
  "fields": [
@@ -84,9 +117,15 @@
    "reqd": 1
   },
   {
-   "fieldname": "valores_section",
+   "fieldname": "configuracao_iptu",
+   "fieldtype": "Link",
+   "label": "Configuração IPTU",
+   "options": "IPTU Configuracao"
+  },
+  {
+   "fieldname": "calculo_section",
    "fieldtype": "Section Break",
-   "label": "Valores"
+   "label": "Cálculo do IPTU"
   },
   {
    "fieldname": "valor_venal_total",
@@ -95,23 +134,217 @@
    "reqd": 1
   },
   {
-   "fieldname": "valor_iptu",
+   "fieldname": "aliquota_aplicada",
+   "fieldtype": "Percent",
+   "label": "Alíquota Aplicada (%)",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "faixa_valor_aplicada",
+   "fieldtype": "Data",
+   "label": "Faixa de Valor Aplicada",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_iptu_base",
    "fieldtype": "Currency",
-   "label": "Valor do IPTU",
-   "reqd": 1
+   "label": "Valor IPTU Base",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_calculo",
+   "fieldtype": "Column Break"
   },
   {
    "default": "0",
-   "fieldname": "desconto",
+   "fieldname": "desconto_vista",
    "fieldtype": "Currency",
-   "label": "Desconto"
+   "label": "Desconto à Vista"
   },
   {
-   "fieldname": "valor_total",
+   "default": "0",
+   "fieldname": "desconto_janeiro",
+   "fieldtype": "Currency",
+   "label": "Desconto Janeiro"
+  },
+  {
+   "default": "0",
+   "fieldname": "desconto_idoso",
+   "fieldtype": "Currency",
+   "label": "Desconto Idoso"
+  },
+  {
+   "default": "0",
+   "fieldname": "desconto_deficiente",
+   "fieldtype": "Currency",
+   "label": "Desconto Deficiente"
+  },
+  {
+   "fieldname": "desconto_total",
+   "fieldtype": "Currency",
+   "label": "Total Descontos",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_iptu_final",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Valor Total",
+   "label": "Valor IPTU Final",
    "read_only": 1
+  },
+  {
+   "fieldname": "multas_juros_section",
+   "fieldtype": "Section Break",
+   "label": "Multas e Juros"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_atraso",
+   "fieldtype": "Check",
+   "label": "Possui Atraso"
+  },
+  {
+   "depends_on": "eval:doc.possui_atraso==1",
+   "fieldname": "dias_atraso",
+   "fieldtype": "Int",
+   "label": "Dias de Atraso",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.possui_atraso==1",
+   "fieldname": "valor_multa",
+   "fieldtype": "Currency",
+   "label": "Valor Multa",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.possui_atraso==1",
+   "fieldname": "valor_juros",
+   "fieldtype": "Currency",
+   "label": "Valor Juros",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_total_atualizado",
+   "fieldtype": "Currency",
+   "label": "Valor Total Atualizado",
+   "read_only": 1
+  },
+  {
+   "fieldname": "caracteristicas_section",
+   "fieldtype": "Section Break",
+   "label": "Características do Imóvel"
+  },
+  {
+   "fetch_from": "inscricao_cadastral.tipo_imovel",
+   "fieldname": "tipo_imovel",
+   "fieldtype": "Select",
+   "label": "Tipo de Imóvel",
+   "options": "Residencial\nComercial\nIndustrial\nTerritorial\nRural\nMisto",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "inscricao_cadastral.area_terreno",
+   "fieldname": "area_terreno",
+   "fieldtype": "Float",
+   "label": "Área Terreno (m²)",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "inscricao_cadastral.testada_principal",
+   "fieldname": "testada_principal",
+   "fieldtype": "Float",
+   "label": "Testada Principal (m)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "imovel_esquina",
+   "fieldtype": "Check",
+   "label": "Imóvel de Esquina"
+  },
+  {
+   "fetch_from": "inscricao_cadastral.possui_pavimentacao",
+   "fieldname": "possui_pavimentacao",
+   "fieldtype": "Check",
+   "label": "Possui Pavimentação",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "inscricao_cadastral.zona_urbana",
+   "fieldname": "zona_urbana",
+   "fieldtype": "Check",
+   "label": "Zona Urbana",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_caracteristicas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "tem_desconto_idoso",
+   "fieldtype": "Check",
+   "label": "Tem Desconto Idoso"
+  },
+  {
+   "default": "0",
+   "fieldname": "tem_desconto_deficiente",
+   "fieldtype": "Check",
+   "label": "Tem Desconto Deficiente"
+  },
+  {
+   "fetch_from": "inscricao_cadastral.isento",
+   "fieldname": "isento_iptu",
+   "fieldtype": "Check",
+   "label": "Isento de IPTU",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "inscricao_cadastral.motivo_isencao",
+   "fieldname": "motivo_isencao",
+   "fieldtype": "Select",
+   "label": "Motivo da Isenção",
+   "options": "Imóvel Público\nTemplos Religiosos\nEntidade Filantrópica\nAposentado/Pensionista\nBaixa Renda\nOutros",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "pagamento_vista",
+   "fieldtype": "Check",
+   "label": "Pagamento à Vista"
+  },
+  {
+   "default": "0",
+   "fieldname": "pagamento_janeiro",
+   "fieldtype": "Check",
+   "label": "Pagamento em Janeiro"
+  },
+  {
+   "fieldname": "parcelamento_section",
+   "fieldtype": "Section Break",
+   "label": "Parcelamento"
+  },
+  {
+   "default": "0",
+   "fieldname": "permite_parcelamento",
+   "fieldtype": "Check",
+   "label": "Permite Parcelamento"
+  },
+  {
+   "depends_on": "eval:doc.permite_parcelamento==1",
+   "fieldname": "numero_parcelamento",
+   "fieldtype": "Link",
+   "label": "Número do Parcelamento",
+   "options": "IPTU Parcelamento"
+  },
+  {
+   "depends_on": "eval:doc.permite_parcelamento==1",
+   "fieldname": "status_parcelamento",
+   "fieldtype": "Select",
+   "label": "Status Parcelamento",
+   "options": "Ativo\nSuspenso\nCancelado\nQuitado"
   },
   {
    "fieldname": "pagamentos_section",
@@ -125,13 +358,19 @@
    "options": "IPTU Pagamento"
   },
   {
-   "fieldname": "section_break_16",
-   "fieldtype": "Section Break"
+   "fieldname": "section_break_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Observações"
   },
   {
    "fieldname": "observacoes",
-   "fieldtype": "Small Text",
-   "label": "Observações"
+   "fieldtype": "Text",
+   "label": "Observações Públicas"
+  },
+  {
+   "fieldname": "observacoes_internas",
+   "fieldtype": "Text",
+   "label": "Observações Internas"
   },
   {
    "fieldname": "amended_from",
