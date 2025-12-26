@@ -1,0 +1,347 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:LDO-{ano_exercicio}-{#####}",
+ "creation": "2025-06-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "secao_identificacao",
+  "numero_lei",
+  "ano_exercicio",
+  "data_promulgacao",
+  "column_break_4",
+  "status",
+  "orgao_competente",
+  "data_vigencia_inicio",
+  "data_vigencia_fim",
+  "secao_metas_prioridades",
+  "metas_fiscais",
+  "prioridades_governo",
+  "objetivos_politicas_publicas",
+  "secao_receita_despesa",
+  "orientacoes_receita",
+  "orientacoes_despesa",
+  "equilibrio_orcamentario",
+  "secao_divida_publica",
+  "politica_divida_publica",
+  "limite_endividamento",
+  "operacoes_credito_autorizadas",
+  "secao_pessoal",
+  "politica_recursos_humanos",
+  "limite_despesa_pessoal",
+  "reajuste_remuneracao",
+  "secao_transferencias",
+  "transferencias_obrigatorias",
+  "transferencias_voluntarias",
+  "convenios_autorizados",
+  "secao_anexos_lrf",
+  "anexo_metas_fiscais",
+  "anexo_riscos_fiscais",
+  "anexo_objetivos_politicas",
+  "secao_observacoes",
+  "observacoes_gerais",
+  "fundamentacao_legal"
+ ],
+ "fields": [
+  {
+   "fieldname": "secao_identificacao",
+   "fieldtype": "Section Break",
+   "label": "Identificação da LDO"
+  },
+  {
+   "fieldname": "numero_lei",
+   "fieldtype": "Data",
+   "label": "Número da Lei",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Número oficial da Lei de Diretrizes Orçamentárias"
+  },
+  {
+   "fieldname": "ano_exercicio",
+   "fieldtype": "Int",
+   "label": "Ano do Exercício",
+   "reqd": 1,
+   "description": "Ano de vigência da LDO"
+  },
+  {
+   "fieldname": "data_promulgacao",
+   "fieldtype": "Date",
+   "label": "Data de Promulgação",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Projeto\nAprovada\nSancionada\nPromulgada\nVigente\nEncerrada",
+   "default": "Projeto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "orgao_competente",
+   "fieldtype": "Link",
+   "label": "Órgão Competente",
+   "options": "Government Unit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vigencia_inicio",
+   "fieldtype": "Date",
+   "label": "Início da Vigência",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vigencia_fim",
+   "fieldtype": "Date",
+   "label": "Fim da Vigência",
+   "reqd": 1
+  },
+  {
+   "fieldname": "secao_metas_prioridades",
+   "fieldtype": "Section Break",
+   "label": "Metas e Prioridades"
+  },
+  {
+   "fieldname": "metas_fiscais",
+   "fieldtype": "Table",
+   "label": "Metas Fiscais",
+   "options": "LDO Meta Fiscal",
+   "description": "Metas fiscais para o exercício (art. 4º LRF)"
+  },
+  {
+   "fieldname": "prioridades_governo",
+   "fieldtype": "Table",
+   "label": "Prioridades do Governo",
+   "options": "LDO Prioridade",
+   "description": "Prioridades e metas da administração pública"
+  },
+  {
+   "fieldname": "objetivos_politicas_publicas",
+   "fieldtype": "Text Editor",
+   "label": "Objetivos das Políticas Públicas",
+   "description": "Objetivos gerais das políticas públicas para o exercício"
+  },
+  {
+   "fieldname": "secao_receita_despesa",
+   "fieldtype": "Section Break",
+   "label": "Orientações para Receita e Despesa"
+  },
+  {
+   "fieldname": "orientacoes_receita",
+   "fieldtype": "Text Editor",
+   "label": "Orientações para Receita",
+   "description": "Diretrizes para elaboração da proposta orçamentária - receitas"
+  },
+  {
+   "fieldname": "orientacoes_despesa",
+   "fieldtype": "Text Editor",
+   "label": "Orientações para Despesa",
+   "description": "Diretrizes para elaboração da proposta orçamentária - despesas"
+  },
+  {
+   "fieldname": "equilibrio_orcamentario",
+   "fieldtype": "Text Editor",
+   "label": "Disposições sobre Equilíbrio",
+   "description": "Diretrizes para manutenção do equilíbrio orçamentário"
+  },
+  {
+   "fieldname": "secao_divida_publica",
+   "fieldtype": "Section Break",
+   "label": "Dívida Pública e Operações de Crédito"
+  },
+  {
+   "fieldname": "politica_divida_publica",
+   "fieldtype": "Text Editor",
+   "label": "Política de Aplicação de Recursos",
+   "description": "Diretrizes para a política de aplicação dos recursos públicos"
+  },
+  {
+   "fieldname": "limite_endividamento",
+   "fieldtype": "Currency",
+   "label": "Limite de Endividamento",
+   "description": "Limite para contratação de operações de crédito"
+  },
+  {
+   "fieldname": "operacoes_credito_autorizadas",
+   "fieldtype": "Table",
+   "label": "Operações de Crédito",
+   "options": "LDO Operacao Credito",
+   "description": "Operações de crédito autorizadas"
+  },
+  {
+   "fieldname": "secao_pessoal",
+   "fieldtype": "Section Break",
+   "label": "Política de Pessoal"
+  },
+  {
+   "fieldname": "politica_recursos_humanos",
+   "fieldtype": "Text Editor",
+   "label": "Política de Recursos Humanos",
+   "description": "Diretrizes para a política de recursos humanos"
+  },
+  {
+   "fieldname": "limite_despesa_pessoal",
+   "fieldtype": "Percent",
+   "label": "Limite de Despesa com Pessoal (%)",
+   "description": "Percentual da RCL para despesas com pessoal"
+  },
+  {
+   "fieldname": "reajuste_remuneracao",
+   "fieldtype": "Text Editor",
+   "label": "Diretrizes para Reajustes",
+   "description": "Critérios e diretrizes para reajustes de remuneração"
+  },
+  {
+   "fieldname": "secao_transferencias",
+   "fieldtype": "Section Break",
+   "label": "Transferências e Convênios"
+  },
+  {
+   "fieldname": "transferencias_obrigatorias",
+   "fieldtype": "Table",
+   "label": "Transferências Obrigatórias",
+   "options": "LDO Transferencia",
+   "description": "Transferências constitucionais e legais obrigatórias"
+  },
+  {
+   "fieldname": "transferencias_voluntarias",
+   "fieldtype": "Table",
+   "label": "Transferências Voluntárias",
+   "options": "LDO Transferencia",
+   "description": "Critérios para transferências voluntárias"
+  },
+  {
+   "fieldname": "convenios_autorizados",
+   "fieldtype": "Text Editor",
+   "label": "Critérios para Convênios",
+   "description": "Critérios e condições para celebração de convênios"
+  },
+  {
+   "fieldname": "secao_anexos_lrf",
+   "fieldtype": "Section Break",
+   "label": "Anexos da LRF"
+  },
+  {
+   "fieldname": "anexo_metas_fiscais",
+   "fieldtype": "Attach",
+   "label": "Anexo de Metas Fiscais",
+   "reqd": 1,
+   "description": "Anexo obrigatório - Metas Fiscais (art. 4º LRF)"
+  },
+  {
+   "fieldname": "anexo_riscos_fiscais",
+   "fieldtype": "Attach",
+   "label": "Anexo de Riscos Fiscais",
+   "reqd": 1,
+   "description": "Anexo obrigatório - Riscos Fiscais (art. 4º LRF)"
+  },
+  {
+   "fieldname": "anexo_objetivos_politicas",
+   "fieldtype": "Attach",
+   "label": "Anexo de Objetivos das Políticas",
+   "description": "Anexo com objetivos das políticas públicas"
+  },
+  {
+   "fieldname": "secao_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Observações e Fundamentação"
+  },
+  {
+   "fieldname": "observacoes_gerais",
+   "fieldtype": "Text Editor",
+   "label": "Observações Gerais"
+  },
+  {
+   "fieldname": "fundamentacao_legal",
+   "fieldtype": "Text Editor",
+   "label": "Fundamentação Legal",
+   "description": "Base legal e dispositivos aplicáveis"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Lei Orcamentaria Anual",
+   "link_fieldname": "lei_diretrizes"
+  },
+  {
+   "link_doctype": "Plano Plurianual",
+   "link_fieldname": "lei_diretrizes"
+  }
+ ],
+ "modified": "2025-06-19 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "Lei Diretrizes Orcamentarias",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Contador",
+   "share": 1,
+   "submit": 0,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "share": 1
+  }
+ ],
+ "search_fields": "numero_lei,ano_exercicio,status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "numero_lei",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

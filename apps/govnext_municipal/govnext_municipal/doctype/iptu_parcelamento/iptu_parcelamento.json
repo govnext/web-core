@@ -1,0 +1,333 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:PARC-{####}",
+ "creation": "2024-01-01 11:15:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inscricao_cadastral",
+  "proprietario",
+  "inadimplencia",
+  "status",
+  "column_break_5",
+  "data_parcelamento",
+  "data_primeira_parcela",
+  "usuario_autorizacao",
+  "motivo_parcelamento",
+  "valores_section",
+  "valor_total_original",
+  "valor_multas_juros",
+  "valor_total_parcelamento",
+  "valor_entrada",
+  "column_break_valores",
+  "numero_parcelas",
+  "valor_parcela",
+  "valor_total_a_pagar",
+  "desconto_concedido",
+  "parcelas_section",
+  "parcelas_parcelamento",
+  "resumo_section",
+  "total_parcelas_pagas",
+  "total_parcelas_pendentes",
+  "valor_total_pago",
+  "valor_total_pendente",
+  "column_break_resumo",
+  "parcelas_em_atraso",
+  "maior_atraso_dias",
+  "status_inadimplencia_parcelamento",
+  "condicoes_section",
+  "condicoes_parcelamento",
+  "clausulas_contratuais",
+  "penalidades_inadimplencia",
+  "observacoes_section",
+  "observacoes",
+  "observacoes_internas",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "inscricao_cadastral",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Inscrição Cadastral",
+   "options": "IPTU Cadastro",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "inscricao_cadastral.proprietario",
+   "fieldname": "proprietario",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Proprietário",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inadimplencia",
+   "fieldtype": "Link",
+   "label": "Inadimplência",
+   "options": "IPTU Inadimplencia"
+  },
+  {
+   "default": "Ativo",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Ativo\nSuspenso\nCancelado\nQuitado\nInadimplente",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "data_parcelamento",
+   "fieldtype": "Date",
+   "label": "Data do Parcelamento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_primeira_parcela",
+   "fieldtype": "Date",
+   "label": "Data da Primeira Parcela",
+   "reqd": 1
+  },
+  {
+   "default": "user",
+   "fieldname": "usuario_autorizacao",
+   "fieldtype": "Link",
+   "label": "Usuário Autorização",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "motivo_parcelamento",
+   "fieldtype": "Select",
+   "label": "Motivo do Parcelamento",
+   "options": "Dificuldades Financeiras\nDesemprego\nDoença\nReducão de Renda\nNegociação Amigável\nEvitar Protesto\nEvitar Dívida Ativa\nOutro"
+  },
+  {
+   "fieldname": "valores_section",
+   "fieldtype": "Section Break",
+   "label": "Valores"
+  },
+  {
+   "fieldname": "valor_total_original",
+   "fieldtype": "Currency",
+   "label": "Valor Total Original",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_multas_juros",
+   "fieldtype": "Currency",
+   "label": "Multas e Juros",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_total_parcelamento",
+   "fieldtype": "Currency",
+   "label": "Valor Total do Parcelamento",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_entrada",
+   "fieldtype": "Currency",
+   "label": "Valor da Entrada"
+  },
+  {
+   "fieldname": "column_break_valores",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "numero_parcelas",
+   "fieldtype": "Int",
+   "label": "Número de Parcelas",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_parcela",
+   "fieldtype": "Currency",
+   "label": "Valor da Parcela",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_total_a_pagar",
+   "fieldtype": "Currency",
+   "label": "Valor Total a Pagar",
+   "read_only": 1
+  },
+  {
+   "fieldname": "desconto_concedido",
+   "fieldtype": "Currency",
+   "label": "Desconto Concedido"
+  },
+  {
+   "fieldname": "parcelas_section",
+   "fieldtype": "Section Break",
+   "label": "Parcelas"
+  },
+  {
+   "fieldname": "parcelas_parcelamento",
+   "fieldtype": "Table",
+   "label": "Parcelas",
+   "options": "IPTU Parcela Parcelamento"
+  },
+  {
+   "fieldname": "resumo_section",
+   "fieldtype": "Section Break",
+   "label": "Resumo"
+  },
+  {
+   "fieldname": "total_parcelas_pagas",
+   "fieldtype": "Int",
+   "label": "Parcelas Pagas",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_parcelas_pendentes",
+   "fieldtype": "Int",
+   "label": "Parcelas Pendentes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_total_pago",
+   "fieldtype": "Currency",
+   "label": "Valor Total Pago",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_total_pendente",
+   "fieldtype": "Currency",
+   "label": "Valor Total Pendente",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_resumo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "parcelas_em_atraso",
+   "fieldtype": "Int",
+   "label": "Parcelas em Atraso",
+   "read_only": 1
+  },
+  {
+   "fieldname": "maior_atraso_dias",
+   "fieldtype": "Int",
+   "label": "Maior Atraso (dias)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status_inadimplencia_parcelamento",
+   "fieldtype": "Select",
+   "label": "Status Inadimplência",
+   "options": "Regular\nAtraso Leve\nAtraso Moderado\nAtraso Grave\nCancelamento Automático",
+   "read_only": 1
+  },
+  {
+   "fieldname": "condicoes_section",
+   "fieldtype": "Section Break",
+   "label": "Condições e Cláusulas"
+  },
+  {
+   "fieldname": "condicoes_parcelamento",
+   "fieldtype": "Text",
+   "label": "Condições do Parcelamento"
+  },
+  {
+   "fieldname": "clausulas_contratuais",
+   "fieldtype": "Text",
+   "label": "Cláusulas Contratuais"
+  },
+  {
+   "fieldname": "penalidades_inadimplencia",
+   "fieldtype": "Text",
+   "label": "Penalidades por Inadimplência"
+  },
+  {
+   "fieldname": "observacoes_section",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes_internas",
+   "fieldtype": "Text",
+   "label": "Observações Internas"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "IPTU Parcelamento",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "IPTU Inadimplencia",
+   "link_fieldname": "numero_parcelamento"
+  }
+ ],
+ "modified": "2024-01-01 11:15:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Parcelamento",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

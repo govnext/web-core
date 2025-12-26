@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 11:05:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lancamento",
+  "parcela",
+  "valor_original",
+  "data_vencimento",
+  "column_break_5",
+  "dias_atraso",
+  "valor_multa",
+  "valor_juros",
+  "valor_total",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "lancamento",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lançamento",
+   "options": "IPTU Lancamento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "parcela",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Parcela",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_original",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Original",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vencimento",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Vencimento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dias_atraso",
+   "fieldtype": "Int",
+   "label": "Dias em Atraso",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_multa",
+   "fieldtype": "Currency",
+   "label": "Valor Multa",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_juros",
+   "fieldtype": "Currency",
+   "label": "Valor Juros",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_total",
+   "fieldtype": "Currency",
+   "label": "Valor Total",
+   "read_only": 1
+  },
+  {
+   "default": "Inadimplente",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Inadimplente\nNotificado\nProtestado\nDívida Ativa\nProcesso Judicial\nParcelado"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 11:05:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Debito Inadimplencia",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,252 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "classificacao_institucional",
+  "orgao",
+  "unidade",
+  "column_break_3",
+  "classificacao_funcional",
+  "funcao",
+  "subfuncao",
+  "column_break_7",
+  "classificacao_programatica",
+  "programa",
+  "acao",
+  "localizador_gasto",
+  "section_break_12",
+  "classificacao_economica",
+  "categoria_economica",
+  "grupo_natureza",
+  "modalidade_aplicacao",
+  "column_break_17",
+  "elemento_despesa",
+  "subelemento_despesa",
+  "fonte_recurso",
+  "section_break_21",
+  "valor_fixado",
+  "valor_empenhado",
+  "valor_liquidado",
+  "column_break_25",
+  "valor_pago",
+  "saldo_disponivel",
+  "percentual_execucao",
+  "section_break_29",
+  "justificativa",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "classificacao_institucional",
+   "fieldtype": "Section Break",
+   "label": "Classificação Institucional"
+  },
+  {
+   "fieldname": "orgao",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Órgão",
+   "reqd": 1,
+   "width": "80px",
+   "description": "Código do órgão orçamentário"
+  },
+  {
+   "fieldname": "unidade",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Unidade",
+   "reqd": 1,
+   "width": "80px",
+   "description": "Código da unidade orçamentária"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "classificacao_funcional",
+   "fieldtype": "Section Break",
+   "label": "Classificação Funcional"
+  },
+  {
+   "fieldname": "funcao",
+   "fieldtype": "Select",
+   "label": "Função",
+   "options": "01 - Legislativa\n02 - Judiciária\n03 - Essencial à Justiça\n04 - Administração\n05 - Defesa Nacional\n06 - Segurança Pública\n07 - Relações Exteriores\n08 - Assistência Social\n09 - Previdência Social\n10 - Saúde\n11 - Trabalho\n12 - Educação\n13 - Cultura\n14 - Direitos da Cidadania\n15 - Urbanismo\n16 - Habitação\n17 - Saneamento\n18 - Gestão Ambiental\n19 - Ciência e Tecnologia\n20 - Agricultura\n21 - Organização Agrária\n22 - Indústria\n23 - Comércio e Serviços\n24 - Comunicações\n25 - Energia\n26 - Transporte\n27 - Desporto e Lazer\n28 - Encargos Especiais",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subfuncao",
+   "fieldtype": "Data",
+   "label": "Subfunção",
+   "reqd": 1,
+   "description": "Código da subfunção de governo"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "classificacao_programatica",
+   "fieldtype": "Section Break",
+   "label": "Classificação Programática"
+  },
+  {
+   "fieldname": "programa",
+   "fieldtype": "Data",
+   "label": "Programa",
+   "reqd": 1,
+   "description": "Código do programa de governo"
+  },
+  {
+   "fieldname": "acao",
+   "fieldtype": "Data",
+   "label": "Ação",
+   "reqd": 1,
+   "description": "Código da ação orçamentária"
+  },
+  {
+   "fieldname": "localizador_gasto",
+   "fieldtype": "Data",
+   "label": "Localizador de Gasto",
+   "description": "Identificador de localização do gasto"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break",
+   "label": "Classificação por Natureza da Despesa"
+  },
+  {
+   "fieldname": "categoria_economica",
+   "fieldtype": "Select",
+   "label": "Categoria Econômica",
+   "options": "3 - Despesas Correntes\n4 - Despesas de Capital",
+   "reqd": 1
+  },
+  {
+   "fieldname": "grupo_natureza",
+   "fieldtype": "Select",
+   "label": "Grupo de Natureza",
+   "options": "1 - Pessoal e Encargos Sociais\n2 - Juros e Encargos da Dívida\n3 - Outras Despesas Correntes\n4 - Investimentos\n5 - Inversões Financeiras\n6 - Amortização da Dívida",
+   "reqd": 1
+  },
+  {
+   "fieldname": "modalidade_aplicacao",
+   "fieldtype": "Select",
+   "label": "Modalidade de Aplicação",
+   "options": "10 - Transferências à União\n20 - Transferências aos Estados\n30 - Transferências aos Municípios\n40 - Transferências a Instituições Privadas sem Fins Lucrativos\n50 - Transferências a Instituições Privadas com Fins Lucrativos\n60 - Transferências ao Exterior\n70 - Transferências a Pessoas Físicas\n80 - Transferências a Outras Instituições Públicas\n90 - Aplicações Diretas\n99 - A Definir",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "elemento_despesa",
+   "fieldtype": "Data",
+   "label": "Elemento de Despesa",
+   "reqd": 1,
+   "description": "Código do elemento de despesa (2 dígitos)"
+  },
+  {
+   "fieldname": "subelemento_despesa",
+   "fieldtype": "Data",
+   "label": "Subelemento",
+   "description": "Código do subelemento de despesa (2 dígitos)"
+  },
+  {
+   "fieldname": "fonte_recurso",
+   "fieldtype": "Data",
+   "label": "Fonte de Recurso",
+   "reqd": 1,
+   "description": "Código da fonte/destinação de recursos"
+  },
+  {
+   "fieldname": "section_break_21",
+   "fieldtype": "Section Break",
+   "label": "Valores Orçamentários"
+  },
+  {
+   "fieldname": "valor_fixado",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Fixado",
+   "reqd": 1,
+   "width": "120px",
+   "description": "Valor original fixado na LOA"
+  },
+  {
+   "fieldname": "valor_empenhado",
+   "fieldtype": "Currency",
+   "label": "Valor Empenhado",
+   "read_only": 1,
+   "default": "0",
+   "description": "Valor total empenhado"
+  },
+  {
+   "fieldname": "valor_liquidado",
+   "fieldtype": "Currency",
+   "label": "Valor Liquidado",
+   "read_only": 1,
+   "default": "0",
+   "description": "Valor total liquidado"
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_pago",
+   "fieldtype": "Currency",
+   "label": "Valor Pago",
+   "read_only": 1,
+   "default": "0",
+   "description": "Valor total pago"
+  },
+  {
+   "fieldname": "saldo_disponivel",
+   "fieldtype": "Currency",
+   "label": "Saldo Disponível",
+   "read_only": 1,
+   "description": "Valor fixado - valor empenhado"
+  },
+  {
+   "fieldname": "percentual_execucao",
+   "fieldtype": "Percent",
+   "label": "% Execução",
+   "read_only": 1,
+   "description": "Percentual de execução orçamentária"
+  },
+  {
+   "fieldname": "section_break_29",
+   "fieldtype": "Section Break",
+   "label": "Justificativas e Observações"
+  },
+  {
+   "fieldname": "justificativa",
+   "fieldtype": "Small Text",
+   "label": "Justificativa",
+   "description": "Justificativa para a despesa conforme PPA/LDO"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2025-06-19 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "LOA Despesa Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,329 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:INAD-{ano}-{inscricao_cadastral}",
+ "creation": "2024-01-01 11:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inscricao_cadastral",
+  "proprietario",
+  "ano",
+  "status_inadimplencia",
+  "column_break_5",
+  "data_inicio_inadimplencia",
+  "data_ultima_atualizacao",
+  "total_debitos",
+  "fase_cobranca",
+  "debitos_section",
+  "debitos_em_aberto",
+  "valor_original_total",
+  "valor_multas_total",
+  "valor_juros_total",
+  "valor_total_atualizado",
+  "column_break_debitos",
+  "maior_atraso_dias",
+  "menor_atraso_dias",
+  "total_parcelas_vencidas",
+  "historico_cobranca_section",
+  "historico_cobranca",
+  "acoes_cobranca_section",
+  "notificacao_enviada",
+  "data_notificacao",
+  "protesto_indicado",
+  "data_protesto",
+  "column_break_acoes",
+  "inscricao_divida_ativa",
+  "data_inscricao_divida_ativa",
+  "processo_judicial",
+  "numero_processo",
+  "parcelamento_section",
+  "possui_parcelamento",
+  "numero_parcelamento",
+  "status_parcelamento",
+  "observacoes_section",
+  "observacoes",
+  "observacoes_internas"
+ ],
+ "fields": [
+  {
+   "fieldname": "inscricao_cadastral",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Inscrição Cadastral",
+   "options": "IPTU Cadastro",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "inscricao_cadastral.proprietario",
+   "fieldname": "proprietario",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Proprietário",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ano",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ano",
+   "reqd": 1
+  },
+  {
+   "default": "Inadimplente",
+   "fieldname": "status_inadimplencia",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Inadimplente\nNotificado\nProtestado\nDívida Ativa\nProcesso Judicial\nQuitado\nParcelado\nSuspenso",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_inicio_inadimplencia",
+   "fieldtype": "Date",
+   "label": "Data Início Inadimplência",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "data_ultima_atualizacao",
+   "fieldtype": "Date",
+   "label": "Data Última Atualização",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_debitos",
+   "fieldtype": "Int",
+   "label": "Total de Débitos",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fase_cobranca",
+   "fieldtype": "Select",
+   "label": "Fase de Cobrança",
+   "options": "Administrativa\nAmigável\nJudicial\nExecução\nFinalizada"
+  },
+  {
+   "fieldname": "debitos_section",
+   "fieldtype": "Section Break",
+   "label": "Débitos em Aberto"
+  },
+  {
+   "fieldname": "debitos_em_aberto",
+   "fieldtype": "Table",
+   "label": "Débitos",
+   "options": "IPTU Debito Inadimplencia"
+  },
+  {
+   "fieldname": "valor_original_total",
+   "fieldtype": "Currency",
+   "label": "Valor Original Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_multas_total",
+   "fieldtype": "Currency",
+   "label": "Total Multas",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_juros_total",
+   "fieldtype": "Currency",
+   "label": "Total Juros",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_total_atualizado",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Total Atualizado",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_debitos",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "maior_atraso_dias",
+   "fieldtype": "Int",
+   "label": "Maior Atraso (dias)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menor_atraso_dias",
+   "fieldtype": "Int",
+   "label": "Menor Atraso (dias)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_parcelas_vencidas",
+   "fieldtype": "Int",
+   "label": "Total Parcelas Vencidas",
+   "read_only": 1
+  },
+  {
+   "fieldname": "historico_cobranca_section",
+   "fieldtype": "Section Break",
+   "label": "Histórico de Cobrança"
+  },
+  {
+   "fieldname": "historico_cobranca",
+   "fieldtype": "Table",
+   "label": "Histórico",
+   "options": "IPTU Historico Cobranca"
+  },
+  {
+   "fieldname": "acoes_cobranca_section",
+   "fieldtype": "Section Break",
+   "label": "Ações de Cobrança"
+  },
+  {
+   "default": "0",
+   "fieldname": "notificacao_enviada",
+   "fieldtype": "Check",
+   "label": "Notificação Enviada"
+  },
+  {
+   "depends_on": "eval:doc.notificacao_enviada==1",
+   "fieldname": "data_notificacao",
+   "fieldtype": "Date",
+   "label": "Data da Notificação"
+  },
+  {
+   "default": "0",
+   "fieldname": "protesto_indicado",
+   "fieldtype": "Check",
+   "label": "Indicado para Protesto"
+  },
+  {
+   "depends_on": "eval:doc.protesto_indicado==1",
+   "fieldname": "data_protesto",
+   "fieldtype": "Date",
+   "label": "Data do Protesto"
+  },
+  {
+   "fieldname": "column_break_acoes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "inscricao_divida_ativa",
+   "fieldtype": "Check",
+   "label": "Inscrito em Dívida Ativa"
+  },
+  {
+   "depends_on": "eval:doc.inscricao_divida_ativa==1",
+   "fieldname": "data_inscricao_divida_ativa",
+   "fieldtype": "Date",
+   "label": "Data Inscrição Dívida Ativa"
+  },
+  {
+   "default": "0",
+   "fieldname": "processo_judicial",
+   "fieldtype": "Check",
+   "label": "Processo Judicial"
+  },
+  {
+   "depends_on": "eval:doc.processo_judicial==1",
+   "fieldname": "numero_processo",
+   "fieldtype": "Data",
+   "label": "Número do Processo"
+  },
+  {
+   "fieldname": "parcelamento_section",
+   "fieldtype": "Section Break",
+   "label": "Parcelamento"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_parcelamento",
+   "fieldtype": "Check",
+   "label": "Possui Parcelamento"
+  },
+  {
+   "depends_on": "eval:doc.possui_parcelamento==1",
+   "fieldname": "numero_parcelamento",
+   "fieldtype": "Link",
+   "label": "Número do Parcelamento",
+   "options": "IPTU Parcelamento"
+  },
+  {
+   "depends_on": "eval:doc.possui_parcelamento==1",
+   "fieldname": "status_parcelamento",
+   "fieldtype": "Select",
+   "label": "Status do Parcelamento",
+   "options": "Ativo\nSuspenso\nCancelado\nQuitado"
+  },
+  {
+   "fieldname": "observacoes_section",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações Públicas"
+  },
+  {
+   "fieldname": "observacoes_internas",
+   "fieldtype": "Text",
+   "label": "Observações Internas"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "IPTU Parcelamento",
+   "link_fieldname": "inadimplencia"
+  }
+ ],
+ "modified": "2024-01-01 11:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Inadimplencia",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

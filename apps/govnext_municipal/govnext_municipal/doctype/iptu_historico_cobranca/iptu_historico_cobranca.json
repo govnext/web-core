@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 11:10:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "data_acao",
+  "tipo_acao",
+  "descricao",
+  "column_break_4",
+  "usuario",
+  "canal_comunicacao",
+  "resultado",
+  "proxima_acao"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "data_acao",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tipo_acao",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Ação",
+   "options": "Notificação\nLigação Telefônica\nE-mail\nCarta Registrada\nVisita Pessoal\nNotificação Extrajudicial\nProtesto\nInscrição Dívida Ativa\nAção Judicial\nParcelamento\nOutro",
+   "reqd": 1
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Descrição",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "user",
+   "fieldname": "usuario",
+   "fieldtype": "Link",
+   "label": "Usuário",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "canal_comunicacao",
+   "fieldtype": "Select",
+   "label": "Canal de Comunicação",
+   "options": "Telefone\nE-mail\nCorreio\nPresencial\nWhatsApp\nSMS\nEdital\nOutro"
+  },
+  {
+   "fieldname": "resultado",
+   "fieldtype": "Select",
+   "label": "Resultado",
+   "options": "Sucesso\nSem Sucesso\nContato Parcial\nPromessa de Pagamento\nDiscordância\nNão Localizado\nRecusou Receber\nEndereço Incorreto"
+  },
+  {
+   "fieldname": "proxima_acao",
+   "fieldtype": "Date",
+   "label": "Próxima Ação"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 11:10:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Historico Cobranca",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

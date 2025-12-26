@@ -1,0 +1,310 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:ano",
+ "creation": "2024-01-01 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "ano",
+  "municipio",
+  "data_inicio_vigencia",
+  "data_fim_vigencia",
+  "ativo",
+  "aliquotas_section",
+  "aliquotas_progressivas",
+  "valor_minimo_iptu",
+  "valor_ufi",
+  "descontos_section",
+  "desconto_pagamento_vista",
+  "desconto_pagamento_janeiro",
+  "desconto_idoso",
+  "desconto_deficiente",
+  "isencoes_section",
+  "isencoes_configuradas",
+  "multas_juros_section",
+  "percentual_multa",
+  "percentual_juros_mes",
+  "percentual_juros_ano",
+  "dias_para_multa",
+  "parcelamento_section",
+  "permite_parcelamento",
+  "maximo_parcelas",
+  "valor_minimo_parcela",
+  "percentual_entrada_minima",
+  "configuracoes_adicionais_section",
+  "formula_calculo",
+  "considerar_testada",
+  "considerar_esquina",
+  "considerar_pavimentacao",
+  "considerar_zona_urbana",
+  "fator_multiplicador_comercial",
+  "fator_multiplicador_industrial",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "ano",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ano",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "municipio",
+   "fieldtype": "Data",
+   "label": "Município",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_inicio_vigencia",
+   "fieldtype": "Date",
+   "label": "Data Início Vigência",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_fim_vigencia",
+   "fieldtype": "Date",
+   "label": "Data Fim Vigência"
+  },
+  {
+   "default": "1",
+   "fieldname": "ativo",
+   "fieldtype": "Check",
+   "label": "Configuração Ativa"
+  },
+  {
+   "fieldname": "aliquotas_section",
+   "fieldtype": "Section Break",
+   "label": "Alíquotas Progressivas"
+  },
+  {
+   "fieldname": "aliquotas_progressivas",
+   "fieldtype": "Table",
+   "label": "Alíquotas por Faixa de Valor",
+   "options": "IPTU Aliquota Progressiva",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_minimo_iptu",
+   "fieldtype": "Currency",
+   "label": "Valor Mínimo do IPTU",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_ufi",
+   "fieldtype": "Currency",
+   "label": "Valor da UFI (Unidade Fiscal)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "descontos_section",
+   "fieldtype": "Section Break",
+   "label": "Descontos"
+  },
+  {
+   "fieldname": "desconto_pagamento_vista",
+   "fieldtype": "Percent",
+   "label": "Desconto Pagamento à Vista (%)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "desconto_pagamento_janeiro",
+   "fieldtype": "Percent",
+   "label": "Desconto Pagamento em Janeiro (%)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "desconto_idoso",
+   "fieldtype": "Percent",
+   "label": "Desconto para Idoso (%)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "desconto_deficiente",
+   "fieldtype": "Percent",
+   "label": "Desconto para Deficiente (%)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "isencoes_section",
+   "fieldtype": "Section Break",
+   "label": "Isenções"
+  },
+  {
+   "fieldname": "isencoes_configuradas",
+   "fieldtype": "Table",
+   "label": "Isenções Configuradas",
+   "options": "IPTU Isencao Configurada"
+  },
+  {
+   "fieldname": "multas_juros_section",
+   "fieldtype": "Section Break",
+   "label": "Multas e Juros"
+  },
+  {
+   "fieldname": "percentual_multa",
+   "fieldtype": "Percent",
+   "label": "Percentual de Multa (%)",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "percentual_juros_mes",
+   "fieldtype": "Percent",
+   "label": "Percentual de Juros por Mês (%)",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "percentual_juros_ano",
+   "fieldtype": "Percent",
+   "label": "Percentual de Juros por Ano (%)",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dias_para_multa",
+   "fieldtype": "Int",
+   "label": "Dias Após Vencimento para Aplicar Multa",
+   "reqd": 1
+  },
+  {
+   "fieldname": "parcelamento_section",
+   "fieldtype": "Section Break",
+   "label": "Parcelamento"
+  },
+  {
+   "default": "1",
+   "fieldname": "permite_parcelamento",
+   "fieldtype": "Check",
+   "label": "Permite Parcelamento"
+  },
+  {
+   "depends_on": "eval:doc.permite_parcelamento==1",
+   "fieldname": "maximo_parcelas",
+   "fieldtype": "Int",
+   "label": "Máximo de Parcelas",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.permite_parcelamento==1",
+   "fieldname": "valor_minimo_parcela",
+   "fieldtype": "Currency",
+   "label": "Valor Mínimo por Parcela",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.permite_parcelamento==1",
+   "fieldname": "percentual_entrada_minima",
+   "fieldtype": "Percent",
+   "label": "Percentual Mínimo de Entrada (%)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "configuracoes_adicionais_section",
+   "fieldtype": "Section Break",
+   "label": "Configurações Adicionais"
+  },
+  {
+   "fieldname": "formula_calculo",
+   "fieldtype": "Select",
+   "label": "Fórmula de Cálculo",
+   "options": "Padrão\nPersonalizada\nPor Metros de Testada\nPor Zona Fiscal",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "considerar_testada",
+   "fieldtype": "Check",
+   "label": "Considerar Testada no Cálculo"
+  },
+  {
+   "default": "0",
+   "fieldname": "considerar_esquina",
+   "fieldtype": "Check",
+   "label": "Considerar Imóvel de Esquina"
+  },
+  {
+   "default": "0",
+   "fieldname": "considerar_pavimentacao",
+   "fieldtype": "Check",
+   "label": "Considerar Pavimentação"
+  },
+  {
+   "default": "1",
+   "fieldname": "considerar_zona_urbana",
+   "fieldtype": "Check",
+   "label": "Considerar Zona Urbana"
+  },
+  {
+   "fieldname": "fator_multiplicador_comercial",
+   "fieldtype": "Float",
+   "label": "Fator Multiplicador Comercial",
+   "precision": "4"
+  },
+  {
+   "fieldname": "fator_multiplicador_industrial",
+   "fieldtype": "Float",
+   "label": "Fator Multiplicador Industrial",
+   "precision": "4"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "IPTU Lancamento",
+   "link_fieldname": "configuracao_iptu"
+  }
+ ],
+ "modified": "2024-01-01 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Configuracao",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

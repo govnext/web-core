@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 11:30:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "numero_parcela",
+  "descricao_parcela",
+  "valor_original",
+  "valor_com_desconto",
+  "column_break_5",
+  "data_vencimento",
+  "codigo_barras",
+  "linha_digitavel",
+  "qr_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "numero_parcela",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Parcela",
+   "reqd": 1
+  },
+  {
+   "fieldname": "descricao_parcela",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Descrição",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_original",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Original",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_com_desconto",
+   "fieldtype": "Currency",
+   "label": "Valor com Desconto"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_vencimento",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Vencimento",
+   "reqd": 1
+  },
+  {
+   "fieldname": "codigo_barras",
+   "fieldtype": "Data",
+   "label": "Código de Barras"
+  },
+  {
+   "fieldname": "linha_digitavel",
+   "fieldtype": "Data",
+   "label": "Linha Digitável"
+  },
+  {
+   "fieldname": "qr_code",
+   "fieldtype": "Data",
+   "label": "QR Code PIX"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 11:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Parcela Carne",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 10:30:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "faixa",
+  "valor_minimo",
+  "valor_maximo",
+  "aliquota",
+  "column_break_5",
+  "tipo_imovel",
+  "aplicar_progressividade",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "faixa",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Faixa",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_minimo",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Mínimo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_maximo",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Máximo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "aliquota",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Alíquota (%)",
+   "precision": "4",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Todos",
+   "fieldname": "tipo_imovel",
+   "fieldtype": "Select",
+   "label": "Tipo de Imóvel",
+   "options": "Todos\nResidencial\nComercial\nIndustrial\nTerritorial\nRural\nMisto"
+  },
+  {
+   "default": "1",
+   "fieldname": "aplicar_progressividade",
+   "fieldtype": "Check",
+   "label": "Aplicar Progressividade"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 10:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Aliquota Progressiva",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

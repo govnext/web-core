@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo_receita",
+  "descricao_receita",
+  "categoria_economica",
+  "column_break_4",
+  "origem_receita",
+  "especie_receita",
+  "rubrica_receita",
+  "column_break_8",
+  "valor_previsto",
+  "fonte_recurso",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo_receita",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código da Receita",
+   "reqd": 1,
+   "description": "Código da classificação da receita por natureza"
+  },
+  {
+   "fieldname": "descricao_receita",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Descrição da Receita",
+   "reqd": 1,
+   "width": "200px"
+  },
+  {
+   "fieldname": "categoria_economica",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Categoria Econômica",
+   "options": "Receitas Correntes\nReceitas de Capital",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "origem_receita",
+   "fieldtype": "Select",
+   "label": "Origem",
+   "options": "Receitas Tributárias\nReceitas de Contribuições\nReceitas Patrimoniais\nReceitas Agropecuárias\nReceitas Industriais\nReceitas de Serviços\nTransferências Correntes\nOutras Receitas Correntes\nOperações de Crédito\nAlienação de Bens\nAmortização de Empréstimos\nTransferências de Capital\nOutras Receitas de Capital",
+   "reqd": 1
+  },
+  {
+   "fieldname": "especie_receita",
+   "fieldtype": "Data",
+   "label": "Espécie",
+   "description": "Especificação da receita (3º nível)"
+  },
+  {
+   "fieldname": "rubrica_receita",
+   "fieldtype": "Data",
+   "label": "Rubrica",
+   "description": "Rubrica da receita (4º nível)"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_previsto",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Previsto",
+   "reqd": 1,
+   "width": "120px"
+  },
+  {
+   "fieldname": "fonte_recurso",
+   "fieldtype": "Data",
+   "label": "Fonte de Recurso",
+   "description": "Código da fonte/destinação de recursos"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2025-06-19 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "LOA Receita Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

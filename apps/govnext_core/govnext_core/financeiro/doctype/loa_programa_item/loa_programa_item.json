@@ -1,0 +1,162 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "codigo_programa",
+  "nome_programa",
+  "tipo_programa",
+  "column_break_3",
+  "objetivo_programa",
+  "justificativa",
+  "section_break_6",
+  "acoes_programa",
+  "section_break_8",
+  "valor_total_programa",
+  "prazo_execucao",
+  "column_break_11",
+  "orgao_responsavel",
+  "unidade_responsavel",
+  "section_break_14",
+  "indicadores_programa",
+  "section_break_16",
+  "publico_alvo",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "codigo_programa",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Código do Programa",
+   "reqd": 1,
+   "width": "100px",
+   "description": "Código de 4 dígitos do programa"
+  },
+  {
+   "fieldname": "nome_programa",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nome do Programa",
+   "reqd": 1,
+   "width": "200px"
+  },
+  {
+   "fieldname": "tipo_programa",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Programa",
+   "options": "Finalístico\nApoio às Políticas Públicas\nServiços ao Estado",
+   "reqd": 1,
+   "width": "120px"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "objetivo_programa",
+   "fieldtype": "Small Text",
+   "label": "Objetivo do Programa",
+   "reqd": 1,
+   "description": "Objetivo principal do programa de governo"
+  },
+  {
+   "fieldname": "justificativa",
+   "fieldtype": "Small Text",
+   "label": "Justificativa",
+   "description": "Justificativa para criação/manutenção do programa"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break",
+   "label": "Ações do Programa"
+  },
+  {
+   "fieldname": "acoes_programa",
+   "fieldtype": "Table",
+   "label": "Ações",
+   "options": "LOA Programa Acao",
+   "description": "Ações que compõem o programa"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break",
+   "label": "Recursos e Responsabilidades"
+  },
+  {
+   "fieldname": "valor_total_programa",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor Total do Programa",
+   "read_only": 1,
+   "width": "120px",
+   "description": "Soma dos valores de todas as ações"
+  },
+  {
+   "fieldname": "prazo_execucao",
+   "fieldtype": "Data",
+   "label": "Prazo de Execução",
+   "description": "Prazo limite para execução do programa"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "orgao_responsavel",
+   "fieldtype": "Data",
+   "label": "Órgão Responsável",
+   "reqd": 1,
+   "description": "Código do órgão responsável pelo programa"
+  },
+  {
+   "fieldname": "unidade_responsavel",
+   "fieldtype": "Data",
+   "label": "Unidade Responsável",
+   "description": "Unidade orçamentária responsável"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break",
+   "label": "Indicadores de Desempenho"
+  },
+  {
+   "fieldname": "indicadores_programa",
+   "fieldtype": "Table",
+   "label": "Indicadores",
+   "options": "LOA Programa Indicador",
+   "description": "Indicadores de desempenho do programa"
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break",
+   "label": "Informações Complementares"
+  },
+  {
+   "fieldname": "publico_alvo",
+   "fieldtype": "Small Text",
+   "label": "Público-Alvo",
+   "description": "Descrição do público beneficiado pelo programa"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2025-06-19 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "LOA Programa Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

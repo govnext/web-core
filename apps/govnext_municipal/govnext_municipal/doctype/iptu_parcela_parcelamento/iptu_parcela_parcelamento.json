@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 11:20:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "numero_parcela",
+  "valor_parcela",
+  "data_vencimento",
+  "status",
+  "column_break_5",
+  "data_pagamento",
+  "valor_pago",
+  "dias_atraso",
+  "valor_multa_atraso",
+  "codigo_barras"
+ ],
+ "fields": [
+  {
+   "fieldname": "numero_parcela",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Parcela",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_parcela",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Valor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vencimento",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Vencimento",
+   "reqd": 1
+  },
+  {
+   "default": "Pendente",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pendente\nPago\nAtrasado\nCancelado",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.status=='Pago'",
+   "fieldname": "data_pagamento",
+   "fieldtype": "Date",
+   "label": "Data Pagamento"
+  },
+  {
+   "depends_on": "eval:doc.status=='Pago'",
+   "fieldname": "valor_pago",
+   "fieldtype": "Currency",
+   "label": "Valor Pago"
+  },
+  {
+   "fieldname": "dias_atraso",
+   "fieldtype": "Int",
+   "label": "Dias Atraso",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_multa_atraso",
+   "fieldtype": "Currency",
+   "label": "Multa por Atraso",
+   "read_only": 1
+  },
+  {
+   "fieldname": "codigo_barras",
+   "fieldtype": "Data",
+   "label": "Código de Barras"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 11:20:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Parcela Parcelamento",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

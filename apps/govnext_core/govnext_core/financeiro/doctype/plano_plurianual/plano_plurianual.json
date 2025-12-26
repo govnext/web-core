@@ -1,0 +1,314 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:PPA-{ano_inicio}-{ano_fim}",
+ "creation": "2025-06-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "secao_identificacao",
+  "numero_lei",
+  "ano_inicio",
+  "ano_fim",
+  "data_promulgacao",
+  "column_break_5",
+  "status",
+  "orgao_competente",
+  "data_vigencia_inicio",
+  "data_vigencia_fim",
+  "secao_diretrizes",
+  "diretrizes_estrategicas",
+  "objetivos_estrategicos",
+  "diretrizes_regionais",
+  "secao_programas",
+  "programas_estrategicos",
+  "total_recursos_programas",
+  "secao_macroeconomia",
+  "cenario_macroeconomico",
+  "projecoes_fiscais",
+  "evolucao_patrimonio_liquido",
+  "secao_indicadores",
+  "indicadores_estrategicos",
+  "metas_quadrienio",
+  "secao_anexos",
+  "anexo_programas_detalhados",
+  "anexo_indicadores_metas",
+  "anexo_regionalizacao",
+  "secao_observacoes",
+  "metodologia_elaboracao",
+  "observacoes_gerais"
+ ],
+ "fields": [
+  {
+   "fieldname": "secao_identificacao",
+   "fieldtype": "Section Break",
+   "label": "Identificação do PPA"
+  },
+  {
+   "fieldname": "numero_lei",
+   "fieldtype": "Data",
+   "label": "Número da Lei",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Número oficial da Lei do Plano Plurianual"
+  },
+  {
+   "fieldname": "ano_inicio",
+   "fieldtype": "Int",
+   "label": "Ano de Início",
+   "reqd": 1,
+   "description": "Primeiro ano de vigência do PPA"
+  },
+  {
+   "fieldname": "ano_fim",
+   "fieldtype": "Int",
+   "label": "Ano de Fim",
+   "reqd": 1,
+   "description": "Último ano de vigência do PPA"
+  },
+  {
+   "fieldname": "data_promulgacao",
+   "fieldtype": "Date",
+   "label": "Data de Promulgação"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Projeto\nAprovado\nSancionado\nPromulgado\nVigente\nEncerrado\nRevisado",
+   "default": "Projeto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "orgao_competente",
+   "fieldtype": "Link",
+   "label": "Órgão Competente",
+   "options": "Government Unit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vigencia_inicio",
+   "fieldtype": "Date",
+   "label": "Início da Vigência",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vigencia_fim",
+   "fieldtype": "Date",
+   "label": "Fim da Vigência",
+   "reqd": 1
+  },
+  {
+   "fieldname": "secao_diretrizes",
+   "fieldtype": "Section Break",
+   "label": "Diretrizes e Objetivos Estratégicos"
+  },
+  {
+   "fieldname": "diretrizes_estrategicas",
+   "fieldtype": "Text Editor",
+   "label": "Diretrizes Estratégicas",
+   "description": "Diretrizes gerais para o quadriênio"
+  },
+  {
+   "fieldname": "objetivos_estrategicos",
+   "fieldtype": "Table",
+   "label": "Objetivos Estratégicos",
+   "options": "PPA Objetivo Estrategico",
+   "description": "Objetivos estratégicos do governo para o período"
+  },
+  {
+   "fieldname": "diretrizes_regionais",
+   "fieldtype": "Text Editor",
+   "label": "Diretrizes para Regionalização",
+   "description": "Critérios de regionalização do gasto público"
+  },
+  {
+   "fieldname": "secao_programas",
+   "fieldtype": "Section Break",
+   "label": "Programas de Governo"
+  },
+  {
+   "fieldname": "programas_estrategicos",
+   "fieldtype": "Table",
+   "label": "Programas Estratégicos",
+   "options": "PPA Programa",
+   "description": "Programas governamentais para o quadriênio"
+  },
+  {
+   "fieldname": "total_recursos_programas",
+   "fieldtype": "Currency",
+   "label": "Total de Recursos dos Programas",
+   "read_only": 1,
+   "description": "Soma dos recursos de todos os programas"
+  },
+  {
+   "fieldname": "secao_macroeconomia",
+   "fieldtype": "Section Break",
+   "label": "Cenário Macroeconômico"
+  },
+  {
+   "fieldname": "cenario_macroeconomico",
+   "fieldtype": "Table",
+   "label": "Cenário Macroeconômico",
+   "options": "PPA Cenario Macro",
+   "description": "Projeções macroeconômicas para o período"
+  },
+  {
+   "fieldname": "projecoes_fiscais",
+   "fieldtype": "Table",
+   "label": "Projeções Fiscais",
+   "options": "PPA Projecao Fiscal",
+   "description": "Projeções da receita e despesa por ano"
+  },
+  {
+   "fieldname": "evolucao_patrimonio_liquido",
+   "fieldtype": "Table",
+   "label": "Evolução do Patrimônio Líquido",
+   "options": "PPA Patrimonio",
+   "description": "Evolução prevista do patrimônio líquido"
+  },
+  {
+   "fieldname": "secao_indicadores",
+   "fieldtype": "Section Break",
+   "label": "Indicadores e Metas"
+  },
+  {
+   "fieldname": "indicadores_estrategicos",
+   "fieldtype": "Table",
+   "label": "Indicadores Estratégicos",
+   "options": "PPA Indicador",
+   "description": "Indicadores para monitoramento do PPA"
+  },
+  {
+   "fieldname": "metas_quadrienio",
+   "fieldtype": "Table",
+   "label": "Metas do Quadriênio",
+   "options": "PPA Meta",
+   "description": "Metas quantitativas para o período"
+  },
+  {
+   "fieldname": "secao_anexos",
+   "fieldtype": "Section Break",
+   "label": "Anexos do PPA"
+  },
+  {
+   "fieldname": "anexo_programas_detalhados",
+   "fieldtype": "Attach",
+   "label": "Anexo - Programas Detalhados",
+   "description": "Detalhamento completo dos programas"
+  },
+  {
+   "fieldname": "anexo_indicadores_metas",
+   "fieldtype": "Attach",
+   "label": "Anexo - Indicadores e Metas",
+   "description": "Indicadores e metas detalhados"
+  },
+  {
+   "fieldname": "anexo_regionalizacao",
+   "fieldtype": "Attach",
+   "label": "Anexo - Regionalização",
+   "description": "Regionalização dos investimentos"
+  },
+  {
+   "fieldname": "secao_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Metodologia e Observações"
+  },
+  {
+   "fieldname": "metodologia_elaboracao",
+   "fieldtype": "Text Editor",
+   "label": "Metodologia de Elaboração",
+   "description": "Metodologia utilizada na elaboração do PPA"
+  },
+  {
+   "fieldname": "observacoes_gerais",
+   "fieldtype": "Text Editor",
+   "label": "Observações Gerais"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Lei Diretrizes Orcamentarias",
+   "link_fieldname": "plano_plurianual"
+  },
+  {
+   "link_doctype": "Lei Orcamentaria Anual",
+   "link_fieldname": "plano_plurianual"
+  }
+ ],
+ "modified": "2025-06-19 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "Plano Plurianual",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Contador",
+   "share": 1,
+   "submit": 0,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "share": 1
+  }
+ ],
+ "search_fields": "numero_lei,ano_inicio,ano_fim,status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "numero_lei",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

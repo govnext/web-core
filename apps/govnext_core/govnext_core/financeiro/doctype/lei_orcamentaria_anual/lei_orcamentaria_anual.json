@@ -1,0 +1,320 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:LOA-{ano_exercicio}-{#####}",
+ "creation": "2025-06-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "secao_identificacao",
+  "numero_lei",
+  "ano_exercicio",
+  "data_promulgacao",
+  "column_break_4",
+  "status_aprovacao",
+  "orgao_competente",
+  "data_vigencia_inicio",
+  "data_vigencia_fim",
+  "secao_metas_fiscais",
+  "meta_resultado_primario",
+  "meta_resultado_nominal",
+  "meta_divida_publica_liquida",
+  "column_break_12",
+  "limite_despesa_pessoal",
+  "limite_operacoes_credito",
+  "reserva_contingencia",
+  "secao_receitas",
+  "receitas_orcamentarias",
+  "total_receita_prevista",
+  "secao_despesas",
+  "despesas_orcamentarias",
+  "total_despesa_fixada",
+  "secao_programas",
+  "programas_governo",
+  "secao_anexos",
+  "anexo_receitas_despesas",
+  "anexo_pessoal_encargos",
+  "anexo_investimentos",
+  "anexo_divida_publica",
+  "secao_observacoes",
+  "observacoes_gerais",
+  "dispositivos_legais"
+ ],
+ "fields": [
+  {
+   "fieldname": "secao_identificacao",
+   "fieldtype": "Section Break",
+   "label": "Identificação da LOA"
+  },
+  {
+   "fieldname": "numero_lei",
+   "fieldtype": "Data",
+   "label": "Número da Lei",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Número oficial da Lei Orçamentária Anual"
+  },
+  {
+   "fieldname": "ano_exercicio",
+   "fieldtype": "Int",
+   "label": "Ano do Exercício",
+   "reqd": 1,
+   "description": "Ano de vigência da LOA"
+  },
+  {
+   "fieldname": "data_promulgacao",
+   "fieldtype": "Date",
+   "label": "Data de Promulgação",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status_aprovacao",
+   "fieldtype": "Select",
+   "label": "Status de Aprovação",
+   "options": "Projeto\nAprovada\nSancionada\nPromulgada\nVigente\nEncerrada",
+   "default": "Projeto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "orgao_competente",
+   "fieldtype": "Link",
+   "label": "Órgão Competente",
+   "options": "Government Unit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vigencia_inicio",
+   "fieldtype": "Date",
+   "label": "Início da Vigência",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_vigencia_fim",
+   "fieldtype": "Date",
+   "label": "Fim da Vigência",
+   "reqd": 1
+  },
+  {
+   "fieldname": "secao_metas_fiscais",
+   "fieldtype": "Section Break",
+   "label": "Metas Fiscais (LRF)"
+  },
+  {
+   "fieldname": "meta_resultado_primario",
+   "fieldtype": "Currency",
+   "label": "Meta de Resultado Primário",
+   "description": "Meta de resultado primário conforme LRF"
+  },
+  {
+   "fieldname": "meta_resultado_nominal",
+   "fieldtype": "Currency",
+   "label": "Meta de Resultado Nominal",
+   "description": "Meta de resultado nominal conforme LRF"
+  },
+  {
+   "fieldname": "meta_divida_publica_liquida",
+   "fieldtype": "Currency",
+   "label": "Meta da Dívida Pública Líquida",
+   "description": "Meta da dívida pública líquida conforme LRF"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "limite_despesa_pessoal",
+   "fieldtype": "Currency",
+   "label": "Limite de Despesa com Pessoal",
+   "description": "Limite prudencial de despesa com pessoal (54% RCL)"
+  },
+  {
+   "fieldname": "limite_operacoes_credito",
+   "fieldtype": "Currency",
+   "label": "Limite de Operações de Crédito",
+   "description": "Limite anual para operações de crédito"
+  },
+  {
+   "fieldname": "reserva_contingencia",
+   "fieldtype": "Currency",
+   "label": "Reserva de Contingência",
+   "description": "Reserva para contingências fiscais"
+  },
+  {
+   "fieldname": "secao_receitas",
+   "fieldtype": "Section Break",
+   "label": "Receitas Orçamentárias"
+  },
+  {
+   "fieldname": "receitas_orcamentarias",
+   "fieldtype": "Table",
+   "label": "Receitas Orçamentárias",
+   "options": "LOA Receita Item",
+   "description": "Detalhamento das receitas previstas"
+  },
+  {
+   "fieldname": "total_receita_prevista",
+   "fieldtype": "Currency",
+   "label": "Total da Receita Prevista",
+   "read_only": 1,
+   "description": "Soma total de todas as receitas previstas"
+  },
+  {
+   "fieldname": "secao_despesas",
+   "fieldtype": "Section Break",
+   "label": "Despesas Orçamentárias"
+  },
+  {
+   "fieldname": "despesas_orcamentarias",
+   "fieldtype": "Table",
+   "label": "Despesas Orçamentárias",
+   "options": "LOA Despesa Item",
+   "description": "Detalhamento das despesas fixadas"
+  },
+  {
+   "fieldname": "total_despesa_fixada",
+   "fieldtype": "Currency",
+   "label": "Total da Despesa Fixada",
+   "read_only": 1,
+   "description": "Soma total de todas as despesas fixadas"
+  },
+  {
+   "fieldname": "secao_programas",
+   "fieldtype": "Section Break",
+   "label": "Programas de Governo"
+  },
+  {
+   "fieldname": "programas_governo",
+   "fieldtype": "Table",
+   "label": "Programas de Governo",
+   "options": "LOA Programa Item",
+   "description": "Programas e ações governamentais previstas"
+  },
+  {
+   "fieldname": "secao_anexos",
+   "fieldtype": "Section Break",
+   "label": "Anexos da LOA"
+  },
+  {
+   "fieldname": "anexo_receitas_despesas",
+   "fieldtype": "Attach",
+   "label": "Anexo - Receitas e Despesas",
+   "description": "Demonstrativo detalhado de receitas e despesas"
+  },
+  {
+   "fieldname": "anexo_pessoal_encargos",
+   "fieldtype": "Attach",
+   "label": "Anexo - Pessoal e Encargos",
+   "description": "Demonstrativo de despesas com pessoal"
+  },
+  {
+   "fieldname": "anexo_investimentos",
+   "fieldtype": "Attach",
+   "label": "Anexo - Investimentos",
+   "description": "Demonstrativo de investimentos e inversões"
+  },
+  {
+   "fieldname": "anexo_divida_publica",
+   "fieldtype": "Attach",
+   "label": "Anexo - Dívida Pública",
+   "description": "Demonstrativo da dívida pública"
+  },
+  {
+   "fieldname": "secao_observacoes",
+   "fieldtype": "Section Break",
+   "label": "Observações e Dispositivos Legais"
+  },
+  {
+   "fieldname": "observacoes_gerais",
+   "fieldtype": "Text Editor",
+   "label": "Observações Gerais",
+   "description": "Observações e considerações sobre a LOA"
+  },
+  {
+   "fieldname": "dispositivos_legais",
+   "fieldtype": "Text Editor",
+   "label": "Dispositivos Legais",
+   "description": "Base legal e dispositivos aplicáveis"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Orcamento",
+   "link_fieldname": "lei_orcamentaria"
+  }
+ ],
+ "modified": "2025-06-19 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financeiro",
+ "name": "Lei Orcamentaria Anual",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gestor Financeiro",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Contador",
+   "share": 1,
+   "submit": 0,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "share": 1
+  }
+ ],
+ "search_fields": "numero_lei,ano_exercicio,status_aprovacao",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "numero_lei",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

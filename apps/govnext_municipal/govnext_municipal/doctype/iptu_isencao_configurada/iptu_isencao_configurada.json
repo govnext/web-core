@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 10:35:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tipo_isencao",
+  "descricao",
+  "percentual_isencao",
+  "valor_maximo_isencao",
+  "column_break_5",
+  "requer_comprovacao",
+  "documentos_necessarios",
+  "vigencia_meses",
+  "renovacao_automatica"
+ ],
+ "fields": [
+  {
+   "fieldname": "tipo_isencao",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Isenção",
+   "options": "Imóvel Público\nTemplos Religiosos\nEntidade Filantrópica\nAposentado/Pensionista\nBaixa Renda\nDeficiente\nIdoso\nViúva\nPortador de Doença Grave\nImóvel Histórico\nOutros",
+   "reqd": 1
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Descrição",
+   "reqd": 1
+  },
+  {
+   "fieldname": "percentual_isencao",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Percentual de Isenção (%)",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valor_maximo_isencao",
+   "fieldtype": "Currency",
+   "label": "Valor Máximo de Isenção"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "requer_comprovacao",
+   "fieldtype": "Check",
+   "label": "Requer Comprovação"
+  },
+  {
+   "depends_on": "eval:doc.requer_comprovacao==1",
+   "fieldname": "documentos_necessarios",
+   "fieldtype": "Small Text",
+   "label": "Documentos Necessários"
+  },
+  {
+   "fieldname": "vigencia_meses",
+   "fieldtype": "Int",
+   "label": "Vigência (meses)"
+  },
+  {
+   "default": "0",
+   "fieldname": "renovacao_automatica",
+   "fieldtype": "Check",
+   "label": "Renovação Automática"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 10:35:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Isencao Configurada",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

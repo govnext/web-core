@@ -1,0 +1,292 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:CARNE-{ano}-{####}",
+ "creation": "2024-01-01 11:25:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inscricao_cadastral",
+  "proprietario",
+  "ano",
+  "status",
+  "column_break_5",
+  "data_emissao",
+  "data_entrega",
+  "tipo_entrega",
+  "numero_via",
+  "carne_section",
+  "parcelas_carne",
+  "valor_total_carne",
+  "numero_parcelas",
+  "valor_parcela_unica",
+  "column_break_carne",
+  "desconto_vista",
+  "desconto_janeiro",
+  "possui_desconto_especial",
+  "motivo_desconto_especial",
+  "entrega_section",
+  "endereco_entrega",
+  "forma_entrega",
+  "data_postagem",
+  "codigo_rastreamento",
+  "column_break_entrega",
+  "recebedor",
+  "data_recebimento",
+  "tentativas_entrega",
+  "motivo_nao_entrega",
+  "observacoes_section",
+  "observacoes",
+  "observacoes_internas",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "inscricao_cadastral",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Inscrição Cadastral",
+   "options": "IPTU Cadastro",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "inscricao_cadastral.proprietario",
+   "fieldname": "proprietario",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Proprietário",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ano",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ano",
+   "reqd": 1
+  },
+  {
+   "default": "Emitido",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Emitido\nEnviado\nEntregue\nNão Entregue\nDevolvido\nReemitido\nCancelado",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "data_emissao",
+   "fieldtype": "Date",
+   "label": "Data de Emissão",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_entrega",
+   "fieldtype": "Date",
+   "label": "Data de Entrega"
+  },
+  {
+   "fieldname": "tipo_entrega",
+   "fieldtype": "Select",
+   "label": "Tipo de Entrega",
+   "options": "Correios\nEntrega em Mãos\nRetirada no Balcão\nE-mail\nPortal do Cidadão\nWhatsApp",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "numero_via",
+   "fieldtype": "Int",
+   "label": "Número da Via"
+  },
+  {
+   "fieldname": "carne_section",
+   "fieldtype": "Section Break",
+   "label": "Dados do Carnê"
+  },
+  {
+   "fieldname": "parcelas_carne",
+   "fieldtype": "Table",
+   "label": "Parcelas do Carnê",
+   "options": "IPTU Parcela Carne"
+  },
+  {
+   "fieldname": "valor_total_carne",
+   "fieldtype": "Currency",
+   "label": "Valor Total do Carnê",
+   "read_only": 1
+  },
+  {
+   "fieldname": "numero_parcelas",
+   "fieldtype": "Int",
+   "label": "Número de Parcelas",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_parcela_unica",
+   "fieldtype": "Currency",
+   "label": "Valor Parcela Única",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_carne",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "desconto_vista",
+   "fieldtype": "Currency",
+   "label": "Desconto à Vista"
+  },
+  {
+   "fieldname": "desconto_janeiro",
+   "fieldtype": "Currency",
+   "label": "Desconto Janeiro"
+  },
+  {
+   "default": "0",
+   "fieldname": "possui_desconto_especial",
+   "fieldtype": "Check",
+   "label": "Possui Desconto Especial"
+  },
+  {
+   "depends_on": "eval:doc.possui_desconto_especial==1",
+   "fieldname": "motivo_desconto_especial",
+   "fieldtype": "Select",
+   "label": "Motivo Desconto Especial",
+   "options": "Idoso\nDeficiente\nBaixa Renda\nViúva\nIsento\nOutro"
+  },
+  {
+   "fieldname": "entrega_section",
+   "fieldtype": "Section Break",
+   "label": "Entrega"
+  },
+  {
+   "fieldname": "endereco_entrega",
+   "fieldtype": "Small Text",
+   "label": "Endereço de Entrega"
+  },
+  {
+   "fieldname": "forma_entrega",
+   "fieldtype": "Select",
+   "label": "Forma de Entrega",
+   "options": "Sedex\nPAC\nEntrega Expressa\nMão Própria\nAR (Aviso de Recebimento)\nE-mail\nWhatsApp\nPortal"
+  },
+  {
+   "fieldname": "data_postagem",
+   "fieldtype": "Date",
+   "label": "Data de Postagem"
+  },
+  {
+   "fieldname": "codigo_rastreamento",
+   "fieldtype": "Data",
+   "label": "Código de Rastreamento"
+  },
+  {
+   "fieldname": "column_break_entrega",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recebedor",
+   "fieldtype": "Data",
+   "label": "Recebedor"
+  },
+  {
+   "fieldname": "data_recebimento",
+   "fieldtype": "Date",
+   "label": "Data de Recebimento"
+  },
+  {
+   "default": "0",
+   "fieldname": "tentativas_entrega",
+   "fieldtype": "Int",
+   "label": "Tentativas de Entrega"
+  },
+  {
+   "fieldname": "motivo_nao_entrega",
+   "fieldtype": "Select",
+   "label": "Motivo Não Entrega",
+   "options": "Endereço Incorreto\nMudou-se\nRecusou Receber\nAusente\nEdifício Fechado\nEndereço não Localizado\nDesconhecido\nFaleceu\nOutro"
+  },
+  {
+   "fieldname": "observacoes_section",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes_internas",
+   "fieldtype": "Text",
+   "label": "Observações Internas"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "IPTU Carne",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-01 11:25:00.000000",
+ "modified_by": "Administrator",
+ "module": "GovNext Municipal",
+ "name": "IPTU Carne",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fiscal Municipal",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Servidor Público",
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
